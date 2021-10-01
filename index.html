@@ -327,40 +327,6 @@
             background-color: #ff0000;
             transform: rotate(60deg);
         }
-        
-        /* [Styles: KeyLog_ButtonSymbol_PS_DualShock] Key Log: Button: Punch: Med */
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_3 > li:nth-child(13)::after,
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_6 > li:nth-child(13)::after {
-            content: "\1F44A";
-            background-color: #ffff00;
-        }
-        /* [Styles: KeyLog_ButtonSymbol_PS_DualShock] Key Log: Button: Punch: Heavy */
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_4 > li:nth-child(15)::after,
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_6 > li:nth-child(15)::after {
-            content: "\1F44A";
-            background-color: #ff0000;
-        }
-        /* [Styles: KeyLog_ButtonSymbol_PS_DualShock] Key Log: Button: Kick: Light */
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_0 > li:nth-child(21)::after,
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_7 > li:nth-child(21)::after {
-            content: "\1F9B6";
-            background-color: #00ffff;
-            transform: rotate(60deg);
-        }
-        /* [Styles: KeyLog_ButtonSymbol_PS_DualShock] Key Log: Button: Kick: Med */
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_1 > li:nth-child(23)::after,
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_7 > li:nth-child(23)::after {
-            content: "\1F9B6";
-            background-color: #ffff00;
-            transform: rotate(60deg);
-        }
-        /* [Styles: KeyLog_ButtonSymbol_PS_DualShock] Key Log: Button: Kick: Heavy */
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_5 > li:nth-child(25)::after,
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_7 > li:nth-child(25)::after {
-            content: "\1F9B6";
-            background-color: #ff0000;
-            transform: rotate(60deg);
-        }
 
         /* [Styles: DualPad] Key Log: Button */
         #GameInputDisplay[data-styles~="DualPad"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
@@ -408,7 +374,7 @@
             transform: rotate(60deg);
         }
 
-        /* [Styles: KeyLog_ButtonSymbol_PS_DualShock] Key Log: Button */
+        /* [Styles: KeyLog_ButtonSymbol_PS_DualShock] */
         #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
             content: unset;
             background-color: unset;
@@ -446,6 +412,14 @@
             border-radius: 30%;
             font-size: 18px;
             font-weight: 900;
+        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_8 > li:nth-child(41)::after,
+        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_9 > li:nth-child(43)::after,
+        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_17 > li:nth-child(53)::after {
+            padding-top: 6px;
+            height: 24px;
+            line-height: 10px;
+            font-size: 9px;
+            white-space: pre;
         } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_4 > li:nth-child(21)::after {
             content: "L1";
         } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_5 > li:nth-child(23)::after {
@@ -453,11 +427,11 @@
         } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_6 > li:nth-child(25)::after {
             content: "L2";
         } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_7 > li:nth-child(27)::after {
-            content: "R3";
+            content: "R2";
         } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_8 > li:nth-child(41)::after {
-            content: "S";
+            content: "SHA\ARE";
         } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_9 > li:nth-child(43)::after {
-            content: "O";
+            content: "OPT\AIONS";
         } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_10 > li:nth-child(31)::after {
             content: "L3";
         } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_11 > li:nth-child(33)::after {
@@ -465,8 +439,7 @@
         } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_16 > li:nth-child(51)::after {
             content: "PS";
         } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_17 > li:nth-child(53)::after {
-            content: "Touch";
-            font-size: 8px;
+            content: "Touch\Apad";
         }
 
         /* [Styles: B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button */
