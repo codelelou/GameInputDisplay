@@ -144,6 +144,8 @@ DualShockのボタン番号に合わせているため、非純正のDualShock�
 
 日本国内向けのDualShockで設定・確認を行ったため、海外仕様のDualShockでも正常に動作しない可能性はあります。  
 
+「`index.html?styles=DualPad,KeyLog_ButtonSymbol_PS_DualShock`」のようにパラメーター設定をしてください。  
+
 ## B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK
 ボタン0 = 弱キック  
 ボタン1 = 中キック  
