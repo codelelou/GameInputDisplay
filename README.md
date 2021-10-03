@@ -86,6 +86,16 @@
 既定値はありません。  
 
 入力を無視したいボタンの番号を「`index.html?excludes=8,9,11`」のように、半角カンマ区切りで指定します。  
+
+これは本ソフトウェア用の設定のため、**プレイ中のゲームなどには影響しません**。  
+
+## converts
+既定値はありません。  
+
+ボタン番号を変換したい場合に「`index.html?converts=10-4,10-1,11-12,11-14,11-15,9-0`」のように、半角カンマ区切りで指定します。  
+「x-y」と「x」には変換前の番号（押されたボタン）を、「y」には変換後の番号を指定し、それらを「-」（半角ハイフン）で繋ぎます。  
+1つのボタン番号に複数のボタン番号を割当てたい場合は「14-2,14-3,14-4」のように指定し、変換前のボタンも押されたままにしたい場合は「14-2,14-3,14-4,14-14」のように変換前と変換後のボタン番号のセットも指定してください。  
+
 これは本ソフトウェア用の設定のため、**プレイ中のゲームなどには影響しません**。  
 
 ## styles
@@ -283,7 +293,7 @@ DualShockのボタン番号に合わせているため、非純正のDualShock�
 
 # ボタン番号資料
 
-## DualSHock4（PlayStation4純正パッド）
+## DualShock4（PlayStation4純正パッド）
 
 - ボタン0 = ×
 - ボタン1 = 〇
@@ -312,6 +322,7 @@ DualShockのボタン番号に合わせているため、非純正のDualShock�
 ~~~
 <body>
   <div id="GameInputDisplay" data-version="${version}" data-controller="${controller}" data-log="${log}" data-ecludes="${ecludes}" data-modes="${modes}" data-styles="${styles}">
+        <!-- version: "xx.xx.xx" -->
         <!-- controller: GetParameter.controller -->
         <!-- log: GetParameter.log -->
         <!-- excludes: GetParameter.excludes -->
@@ -354,15 +365,15 @@ DualShockのボタン番号に合わせているため、非純正のDualShock�
           <dd class="timestamp">${gamepadApi.timestamp}</dd>
           <dt class="axes">Axes</dt>
           <dd class="axes">
-              <ol start="0">
-                <!-- <li></li> -->
-              </ol>
+            <ol start="0">
+              <li></li>  <!-- <li></li> * (${gamepadApi.axes.length})>
+            </ol>
           </dd>
           <dt class="buttons">Buttons</dt>
           <dd class="buttons">
-              <ol start="0">
-                <!-- <li></li> -->
-              </ol>
+            <ol start="0">
+              <li></li>  <!-- <li></li> * (${gamepadApi.buttons.length})>
+            </ol>
           </dd>
         </dl>
       </li>
@@ -370,32 +381,6 @@ DualShockのボタン番号に合わせているため、非純正のDualShock�
   </div>
 </body>
 ~~~
-### 変数
-
-#### modes
-パラメーター設定「」
-
-  <div id="GameInputDisplay" data-modes="${modes}" data-styles="${styles}">
-    <ul id="GIDGameController" class="${classNames}">
-      <li></li>  <!-- x100 -->
-    </ul>
-    <div id="GIDKeyLog">
-      <ul class="${classNames}"><li></li></ul>  <!-- x100 -->
-    </div>
-    <dl id="GIDSettings">
-      <dt class="controllerIndex">Controller Index</dt>
-      <dd class="controllerIndex">${controller}</dd>
-      <dt class="inputDelay">Input Delay</dt>
-      <dd class="inputDelay">${delay}</dd>
-      <dt class="logLimit">Log Limit</dt>
-      <dd class="logLimit">${log}</dd>
-      <dt class="modes">Modes</dt>
-      <dd class="modes">${modes}</dd>
-      <dt class="styles">Styles</dt>
-      <dd class="styles">${styles}</dd>
-      <dt class="excludeButtons">Exclude Buttons</dt>
-      <dd class="excludeButtons">${ecludes}</dd>
-    </dl>
 
 # Author
 [神戸ルル（Code Lelou）](https://twitter.com/codelelou)
