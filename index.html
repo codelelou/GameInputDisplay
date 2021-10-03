@@ -4,7 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width">
 	<style>
-        /* GameInputDisplay CSS ver.01.01.00 */
+
+        * {
+            box-sizing: border-box;
+        }
         
         body {
             margin: 0 auto;
@@ -12,7 +15,6 @@
             width: 100%;
             height: 100%;
             background-color: rgba(0, 0, 0, 0);
-            box-sizing: content-box;
             overflow: hidden;
         }
 
@@ -28,7 +30,16 @@
             display: none;
         } #GameInputDisplay[data-modes~="Debug"] > #GIDGameController,
         #GameInputDisplay[data-modes~="Debug"] > #GIDKeyLog {
-            padding-top: 36px;
+            /* padding-top: 36px; */
+        } #GameInputDisplay[data-modes~="Debug"]::after {
+            content: "ver." attr(data-version);
+            display: block;
+            position: absolute;
+            right: 20px;
+            top: 0;
+            padding: 2px 4px;
+            background-color: rgba(0, 0, 0, 1);
+            color: #ffffff;
         }
 
         /* Settings */
@@ -36,12 +47,12 @@
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            position: absolute;
-            top: 0;
+            /* position: absolute;
+            top: 0; */
             margin: 0;
-            padding: 4px;
+            padding: 0;
             width: 100%;
-            background-color: rgba(0, 0, 0, .9);
+            /* background-color: rgba(0, 0, 0, .9); */
             color: #ffffff;
             font-size: 85%;
             z-index: 700;
@@ -65,46 +76,52 @@
         #GIDDebug {
             position: absolute;
             bottom: 0;
-            right: 20px;
+            right: 0;
             margin: 0;
-            padding: 0;
-            width: calc(100% - 40px);
+            padding: 10px;
+            /* width: calc(100% - 40px); */
+            width: 100%;
             max-height: calc(100% - 120px);
-            background-color: rgba(0, 0, 0, .8);
+            background-color: rgba(0, 0, 0, .9);
             color: #ffffff;
+            list-style: none;
             overflow: auto;
             z-index: 500;
         }
+        #GIDDebug > li {
+            margin: 0;
+            padding: 0;
+        }
 
-        #GIDDebug > dl {
+        #GIDDebug > .controllers > dl {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             margin: 0;
-            padding: 20px;
-        } #GIDDebug > dl:not([data-connected="true"]) {
+            padding: 30px 0 0 0;
+        } #GIDDebug > .controllers > dl:not([data-connected="true"]) {
             display: none;
-        } #GIDDebug > dl:not(:first-child) {
-            margin-top: 20px;
+        } #GIDDebug > .controllers > dl:not(:first-child) {
+            /* margin-top: 20px; */
         }
-        #GIDDebug > dl:not(.buttons) > dt,
-        #GIDDebug > dl:not(.buttons) > dd {
+        #GIDDebug > .controllers > dl:not(.buttons) > dt,
+        #GIDDebug > .controllers > dl:not(.buttons) > dd {
             align-self: flex-end;
             border-bottom: rgba(255, 255, 255, .7) 1px solid;
-        } #GIDDebug > dl > dt {
+        } #GIDDebug > .controllers > dl > dt {
             padding-right: 8px;
             font-weight: 900;
-        } #GIDDebug > dl > dt:not(.id):not(.index):not(.axes):not(.buttons) {
+        } #GIDDebug > .controllers > dl > dt:not(.id):not(.index):not(.axes):not(.buttons) {
             margin-left: 12px;
-        } #GIDDebug > dl > dd {
+        } #GIDDebug > .controllers > dl > dd {
             margin: 0;
             min-width: 50px;
             text-align: center;
         }
-        #GIDDebug > dl > dt.id {
+        #GIDDebug > .controllers > dl > dt.id {
             display: none;
         }
-        #GIDDebug > dl > dd.id {
+        #GIDDebug > .controllers > dl > dd.id {
             width: 100%;
             border: none;
             font-size: 130%;
@@ -112,17 +129,17 @@
             order: 0;
             text-align: left;
         }
-        #GIDDebug > dl > dt.axes,
-        #GIDDebug > dl > dd.axes,
-        #GIDDebug > dl > dt.buttons,
-        #GIDDebug > dl > dd.buttons {
+        #GIDDebug > .controllers > dl > dt.axes,
+        #GIDDebug > .controllers > dl > dd.axes,
+        #GIDDebug > .controllers > dl > dt.buttons,
+        #GIDDebug > .controllers > dl > dd.buttons {
             width: 100%;
             border: none;
-        } #GIDDebug > dl > dt.axes,
-        #GIDDebug > dl > dt.buttons {
+        } #GIDDebug > .controllers > dl > dt.axes,
+        #GIDDebug > .controllers > dl > dt.buttons {
             margin-top: 8px;
         }
-        #GIDDebug > dl > dd > ol {
+        #GIDDebug > .controllers > dl > dd > ol {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
@@ -131,7 +148,7 @@
             font-size: 75%;
             list-style-position: inside;
         }
-        #GIDDebug > dl > dd > ol > li {
+        #GIDDebug > .controllers > dl > dd > ol > li {
             position: relative;
             margin: 0;
             padding: 0 4px;
@@ -139,12 +156,12 @@
             line-height: 24px;
             border: #808080 1px solid;
             text-align: center;
-        } #GIDDebug > dl > dd.axes > ol > li {
+        } #GIDDebug > .controllers > dl > dd.axes > ol > li {
             min-width: 160px;
-        } #GIDDebug > dl > dd > ol > li::before {
+        } #GIDDebug > .controllers > dl > dd > ol > li::before {
             content: "\A";
             white-space: pre;
-        } #GIDDebug > dl > dd > ol > li::after {
+        } #GIDDebug > .controllers > dl > dd > ol > li::after {
             content: "";
             position: absolute;
             top: 0;
@@ -152,7 +169,7 @@
             width: 100%;
             height: 24px;
             background-color: rgba(255, 255, 255, .3);
-        } #GIDDebug > dl > dd > ol > li[data-pressed="true"] {
+        } #GIDDebug > .controllers > dl > dd > ol > li[data-pressed="true"] {
             background-color: rgba(255, 255, 255, .7);
             color: #000000;
             font-weight: 900;
@@ -275,6 +292,7 @@
         #GIDKeyLog > ul.StickL_Up.Button_14.Button_15 > li:nth-child(1)::after,
         #GIDKeyLog > ul.StickL_Up.Button_14.StickL_Right > li:nth-child(1)::after,
         #GIDKeyLog > ul.StickL_Up.Button_15.StickL_Left > li:nth-child(1)::after {
+            transform: unset;
         }
         /* Key Log: Directional: Left and Right */
         #GIDKeyLog > ul.Button_14.Button_15:not(.Button_12):not(.Button_13):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
@@ -282,6 +300,7 @@
         #GIDKeyLog > ul.Button_15.StickL_Left:not(.Button_12):not(.Button_13):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
         #GIDKeyLog > ul.StickL_Left.StickL_Right:not(.Button_12):not(.Button_13):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after {
             content: "\2B0C";  /* Left Right Arrow */
+            transform: unset;
         }
 
         /* Key Log: Button */
@@ -604,10 +623,11 @@
             top: 0;
             right: 0;
             bottom: 0;
-            left: 0;
+            left: auto;
             margin: 0;
             padding: 0;
             width: 100%;
+            max-width: 960px;
             height: 100%;
         } #GIDGameController::before {
             content: '';
@@ -901,8 +921,8 @@
 	<title>Game Input Display</title>
 </head>
 <body>
-    <div id="GameInputDisplay">
-        <ul id="GIDGameController" data-styles=""><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
+    <div id="GameInputDisplay" data-version="01.02.00">
+        <ul id="GIDGameController"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
         <div id="GIDKeyLog">
             <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
             <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
@@ -1005,101 +1025,107 @@
             <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
             <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
         </div>
-        <dl id="GIDSettings">
-            <dt class="controllerIndex">Controller Index</dt>
-            <dd class="controllerIndex"></dd>
-            <dt class="inputDelay">Input Delay</dt>
-            <dd class="inputDelay"></dd>
-            <dt class="logLimit">Log Limit</dt>
-            <dd class="logLimit"></dd>
-            <dt class="modes">Modes</dt>
-            <dd class="modes"></dd>
-            <dt class="styles">Styles</dt>
-            <dd class="styles"></dd>
-            <dt class="excludeButtons">Exclude Buttons</dt>
-            <dd class="excludeButtons"></dd>
-        </dl>
-        <div id="GIDDebug">
-            <dl>
-                <dt class="id">ID</dt>
-                <dd class="id"></dd>
-                <dt class="index">Index</dt>
-                <dd class="index"></dd>
-                <dt class="connected">Connected</dt>
-                <dd class="connected"></dd>
-                <dt class="mapping">Mapping</dt>
-                <dd class="mapping"></dd>
-                <dt class="timestamp">Timestamp</dt>
-                <dd class="timestamp"></dd>
-                <dt class="axes">Axes</dt>
-                <dd class="axes">
-                    <ol start="0"></ol>
-                </dd>
-                <dt class="buttons">Buttons</dt>
-                <dd class="buttons">
-                    <ol start="0"></ol>
-                </dd>
-            </dl>
-            <dl>
-                <dt class="id">ID</dt>
-                <dd class="id"></dd>
-                <dt class="index">Index</dt>
-                <dd class="index"></dd>
-                <dt class="connected">Connected</dt>
-                <dd class="connected"></dd>
-                <dt class="mapping">Mapping</dt>
-                <dd class="mapping"></dd>
-                <dt class="timestamp">Timestamp</dt>
-                <dd class="timestamp"></dd>
-                <dt class="axes">Axes</dt>
-                <dd class="axes">
-                    <ol start="0"></ol>
-                </dd>
-                <dt class="buttons">Buttons</dt>
-                <dd class="buttons">
-                    <ol start="0"></ol>
-                </dd>
-            </dl>
-            <dl>
-                <dt class="id">ID</dt>
-                <dd class="id"></dd>
-                <dt class="index">Index</dt>
-                <dd class="index"></dd>
-                <dt class="connected">Connected</dt>
-                <dd class="connected"></dd>
-                <dt class="mapping">Mapping</dt>
-                <dd class="mapping"></dd>
-                <dt class="timestamp">Timestamp</dt>
-                <dd class="timestamp"></dd>
-                <dt class="axes">Axes</dt>
-                <dd class="axes">
-                    <ol start="0"></ol>
-                </dd>
-                <dt class="buttons">Buttons</dt>
-                <dd class="buttons">
-                    <ol start="0"></ol>
-                </dd>
-            </dl>
-            <dl>
-                <dt class="id">ID</dt>
-                <dd class="id"></dd>
-                <dt class="index">Index</dt>
-                <dd class="index"></dd>
-                <dt class="connected">Connected</dt>
-                <dd class="connected"></dd>
-                <dt class="mapping">Mapping</dt>
-                <dd class="mapping"></dd>
-                <dt class="timestamp">Timestamp</dt>
-                <dd class="timestamp"></dd>
-                <dt class="axes">Axes</dt>
-                <dd class="axes">
-                    <ol start="0"></ol>
-                </dd>
-                <dt class="buttons">Buttons</dt>
-                <dd class="buttons">
-                    <ol start="0"></ol>
-                </dd>
-            </dl>
+        <ul id="GIDDebug">
+            <li class="settings">
+                <dl id="GIDSettings">
+                    <dt class="controllerIndex">Controller Index</dt>
+                    <dd class="controllerIndex"></dd>
+                    <dt class="inputDelay">Input Delay</dt>
+                    <dd class="inputDelay"></dd>
+                    <dt class="logLimit">Log Limit</dt>
+                    <dd class="logLimit"></dd>
+                    <dt class="modes">Modes</dt>
+                    <dd class="modes"></dd>
+                    <dt class="styles">Styles</dt>
+                    <dd class="styles"></dd>
+                    <dt class="excludes">Exclude Buttons</dt>
+                    <dd class="excludes"></dd>
+                    <dt class="converts">Button Index Converts</dt>
+                    <dd class="converts"></dd>
+                </dl>
+            </li>
+            <li class="controllers">
+                <dl>
+                    <dt class="id">ID</dt>
+                    <dd class="id"></dd>
+                    <dt class="index">Index</dt>
+                    <dd class="index"></dd>
+                    <dt class="connected">Connected</dt>
+                    <dd class="connected"></dd>
+                    <dt class="mapping">Mapping</dt>
+                    <dd class="mapping"></dd>
+                    <dt class="timestamp">Timestamp</dt>
+                    <dd class="timestamp"></dd>
+                    <dt class="axes">Axes</dt>
+                    <dd class="axes">
+                        <ol start="0"></ol>
+                    </dd>
+                    <dt class="buttons">Buttons</dt>
+                    <dd class="buttons">
+                        <ol start="0"></ol>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt class="id">ID</dt>
+                    <dd class="id"></dd>
+                    <dt class="index">Index</dt>
+                    <dd class="index"></dd>
+                    <dt class="connected">Connected</dt>
+                    <dd class="connected"></dd>
+                    <dt class="mapping">Mapping</dt>
+                    <dd class="mapping"></dd>
+                    <dt class="timestamp">Timestamp</dt>
+                    <dd class="timestamp"></dd>
+                    <dt class="axes">Axes</dt>
+                    <dd class="axes">
+                        <ol start="0"></ol>
+                    </dd>
+                    <dt class="buttons">Buttons</dt>
+                    <dd class="buttons">
+                        <ol start="0"></ol>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt class="id">ID</dt>
+                    <dd class="id"></dd>
+                    <dt class="index">Index</dt>
+                    <dd class="index"></dd>
+                    <dt class="connected">Connected</dt>
+                    <dd class="connected"></dd>
+                    <dt class="mapping">Mapping</dt>
+                    <dd class="mapping"></dd>
+                    <dt class="timestamp">Timestamp</dt>
+                    <dd class="timestamp"></dd>
+                    <dt class="axes">Axes</dt>
+                    <dd class="axes">
+                        <ol start="0"></ol>
+                    </dd>
+                    <dt class="buttons">Buttons</dt>
+                    <dd class="buttons">
+                        <ol start="0"></ol>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt class="id">ID</dt>
+                    <dd class="id"></dd>
+                    <dt class="index">Index</dt>
+                    <dd class="index"></dd>
+                    <dt class="connected">Connected</dt>
+                    <dd class="connected"></dd>
+                    <dt class="mapping">Mapping</dt>
+                    <dd class="mapping"></dd>
+                    <dt class="timestamp">Timestamp</dt>
+                    <dd class="timestamp"></dd>
+                    <dt class="axes">Axes</dt>
+                    <dd class="axes">
+                        <ol start="0"></ol>
+                    </dd>
+                    <dt class="buttons">Buttons</dt>
+                    <dd class="buttons">
+                        <ol start="0"></ol>
+                    </dd>
+                </dl>
+            </li>
         </div>
     </div>
 	<script>
@@ -1159,6 +1185,13 @@
          * @type {string}
          **/
         const DEFAULT_STYLES = "Front6Pad";
+
+        /**
+         * Get parameter key: Button index converts
+         * 
+         * @type {string}
+         **/
+         const GET_KEY_BUTTON_INDEX_CONVERTS = "converts";
 
         /**
          * Get parameter key: Controller index
@@ -1239,13 +1272,13 @@
         let controllerContainer = document.getElementById(ID_GAMECONTROLLER);
 
         /** @type {HTMLElement} */
-        let debugContainer = document.getElementById(ID_DEBUG);
+        let debugContainer = document.querySelectorAll(`#${ID_DEBUG} > .controllers > dl`);
 
         /** @type {HTMLElement} */
         let keyLogContainer = document.getElementById(ID_KEYLOG);
 
         /** @type {HTMLElement} */
-        let settingsContainer = document.getElementById(ID_Settings);
+        let settingsContainer = document.querySelector(`#${ID_DEBUG} > .settings > dl`);
 
         /** @type {string[]} */
         let logs = [];
@@ -1255,6 +1288,9 @@
 
         /** @type {string} */
         let latestLog;
+
+        /** @type {Map} */
+        let buttonIndexConverts = new Map();
 
         /** @type {number[]} */
         let excludeButtons = [];
@@ -1420,9 +1456,18 @@
              */
             static factory = (buttons) => {
                 let buttonArray = [];
+                let buttonIndexes = [];
                 for (let i = 0; i < buttons.length; i++) {
                     if (!excludeButtons.includes(String(i)) && buttons[i].pressed) {
-                        buttonArray.push(new Button(buttons[i], i));
+                        buttonIndexes = [];
+                        if (buttonIndexConverts.has(i)) {
+                            buttonIndexes = buttonIndexConverts.get(i);
+                        } else {
+                            buttonIndexes = [i];
+                        }
+                        buttonIndexes.forEach(buttonIndex => {
+                            buttonArray.push(new Button(buttons[i], buttonIndex));
+                        });
                     }
                 }
                 return new Buttons(buttonArray);
@@ -1638,7 +1683,7 @@
                             liContainer.innerText = button.value;
                             buttonsContainer.appendChild(liContainer);
                         }
-                        bodyContainers = debugContainer.children[i];
+                        bodyContainers = debugContainer.item(i);
                         bodyContainers.dataset.connected = gamepad.connected;
                         bodyContainers.querySelector("dd.id").innerHTML = gamepad.id;
                         bodyContainers.querySelector("dd.index").innerHTML = gamepad.index;
@@ -1742,26 +1787,51 @@
             if (!('ongamepadconnected' in window)) {
                 let params = (new URL(window.location.href)).searchParams;
                 let styles = params.get(GET_KEY_STYLES) ? params.get(GET_KEY_STYLES).split(",").join(" ") : DEFAULT_STYLES;
-                let delay = params.get(GET_KEY_INPUT_DELAY) ? params.get(GET_KEY_INPUT_DELAY) : DEFAULT_DELAY;
+                let delay = (0 < Number.parseInt(params.get(GET_KEY_INPUT_DELAY))) ? Number.parseInt(params.get(GET_KEY_INPUT_DELAY)) : DEFAULT_DELAY;
                 const main = () => {
                     scanGameControllers();
                     setTimeout(main, delay);
                 }
                 controllerIndex = params.get(GET_KEY_CONTROLLER_INDEX) ? params.get(GET_KEY_CONTROLLER_INDEX) : controllerIndex;
-                logLimit = (0 < Number(params.get(GET_KEY_LOG_LIMIT))) ? Number(params.get(GET_KEY_LOG_LIMIT)) : logLimit;
+                logLimit = (0 < Number.parseInt(params.get(GET_KEY_LOG_LIMIT))) ? Number.parseInt(params.get(GET_KEY_LOG_LIMIT)) : logLimit;
                 excludeButtons = params.get(GET_KEY_EXCLUDE_BUTTONS) ? params.get(GET_KEY_EXCLUDE_BUTTONS).split(",") : excludeButtons;
                 modes = params.get(GET_KEY_MODES) ? params.get(GET_KEY_MODES).split(",") : modes;
+                if (params.get(GET_KEY_BUTTON_INDEX_CONVERTS)) {
+                    let convert = [];
+                    let convertFrom;
+                    let convertTo;
+                    let regexp = /\d+/igu;
+                    params.get(GET_KEY_BUTTON_INDEX_CONVERTS).split(",").forEach(cnvt => {
+                        convert = cnvt.match(regexp);
+                        if (2 == convert.length) {
+                            convertFrom = parseInt(convert[0]);
+                            convertTo = parseInt(convert[1]);
+                            if (!buttonIndexConverts.has(convertFrom)) {
+                                buttonIndexConverts.set(convertFrom, [convertTo]);
+                            } else {
+                                buttonIndexConverts.get(convertFrom).push(convertTo);
+                            }
+                        }
+                    });
+                }
                 baseContainer.dataset.modes = modes.join(" ");
                 baseContainer.dataset.styles = styles;
+                baseContainer.dataset.controller = controllerIndex;
+                baseContainer.dataset.log = logLimit;
+                baseContainer.dataset.excludeButtons = excludeButtons.join(" ");
                 main();
 
                 // Update the settings container
                 settingsContainer.querySelector("dd.controllerIndex").innerText = controllerIndex;
-                settingsContainer.querySelector("dd.excludeButtons").innerText = excludeButtons;
+                settingsContainer.querySelector("dd.excludes").innerText = excludeButtons;
+                settingsContainer.querySelector("dd.excludes").setAttribute("title", excludeButtons);
+                settingsContainer.querySelector("dd.converts").innerText = params.get(GET_KEY_BUTTON_INDEX_CONVERTS);
+                settingsContainer.querySelector("dd.converts").setAttribute("title", params.get(GET_KEY_BUTTON_INDEX_CONVERTS));
                 settingsContainer.querySelector("dd.logLimit").innerText = logLimit;
                 settingsContainer.querySelector("dd.inputDelay").innerText = `${delay}ms`;
                 settingsContainer.querySelector("dd.modes").innerText = modes.join(",");
                 settingsContainer.querySelector("dd.styles").innerText = styles;
+                settingsContainer.querySelector("dd.styles").setAttribute("title", styles);
             }
         }
 

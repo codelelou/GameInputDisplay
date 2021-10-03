@@ -304,5 +304,96 @@ DualShockのボタン番号に合わせているため、非純正のDualShock�
 
 日本国内向けのDualShockの情報のため、グローバル仕様とは異なる可能性があります（伝統的に×ボタンと〇ボタンの扱いが海外と日本では異なることがあるため）。
 
+# 技術情報
+
+## HTMLの構造
+~~~
+<body>
+  <div id="GameInputDisplay" data-version="${version}" data-controller="${controller}" data-log="${log}" data-ecludes="${ecludes}" data-modes="${modes}" data-styles="${styles}">
+        <!-- controller: GetParameter.controller -->
+        <!-- log: GetParameter.log -->
+        <!-- excludes: GetParameter.excludes -->
+        <!-- modes: GetParameter.models.split(",").join(" ") -->
+        <!-- styles: GetParameter.styles.split(",").join(" ") -->
+    <ul id="GIDGameController" class="${classNames}">
+      <li></li>  <!-- x100 -->
+    </ul>
+    <div id="GIDKeyLog">
+      <ul class="${classNames}"><li></li></ul>  <!-- x100 -->
+    </div>
+    <ul id="GIDDebug">
+      <li class="settings">
+        <dl>
+          <dt class="controllerIndex">Controller Index</dt>
+          <dd class="controllerIndex">${controller}</dd>  <!-- controller: GetParameter.controller -->
+          <dt class="inputDelay">Input Delay</dt>
+          <dd class="inputDelay">${delay}</dd>  <!-- delay: GetParameter.delay -->
+          <dt class="logLimit">Log Limit</dt>
+          <dd class="logLimit">${log}</dd>  <!-- log: GetParameter.log -->
+          <dt class="modes">Modes</dt>
+          <dd class="modes">${modes}</dd>  <!-- modes: GetParameter.modes.split(",").join(" ") -->
+          <dt class="styles">Styles</dt>
+          <dd class="styles">${styles}</dd>  <!-- Styles: GetParameter.styles.split(",").join(" ") -->
+          <dt class="excludeButtons">Exclude Buttons</dt>
+          <dd class="excludeButtons">${ecludes}</dd>  <!-- excludes: GetParameter.excludes -->
+        </dl>
+      </li>
+      <li class="controllers">
+        <dl>  <!-- x4 -->
+          <dt class="id">ID</dt>
+          <dd class="id">${gamepadApi.id}</dd>
+          <dt class="index">Index</dt>
+          <dd class="index">${gamepadApi.index}</dd>
+          <dt class="connected">Connected</dt>
+          <dd class="connected">${gamepadApi.connected}</dd>
+          <dt class="mapping">Mapping</dt>
+          <dd class="mapping">${gamepadApi.mapping}</dd>
+          <dt class="timestamp">Timestamp</dt>
+          <dd class="timestamp">${gamepadApi.timestamp}</dd>
+          <dt class="axes">Axes</dt>
+          <dd class="axes">
+              <ol start="0">
+                <!-- <li></li> -->
+              </ol>
+          </dd>
+          <dt class="buttons">Buttons</dt>
+          <dd class="buttons">
+              <ol start="0">
+                <!-- <li></li> -->
+              </ol>
+          </dd>
+        </dl>
+      </li>
+    </ul>
+  </div>
+</body>
+~~~
+### 変数
+
+#### modes
+パラメーター設定「」
+
+  <div id="GameInputDisplay" data-modes="${modes}" data-styles="${styles}">
+    <ul id="GIDGameController" class="${classNames}">
+      <li></li>  <!-- x100 -->
+    </ul>
+    <div id="GIDKeyLog">
+      <ul class="${classNames}"><li></li></ul>  <!-- x100 -->
+    </div>
+    <dl id="GIDSettings">
+      <dt class="controllerIndex">Controller Index</dt>
+      <dd class="controllerIndex">${controller}</dd>
+      <dt class="inputDelay">Input Delay</dt>
+      <dd class="inputDelay">${delay}</dd>
+      <dt class="logLimit">Log Limit</dt>
+      <dd class="logLimit">${log}</dd>
+      <dt class="modes">Modes</dt>
+      <dd class="modes">${modes}</dd>
+      <dt class="styles">Styles</dt>
+      <dd class="styles">${styles}</dd>
+      <dt class="excludeButtons">Exclude Buttons</dt>
+      <dd class="excludeButtons">${ecludes}</dd>
+    </dl>
+
 # Author
 [神戸ルル（Code Lelou）](https://twitter.com/codelelou)
