@@ -916,7 +916,7 @@
 	<title>Game Input Display</title>
 </head>
 <body>
-    <div id="GameInputDisplay" data-version="01.03.00">
+    <div id="GameInputDisplay" data-version="01.03.01">
         <ul id="GIDGameController"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
         <div id="GIDKeyLog">
             <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
@@ -1174,7 +1174,7 @@
          * 
          * @type {number}
          */
-        const DEFAULT_LOG_LIMIT = 100;
+        const DEFAULT_LOG_LIMIT = 30;
 
         /**
          * Default: Modes
@@ -2019,9 +2019,18 @@
                 let params = (new URL(window.location.href)).searchParams;
                 let styles = params.get(GET_KEY_STYLES) ? params.get(GET_KEY_STYLES).split(",").join(" ") : DEFAULT_STYLES;
                 delay = (0 < Number.parseInt(params.get(GET_KEY_INPUT_DELAY))) ? Number.parseInt(params.get(GET_KEY_INPUT_DELAY)) : delay;
+                const looper = window.requestAnimationFrame
+                            || window.webkitRequestAnimationFrame
+                            || window.mozRequestAnimationFrame
+                            || window.msRequestAnimationFrame
+                            || window.oRequestAnimationFrame
+                            || ((callback) => {
+                                window.setTimeout(callback, delay);
+                            });
                 const main = () => {
                     scanGameControllers();
-                    setTimeout(main, delay);
+                    // setTimeout(main, delay);
+                    looper(main);
                 }
                 controllerIndex = params.get(GET_KEY_CONTROLLER_INDEX) ? params.get(GET_KEY_CONTROLLER_INDEX) : controllerIndex;
                 logLimit = (0 < Number.parseInt(params.get(GET_KEY_LOG_LIMIT))) ? Number.parseInt(params.get(GET_KEY_LOG_LIMIT)) : logLimit;
