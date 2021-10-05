@@ -201,13 +201,18 @@
             flex-direction: row;
             margin: 0;
             padding-left: 38px;
-        } #GIDKeyLog > ul[class^="StickB"],
-        #GIDKeyLog > ul[class^="StickL"],
-        #GIDKeyLog > ul[class^="Button"] {
+        } /* #GIDKeyLog > ul[class*="StickB_Press_"],
+        #GIDKeyLog > ul[class*="StickL_Press_"],
+        #GIDKeyLog > ul[class*="Button_Press_"], */
+        #GIDKeyLog > ul[class*="_Press_"] {
             display: flex;
         }
-        #GIDKeyLog > ul > li::before,
-        #GIDKeyLog > ul > li::after {
+        #GIDKeyLog > ul > li {
+            display: none;
+        } #GIDKeyLog > ul[class*="_Press_"] > li {
+            display: inline-block;
+        } #GIDKeyLog > ul[class*="_Press_"] > li::before,
+        #GIDKeyLog > ul[class*="_Press_"] > li::after {
             display: inline-block;
             margin: 1px;
             width: 32px;
@@ -220,23 +225,23 @@
         }
 
         /* Key Log: Directional */
-        #GIDKeyLog > ul > li:nth-child(1)::before {
+        #GIDKeyLog > ul[class*="_Press_"] > li:nth-child(1)::before {
             margin-left: -36px;
             background-color: #000000;
             border-radius: 20%;
-        } #GIDKeyLog > ul[class*="StickB_Press_"] > li:nth-child(1)::before,
-        #GIDKeyLog > ul[class*="StickL_Press_"] > li:nth-child(1)::before {
+        } #GIDKeyLog > ul[class*="StickB_"][class*="_Press_"] > li:nth-child(1)::before,
+        #GIDKeyLog > ul[class*="StickL_"][class*="_Press_"] > li:nth-child(1)::before {
             content: "";
         }
-        #GIDKeyLog > ul > li:nth-child(1)::after {
+        #GIDKeyLog > ul[class*="_Press_"] > li:nth-child(1)::after {
             margin-left: -36px;
             width: 36px;
             line-height: 36px;
             color: #ffffff;
             font-weight: 900;
         }
-        #GIDKeyLog > ul[class*="StickB_Press_"] > li:nth-child(1)::after,
-        #GIDKeyLog > ul[class*="StickL_Press_"] > li:nth-child(1)::after {
+        #GIDKeyLog > ul[class*="StickB_"][class*="_Press_"] > li:nth-child(1)::after,
+        #GIDKeyLog > ul[class*="StickL_"][class*="_Press_"] > li:nth-child(1)::after {
             content: "\2B06";  /* Upwards Arrow */
         }
         /* Key Log: Directional: Left */
@@ -916,7 +921,7 @@
 	<title>Game Input Display</title>
 </head>
 <body>
-    <div id="GameInputDisplay" data-version="01.03.01">
+    <div id="GameInputDisplay" data-version="01.03.02">
         <ul id="GIDGameController"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
         <div id="GIDKeyLog">
             <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
