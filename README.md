@@ -432,7 +432,9 @@ PS4純正パッドを使用する場合は「`KeyLog_SFV_DualPad`」が向いて
       <li></li>  <!-- x100 -->
     </ul>
     <div id="GIDKeyLog">
-      <ul class="${classNames}"><li></li></ul>  <!-- x100 -->
+      <ul class="${classNames}">  <!-- x${GetParameter.log} -->
+        <li></li>  <!-- x${GetParameter.items} -->
+      </ul>
     </div>
     <ul id="GIDDebug">
       <li class="settings">
@@ -464,6 +466,8 @@ PS4純正パッドを使用する場合は「`KeyLog_SFV_DualPad`」が向いて
           <dd class="excludeButtons">${ecludes}</dd>  <!-- excludes: GetParameter.excludes -->
           <dt class="converts">Button Index Converts</dt>
           <dd class="converts">${converts}</dd>  <!-- converts: GetParameter.converts -->
+          <dt class="items">Key log items</dt>
+          <dd class="items">${items}</dd>  <!-- items: GetParameter.items -->
         </dl>
       </li>
       <li class="controllers">
