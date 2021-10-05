@@ -30,7 +30,6 @@
             display: none;
         } #GameInputDisplay[data-modes~="Debug"] > #GIDGameController,
         #GameInputDisplay[data-modes~="Debug"] > #GIDKeyLog {
-            /* padding-top: 36px; */
         } #GameInputDisplay[data-modes~="Debug"]::after {
             content: "ver." attr(data-version);
             display: block;
@@ -47,12 +46,9 @@
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
-            /* position: absolute;
-            top: 0; */
             margin: 0;
             padding: 0;
             width: 100%;
-            /* background-color: rgba(0, 0, 0, .9); */
             color: #ffffff;
             font-size: 85%;
             z-index: 700;
@@ -71,6 +67,23 @@
             min-width: 30px;
             text-align: center;
         }
+        #GIDSettings > dd > dl {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin: 0;
+            padding: 0;
+        }
+        #GIDSettings > dd > dl > dt,
+        #GIDSettings > dd > dl > dd {
+            margin: 0;
+            padding: 0;
+            align-self: flex-end;
+        } #GIDSettings > dd > dl > dt {
+            margin-left: 8px;
+            padding: 1px;
+            font-weight: 900;
+        }
 
         /* Debug */
         #GIDDebug {
@@ -79,7 +92,6 @@
             right: 0;
             margin: 0;
             padding: 10px;
-            /* width: calc(100% - 40px); */
             width: 100%;
             max-height: calc(100% - 120px);
             background-color: rgba(0, 0, 0, .9);
@@ -102,7 +114,6 @@
         } #GIDDebug > .controllers > dl:not([data-connected="true"]) {
             display: none;
         } #GIDDebug > .controllers > dl:not(:first-child) {
-            /* margin-top: 20px; */
         }
         #GIDDebug > .controllers > dl:not(.buttons) > dt,
         #GIDDebug > .controllers > dl:not(.buttons) > dd {
@@ -190,7 +201,8 @@
             flex-direction: row;
             margin: 0;
             padding-left: 38px;
-        } #GIDKeyLog > ul[class^="StickL"],
+        } #GIDKeyLog > ul[class^="StickB"],
+        #GIDKeyLog > ul[class^="StickL"],
         #GIDKeyLog > ul[class^="Button"] {
             display: flex;
         }
@@ -212,11 +224,8 @@
             margin-left: -36px;
             background-color: #000000;
             border-radius: 20%;
-        } #GIDKeyLog > ul[class^="StickL_"] > li:nth-child(1)::before,
-        #GIDKeyLog > ul.Button_12 > li:nth-child(1)::before,
-        #GIDKeyLog > ul.Button_13 > li:nth-child(1)::before,
-        #GIDKeyLog > ul.Button_14 > li:nth-child(1)::before,
-        #GIDKeyLog > ul.Button_15 > li:nth-child(1)::before {
+        } #GIDKeyLog > ul[class*="StickB_Press_"] > li:nth-child(1)::before,
+        #GIDKeyLog > ul[class*="StickL_Press_"] > li:nth-child(1)::before {
             content: "";
         }
         #GIDKeyLog > ul > li:nth-child(1)::after {
@@ -226,78 +235,75 @@
             color: #ffffff;
             font-weight: 900;
         }
-        #GIDKeyLog > ul[class^="StickL_"] > li:nth-child(1)::after,
-        #GIDKeyLog > ul.Button_12 > li:nth-child(1)::after,
-        #GIDKeyLog > ul.Button_13 > li:nth-child(1)::after,
-        #GIDKeyLog > ul.Button_14 > li:nth-child(1)::after,
-        #GIDKeyLog > ul.Button_15 > li:nth-child(1)::after {
+        #GIDKeyLog > ul[class*="StickB_Press_"] > li:nth-child(1)::after,
+        #GIDKeyLog > ul[class*="StickL_Press_"] > li:nth-child(1)::after {
             content: "\2B06";  /* Upwards Arrow */
         }
         /* Key Log: Directional: Left */
-        #GIDKeyLog > ul.Button_14 > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Left > li:nth-child(1)::after,
         #GIDKeyLog > ul.StickL_Left > li:nth-child(1)::after {
             transform: rotate(270deg);
         }
         /* Key Log: Directional: Right */
-        #GIDKeyLog > ul.Button_15 > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Right > li:nth-child(1)::after,
         #GIDKeyLog > ul.StickL_Right > li:nth-child(1)::after {
             transform: rotate(90deg);
         }
         /* Key Log: Directional: Down */
-        #GIDKeyLog > ul.Button_13 > li:nth-child(1)::after,
-        #GIDKeyLog > ul.Button_13.Button_14.Button_15 > li:nth-child(1)::after,
-        #GIDKeyLog > ul.Button_13.Button_14.StickL_Right > li:nth-child(1)::after,
-        #GIDKeyLog > ul.Button_13.Button_15.StickL_Left > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Down > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Down.StickB_Left.StickB_Right > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Down.StickB_Left.StickL_Right > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Down.StickB_Right.StickL_Left > li:nth-child(1)::after,
         #GIDKeyLog > ul.StickL_Down > li:nth-child(1)::after,
-        #GIDKeyLog > ul.StickL_Down.Button_14.Button_15 > li:nth-child(1)::after,
-        #GIDKeyLog > ul.StickL_Down.Button_14.StickL_Right > li:nth-child(1)::after,
-        #GIDKeyLog > ul.StickL_Down.Button_15.StickL_Left > li:nth-child(1)::after {
+        #GIDKeyLog > ul.StickL_Down.StickB_Left.StickB_Right > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickL_Down.StickB_Left.StickL_Right > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickL_Down.StickB_Right.StickL_Left > li:nth-child(1)::after {
             transform: rotate(180deg);
         }
         /* Key Log: Directional: Down and Left */
-        #GIDKeyLog > ul.Button_13.Button_14 > li:nth-child(1)::after,
-        #GIDKeyLog > ul.Button_13.StickL_Left > li:nth-child(1)::after,
-        #GIDKeyLog > ul.Button_14.StickL_Down > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Down.StickB_Left > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Down.StickL_Left > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Left.StickL_Down > li:nth-child(1)::after,
         #GIDKeyLog > ul.StickL_Down.StickL_Left > li:nth-child(1)::after {
             transform: rotate(225deg);
         }
         /* Key Log: Directional: Down and Right */
-        #GIDKeyLog > ul.Button_13.Button_15 > li:nth-child(1)::after,
-        #GIDKeyLog > ul.Button_13.StickL_Right > li:nth-child(1)::after,
-        #GIDKeyLog > ul.Button_15.StickL_Down > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Down.StickB_Right > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Down.StickL_Right > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Right.StickL_Down > li:nth-child(1)::after,
         #GIDKeyLog > ul.StickL_Down.StickL_Right > li:nth-child(1)::after {
             transform: rotate(135deg);
         }
         /* Key Log: Directional: Up and Left */
-        #GIDKeyLog > ul.Button_12.Button_14 > li:nth-child(1)::after,
-        #GIDKeyLog > ul.Button_12.StickL_Left > li:nth-child(1)::after,
-        #GIDKeyLog > ul.Button_14.StickL_Up > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Up.StickB_Left > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Up.StickL_Left > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Left.StickL_Up > li:nth-child(1)::after,
         #GIDKeyLog > ul.StickL_Up.StickL_Left > li:nth-child(1)::after {
             transform: rotate(315deg);
         }
         /* Key Log: Directional: Up and Right */
-        #GIDKeyLog > ul.Button_12.Button_15 > li:nth-child(1)::after,
-        #GIDKeyLog > ul.Button_12.StickL_Right > li:nth-child(1)::after,
-        #GIDKeyLog > ul.Button_15.StickL_Up > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Up.StickB_Right > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Up.StickL_Right > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Right.StickL_Up > li:nth-child(1)::after,
         #GIDKeyLog > ul.StickL_Up.StickL_Right > li:nth-child(1)::after {
             transform: rotate(45deg);
         }
         /* Key Log: Directional: Up */
-        #GIDKeyLog > ul.Button_12 > li:nth-child(1)::after,
-        #GIDKeyLog > ul.Button_12.Button_14.Button_15 > li:nth-child(1)::after,
-        #GIDKeyLog > ul.Button_12.Button_14.StickL_Right > li:nth-child(1)::after,
-        #GIDKeyLog > ul.Button_12.Button_15.StickL_Left > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Up > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Up.StickB_Left.StickB_Right > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Up.StickB_Left.StickL_Right > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickB_Up.StickB_Right.StickL_Left > li:nth-child(1)::after,
         #GIDKeyLog > ul.StickL_Up > li:nth-child(1)::after,
-        #GIDKeyLog > ul.StickL_Up.Button_14.Button_15 > li:nth-child(1)::after,
-        #GIDKeyLog > ul.StickL_Up.Button_14.StickL_Right > li:nth-child(1)::after,
-        #GIDKeyLog > ul.StickL_Up.Button_15.StickL_Left > li:nth-child(1)::after {
+        #GIDKeyLog > ul.StickL_Up.StickB_Left.StickB_Right > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickL_Up.StickB_Left.StickL_Right > li:nth-child(1)::after,
+        #GIDKeyLog > ul.StickL_Up.StickB_Right.StickL_Left > li:nth-child(1)::after {
             transform: unset;
         }
         /* Key Log: Directional: Left and Right */
-        #GIDKeyLog > ul.Button_14.Button_15:not(.Button_12):not(.Button_13):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
-        #GIDKeyLog > ul.Button_14.StickL_Right:not(.Button_12):not(.Button_13):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
-        #GIDKeyLog > ul.Button_15.StickL_Left:not(.Button_12):not(.Button_13):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
-        #GIDKeyLog > ul.StickL_Left.StickL_Right:not(.Button_12):not(.Button_13):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after {
+        #GIDKeyLog > ul[class*="_Press_"].StickB_Left.StickB_Right:not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
+        #GIDKeyLog > ul[class*="_Press_"].StickB_Left.StickL_Right:not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
+        #GIDKeyLog > ul[class*="_Press_"].StickB_Right.StickL_Left:not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
+        #GIDKeyLog > ul[class*="_Press_"].StickL_Left.StickL_Right:not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after {
             content: "\2B0C";  /* Left Right Arrow */
             transform: unset;
         }
@@ -306,91 +312,6 @@
         #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
             border: #000000 2px solid;
         }
-        /* Key Log: Button: Punch: Light */
-        #GIDKeyLog > ul.Button_2 > li:nth-child(11)::after,
-        #GIDKeyLog > ul.Button_4 > li:nth-child(11)::after {
-            content: "\1F44A";
-            background-color: #00ffff;
-        }
-        /* Key Log: Button: Punch: Med */
-        #GIDKeyLog > ul.Button_3 > li:nth-child(13)::after,
-        #GIDKeyLog > ul.Button_4 > li:nth-child(13)::after {
-            content: "\1F44A";
-            background-color: #ffff00;
-        }
-        /* Key Log: Button: Punch: Heavy */
-        #GIDKeyLog > ul.Button_5 > li:nth-child(15)::after,
-        #GIDKeyLog > ul.Button_4 > li:nth-child(15)::after {
-            content: "\1F44A";
-            background-color: #ff0000;
-        }
-        /* Key Log: Button: Kick: Light */
-        #GIDKeyLog > ul.Button_0 > li:nth-child(21)::after,
-        #GIDKeyLog > ul.Button_6 > li:nth-child(21)::after {
-            content: "\1F9B6";
-            background-color: #00ffff;
-            transform: rotate(60deg);
-        }
-        /* Key Log: Button: Kick: Med */
-        #GIDKeyLog > ul.Button_1 > li:nth-child(23)::after,
-        #GIDKeyLog > ul.Button_6 > li:nth-child(23)::after {
-            content: "\1F9B6";
-            background-color: #ffff00;
-            transform: rotate(60deg);
-        }
-        /* Key Log: Button: Kick: Heavy */
-        #GIDKeyLog > ul.Button_7 > li:nth-child(25)::after,
-        #GIDKeyLog > ul.Button_6 > li:nth-child(25)::after {
-            content: "\1F9B6";
-            background-color: #ff0000;
-            transform: rotate(60deg);
-        }
-
-        /* [Styles: DualPad] Key Log: Button */
-        #GameInputDisplay[data-styles~="DualPad"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
-            content: unset;
-            background-color: unset;
-            transform: unset;
-        }
-        /* [Styles: DualPad] Key Log: Button: Punch: Light */
-        #GameInputDisplay[data-styles~="DualPad"] > #GIDKeyLog > ul.Button_2 > li:nth-child(11)::after,
-        #GameInputDisplay[data-styles~="DualPad"] > #GIDKeyLog > ul.Button_6 > li:nth-child(11)::after {
-            content: "\1F44A";
-            background-color: #00ffff;
-        }
-        /* [Styles: DualPad] Key Log: Button: Punch: Med */
-        #GameInputDisplay[data-styles~="DualPad"] > #GIDKeyLog > ul.Button_3 > li:nth-child(13)::after,
-        #GameInputDisplay[data-styles~="DualPad"] > #GIDKeyLog > ul.Button_6 > li:nth-child(13)::after {
-            content: "\1F44A";
-            background-color: #ffff00;
-        }
-        /* [Styles: DualPad] Key Log: Button: Punch: Heavy */
-        #GameInputDisplay[data-styles~="DualPad"] > #GIDKeyLog > ul.Button_4 > li:nth-child(15)::after,
-        #GameInputDisplay[data-styles~="DualPad"] > #GIDKeyLog > ul.Button_6 > li:nth-child(15)::after {
-            content: "\1F44A";
-            background-color: #ff0000;
-        }
-        /* [Styles: DualPad] Key Log: Button: Kick: Light */
-        #GameInputDisplay[data-styles~="DualPad"] > #GIDKeyLog > ul.Button_0 > li:nth-child(21)::after,
-        #GameInputDisplay[data-styles~="DualPad"] > #GIDKeyLog > ul.Button_7 > li:nth-child(21)::after {
-            content: "\1F9B6";
-            background-color: #00ffff;
-            transform: rotate(60deg);
-        }
-        /* [Styles: DualPad] Key Log: Button: Kick: Med */
-        #GameInputDisplay[data-styles~="DualPad"] > #GIDKeyLog > ul.Button_1 > li:nth-child(23)::after,
-        #GameInputDisplay[data-styles~="DualPad"] > #GIDKeyLog > ul.Button_7 > li:nth-child(23)::after {
-            content: "\1F9B6";
-            background-color: #ffff00;
-            transform: rotate(60deg);
-        }
-        /* [Styles: DualPad] Key Log: Button: Kick: Heavy */
-        #GameInputDisplay[data-styles~="DualPad"] > #GIDKeyLog > ul.Button_5 > li:nth-child(25)::after,
-        #GameInputDisplay[data-styles~="DualPad"] > #GIDKeyLog > ul.Button_7 > li:nth-child(25)::after {
-            content: "\1F9B6";
-            background-color: #ff0000;
-            transform: rotate(60deg);
-        }
 
         /* [Styles: KeyLog_ButtonSymbol_PS_DualShock] */
         #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
@@ -398,222 +319,297 @@
             background-color: unset;
             transform: unset;
         }
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_0 > li:nth-child(11)::after,
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_1 > li:nth-child(13)::after,
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_2 > li:nth-child(15)::after,
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_3 > li:nth-child(17)::after {
+        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(11)::after,
+        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(13)::after,
+        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(15)::after,
+        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(17)::after {
             font-size: 28px;
             font-weight: 900;
-        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_0 > li:nth-child(11)::after {
+        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(11)::after {
             content: "\00D7";  /* × */
             background-color: rgba(124, 178, 232, 1);
-        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_1 > li:nth-child(13)::after {
+        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(13)::after {
             content: "\25CF";  /* 〇 */
             background-color: rgba(255, 102, 102, 1);
-        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_2 > li:nth-child(15)::after {
+        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(15)::after {
             content: "\25A0";  /* □ */
             background-color: rgba(255, 105, 248, 1);
-        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_3 > li:nth-child(17)::after {
+        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(17)::after {
             content: "\25B2";  /* △ */
             background-color: rgba(64, 226, 160, 1);
-        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_4 > li:nth-child(21)::after,
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_5 > li:nth-child(23)::after,
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_6 > li:nth-child(25)::after,
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_7 > li:nth-child(27)::after,
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_8 > li:nth-child(41)::after,
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_9 > li:nth-child(43)::after,
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_10 > li:nth-child(31)::after,
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_11 > li:nth-child(33)::after,
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_16 > li:nth-child(51)::after,
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_17 > li:nth-child(53)::after {
+        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(21)::after,
+        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(23)::after,
+        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(25)::after,
+        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(27)::after,
+        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_8 > li:nth-child(41)::after,
+        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_9 > li:nth-child(43)::after,
+        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_10 > li:nth-child(31)::after,
+        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_11 > li:nth-child(33)::after,
+        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_16 > li:nth-child(51)::after,
+        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_17 > li:nth-child(53)::after {
             background-color: rgba(64, 64, 64, .3);
             border-radius: 30%;
             font-size: 18px;
             font-weight: 900;
-        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_8 > li:nth-child(41)::after,
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_9 > li:nth-child(43)::after,
-        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_17 > li:nth-child(53)::after {
+        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_8 > li:nth-child(41)::after,
+        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_9 > li:nth-child(43)::after,
+        #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_17 > li:nth-child(53)::after {
             padding-top: 6px;
             height: 24px;
             line-height: 10px;
             font-size: 9px;
             white-space: pre;
-        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_4 > li:nth-child(21)::after {
+        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(21)::after {
             content: "L1";
-        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_5 > li:nth-child(23)::after {
+        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(23)::after {
             content: "R1";
-        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_6 > li:nth-child(25)::after {
+        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(25)::after {
             content: "L2";
-        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_7 > li:nth-child(27)::after {
+        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(27)::after {
             content: "R2";
-        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_8 > li:nth-child(41)::after {
+        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_8 > li:nth-child(41)::after {
             content: "SHA\ARE";
-        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_9 > li:nth-child(43)::after {
+        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_9 > li:nth-child(43)::after {
             content: "OPT\AIONS";
-        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_10 > li:nth-child(31)::after {
+        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_10 > li:nth-child(31)::after {
             content: "L3";
-        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_11 > li:nth-child(33)::after {
+        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_11 > li:nth-child(33)::after {
             content: "R3";
-        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_16 > li:nth-child(51)::after {
+        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_16 > li:nth-child(51)::after {
             content: "PS";
-        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_17 > li:nth-child(53)::after {
+        } #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_17 > li:nth-child(53)::after {
             content: "Touch\Apad";
         }
 
-        /* [Styles: B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button */
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
+        /* [KeyLog: Street Fighter V] Key Log: Button */
+        #GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
             content: unset;
+            color: unset;
             background-color: unset;
             transform: unset;
         }
-        /* [Styles: B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button: Punch: Light */
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_2 > li:nth-child(11)::after,
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_4 > li:nth-child(11)::after {
+        /* [KeyLog: Street Fighter V] Key Log: Button: Punch: Light */
+        #GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(11)::after,
+        #GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(11)::after {
             content: "\1F44A";
             background-color: #00ffff;
         }
-        /* [Styles: B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button: Punch: Med */
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_3 > li:nth-child(13)::after {
+        /* [KeyLog: Street Fighter V] Key Log: Button: Punch: Med */
+        #GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(13)::after,
+        #GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(13)::after {
             content: "\1F44A";
             background-color: #ffff00;
         }
-        /* [Styles: B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button: Punch: Heavy */
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_5 > li:nth-child(15)::after,
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_6 > li:nth-child(15)::after {
+        /* [KeyLog: Street Fighter V] Key Log: Button: Punch: Heavy */
+        #GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(15)::after,
+        #GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(15)::after {
             content: "\1F44A";
             background-color: #ff0000;
         }
-        /* [Styles: B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button: Kick: Light */
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_0 > li:nth-child(21)::after,
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_4 > li:nth-child(21)::after {
+        /* [KeyLog: Street Fighter V] Key Log: Button: Kick: Light */
+        #GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(21)::after,
+        #GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(21)::after {
             content: "\1F9B6";
             background-color: #00ffff;
             transform: rotate(60deg);
         }
-        /* [Styles: B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button: Kick: Med */
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_1 > li:nth-child(23)::after {
+        /* [KeyLog: Street Fighter V] Key Log: Button: Kick: Med */
+        #GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(23)::after,
+        #GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(23)::after {
             content: "\1F9B6";
             background-color: #ffff00;
             transform: rotate(60deg);
         }
-        /* [Styles: B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button: Kick: Heavy */
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_7 > li:nth-child(25)::after,
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_6 > li:nth-child(25)::after {
+        /* [KeyLog: Street Fighter V] Key Log: Button: Kick: Heavy */
+        #GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(25)::after,
+        #GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(25)::after {
             content: "\1F9B6";
             background-color: #ff0000;
             transform: rotate(60deg);
         }
 
-        /* [Styles: B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button */
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
+        /* [Styles: KeyLog_SFV_DualPad] Key Log: Button */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
             content: unset;
             background-color: unset;
             transform: unset;
         }
-        /* [Styles: B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button: Punch: Light */
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_2 > li:nth-child(11)::after,
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_4 > li:nth-child(11)::after {
+        /* [Styles: KeyLog_SFV_DualPad] Key Log: Button: Punch: Light */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(11)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(11)::after {
             content: "\1F44A";
             background-color: #00ffff;
         }
-        /* [Styles: B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button: Punch: Med */
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_3 > li:nth-child(13)::after {
+        /* [Styles: KeyLog_SFV_DualPad] Key Log: Button: Punch: Med */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(13)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(13)::after {
             content: "\1F44A";
             background-color: #ffff00;
         }
-        /* [Styles: B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button: Punch: Heavy */
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_5 > li:nth-child(15)::after,
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_6 > li:nth-child(15)::after {
+        /* [Styles: KeyLog_SFV_DualPad] Key Log: Button: Punch: Heavy */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(15)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(15)::after {
             content: "\1F44A";
             background-color: #ff0000;
         }
-        /* [Styles: B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button: Kick: Light */
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_0 > li:nth-child(21)::after,
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_4 > li:nth-child(21)::after {
+        /* [Styles: KeyLog_SFV_DualPad] Key Log: Button: Kick: Light */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(21)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(21)::after {
             content: "\1F9B6";
             background-color: #00ffff;
             transform: rotate(60deg);
         }
-        /* [Styles: B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button: Kick: Med */
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_1 > li:nth-child(23)::after,
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_6 > li:nth-child(23)::after {
+        /* [Styles: KeyLog_SFV_DualPad] Key Log: Button: Kick: Med */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(23)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(23)::after {
             content: "\1F9B6";
             background-color: #ffff00;
             transform: rotate(60deg);
         }
-        /* [Styles: B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button: Kick: Heavy */
-        #GameInputDisplay[data-styles~="B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_7 > li:nth-child(25)::after {
+        /* [Styles: KeyLog_SFV_DualPad] Key Log: Button: Kick: Heavy */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(25)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(25)::after {
             content: "\1F9B6";
             background-color: #ff0000;
             transform: rotate(60deg);
         }
-        
-        /* [Styles: Front6PadForLelouGuile] Key Display: Directional */
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul.Button_10 > li:nth-child(1)::before {
-            content: "";
-        }
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul.Button_10 > li:nth-child(1)::after {
-            content: "\2B05";    /* Left Arrow */
-        }
-        /* [Styles: Front6PadForLelouGuile] Key Display: Directional: Up and Left */
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul.Button_10.Button_14 > li:nth-child(1)::after,
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul.Button_10.StickL_Left > li:nth-child(1)::after {
-            transform: rotate(45deg);
-        }
-        /* [Styles: Front6PadForLelouGuile] Key Display: Directional: Up and Right */
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul.Button_10.Button_15 > li:nth-child(1)::after,
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul.Button_10.StickL_Right > li:nth-child(1)::after {
-            transform: rotate(135deg);
-        }
-        /* [Styles: Front6PadForLelouGuile] Key Display: Directional: Up */
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul.Button_10 > li:nth-child(1)::after,
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul.Button_10.Button_14.Button_15 > li:nth-child(1)::after,
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul.Button_10.Button_14.StickL_Right > li:nth-child(1)::after,
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul.Button_10.Button_15.StickL_Left > li:nth-child(1)::after {
-            transform: rotate(90deg);
-        }
-        /* [Styles: Front6PadForLelouGuile] Key Display: Button */
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
+
+        /* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
+            /* コマンド入力（矢印アイコン）以外の標準設定されているパンチやキックのアイコンの設定をリセット */
             content: unset;
+            color: unset;
             background-color: unset;
             transform: unset;
         }
-        /* [Styles: Front6PadForLelouGuile] Key Display: Button: Punch: Light */
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul.Button_2 > li:nth-child(11)::after,
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul.Button_5 > li:nth-child(11)::after {
-            content: "\1F44A";
-            background-color: #00ffff;
+        /* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button: Punch: Light （弱パンチ） */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(11)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(11)::after {
+            content: "\1F44A";  /* パンチアイコン（ユニコード） */
+            background-color: #00ffff;  /* 青色 */
         }
-        /* [Styles: Front6PadForLelouGuile] Key Display: Button: Punch: Med */
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul.Button_3 > li:nth-child(13)::after,
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul.Button_5 > li:nth-child(13)::after {
-            content: "\1F44A";
-            background-color: #ffff00;
+        /* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button: Punch: Med （中パンチ） */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(13)::after {
+            content: "\1F44A";  /* パンチアイコン（ユニコード） */
+            background-color: #ffff00;  /* 黄色 */
         }
-        /* [Styles: Front6PadForLelouGuile] Key Display: Button: Punch: Heavy */
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul.Button_4 > li:nth-child(15)::after {
-            content: "\1F44A";
-            background-color: #ff0000;
+        /* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button: Punch: Heavy （強パンチ） */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(15)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(15)::after {
+            content: "\1F44A";  /* パンチアイコン（ユニコード） */
+            background-color: #ff0000;  /* 赤色 */
         }
-        /* [Styles: Front6PadForLelouGuile] Key Display: Button: Kick: Light */
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul.Button_0 > li:nth-child(21)::after,
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul.Button_7 > li:nth-child(21)::after {
-            content: "\1F9B6";
-            background-color: #00ffff;
-            transform: rotate(60deg);
+        /* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button: Kick: Light （弱キック） */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(21)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(21)::after {
+            content: "\1F9B6";  /* キックアイコン（ユニコード） */
+            background-color: #00ffff;  /* 青色 */
+            transform: rotate(60deg);  /* アイコンの傾き */
         }
-        /* [Styles: Front6PadForLelouGuile] Key Display: Button: Kick: Med */
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul.Button_1 > li:nth-child(23)::after,
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul.Button_7 > li:nth-child(23)::after {
-            content: "\1F9B6";
-            background-color: #ffff00;
-            transform: rotate(60deg);
+        /* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button: Kick: Med （中キック） */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(23)::after {
+            content: "\1F9B6";  /* キックアイコン（ユニコード） */
+            background-color: #ffff00;  /* 黄色 */
+            transform: rotate(60deg);  /* アイコンの傾き */
         }
-        /* [Styles: Front6PadForLelouGuile] Key Display: Button: Kick: Heavy */
-        #GameInputDisplay[data-styles~="Front6PadForLelouGuile"] > #GIDKeyLog > ul.Button_6 > li:nth-child(25)::after {
-            content: "\1F9B6";
-            background-color: #ff0000;
-            transform: rotate(60deg);
+        /* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button: Kick: Heavy （強キック） */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(25)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(25)::after {
+            content: "\1F9B6";  /* キックアイコン（ユニコード） */
+            background-color: #ff0000;  /* 赤色 */
+            transform: rotate(60deg);  /* アイコンの傾き */
+        }
+
+        /* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
+            /* コマンド入力（矢印アイコン）以外の標準設定されているパンチやキックのアイコンの設定をリセット */
+            content: unset;
+            color: unset;
+            background-color: unset;
+            transform: unset;
+        }
+        /* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button: Punch: Light （弱パンチ） */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(11)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(11)::after {
+            content: "\1F44A";  /* パンチアイコン（ユニコード） */
+            background-color: #00ffff;  /* 青色 */
+        }
+        /* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button: Punch: Med （中パンチ） */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(13)::after {
+            content: "\1F44A";  /* パンチアイコン（ユニコード） */
+            background-color: #ffff00;  /* 黄色 */
+        }
+        /* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button: Punch: Heavy （強パンチ） */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(15)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(15)::after {
+            content: "\1F44A";  /* パンチアイコン（ユニコード） */
+            background-color: #ff0000;  /* 赤色 */
+        }
+        /* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button: Kick: Light （弱キック） */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(21)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(21)::after {
+            content: "\1F9B6";  /* キックアイコン（ユニコード） */
+            background-color: #00ffff;  /* 青色 */
+            transform: rotate(60deg);  /* アイコンの傾き */
+        }
+        /* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button: Kick: Med （中キック） */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(23)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(23)::after {
+            content: "\1F9B6";  /* キックアイコン（ユニコード） */
+            background-color: #ffff00;  /* 黄色 */
+            transform: rotate(60deg);  /* アイコンの傾き */
+        }
+        /* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button: Kick: Heavy （強キック） */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(25)::after {
+            content: "\1F9B6";  /* キックアイコン（ユニコード） */
+            background-color: #ff0000;  /* 赤色 */
+            transform: rotate(60deg);  /* アイコンの傾き */
+        }
+
+        /* [KeyLog: Street Fighter V: Front6Pad: Lelou Guile] Key Log: Button */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
+            /* コマンド入力（矢印アイコン）以外の標準設定されているパンチやキックのアイコンの設定をリセット */
+            content: unset;
+            color: unset;
+            background-color: unset;
+            transform: unset;
+        }
+        /* [KeyLog: Street Fighter V: Front6Pad: Lelou Guile] Key Log: Button: Punch: Light （弱パンチ） */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(11)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(11)::after {
+            content: "\1F44A";  /* パンチアイコン（ユニコード） */
+            background-color: #00ffff;  /* 青色 */
+        }
+        /* [KeyLog: Street Fighter V: Front6Pad: Lelou Guile] Key Log: Button: Punch: Med （中パンチ） */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(13)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(13)::after {
+            content: "\1F44A";  /* パンチアイコン（ユニコード） */
+            background-color: #ffff00;  /* 黄色 */
+        }
+        /* [KeyLog: Street Fighter V: Front6Pad: Lelou Guile] Key Log: Button: Punch: Heavy （強パンチ） */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(15)::after {
+            content: "\1F44A";  /* パンチアイコン（ユニコード） */
+            background-color: #ff0000;  /* 赤色 */
+        }
+        /* [KeyLog: Street Fighter V: Front6Pad: Lelou Guile] Key Log: Button: Kick: Light （弱キック） */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(21)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(21)::after {
+            content: "\1F9B6";  /* キックアイコン（ユニコード） */
+            background-color: #00ffff;  /* 青色 */
+            transform: rotate(60deg);  /* アイコンの傾き */
+        }
+        /* [KeyLog: Street Fighter V: Front6Pad: Lelou Guile] Key Log: Button: Kick: Med （中キック）*/
+        #GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(23)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(23)::after {
+            content: "\1F9B6";  /* キックアイコン（ユニコード） */
+            background-color: #ffff00;  /* 黄色 */
+            transform: rotate(60deg);  /* アイコンの傾き */
+        }
+        /* [KeyLog: Street Fighter V: Front6Pad: Lelou Guile] Key Log: Button: Kick: Heavy （強キック） */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(25)::after {
+            content: "\1F9B6";  /* キックアイコン（ユニコード） */
+            background-color: #ff0000;  /* 赤色 */
+            transform: rotate(60deg);  /* アイコンの傾き */
         }
 
         /* Game Controller */
@@ -920,7 +916,7 @@
 	<title>Game Input Display</title>
 </head>
 <body>
-    <div id="GameInputDisplay" data-version="01.02.01">
+    <div id="GameInputDisplay" data-version="01.03.00">
         <ul id="GIDGameController"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
         <div id="GIDKeyLog">
             <ul><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
@@ -1037,6 +1033,15 @@
                     <dd class="modes"></dd>
                     <dt class="styles">Styles</dt>
                     <dd class="styles"></dd>
+                    <dt class="directionals">Directional button indexes</dt>
+                    <dd class="directionals">
+                        <dl>
+                            <dt>Up</dt><dd></dd>
+                            <dt>Down</dt><dd></dd>
+                            <dt>Left</dt><dd></dd>
+                            <dt>Right</dt><dd></dd>
+                        </dl>
+                    </dd>
                     <dt class="excludes">Exclude Buttons</dt>
                     <dd class="excludes"></dd>
                     <dt class="converts">Button Index Converts</dt>
@@ -1133,71 +1138,79 @@
          * Modes: Controller
          * 
          * @type {string}
-         **/
+         */
         const MODES_CONTROLLER = "Controller";
 
         /**
          * Modes: Debug
          * 
          * @type {string}
-         **/
+         */
         const MODES_DEBUG = "Debug";
 
         /**
          * Modes: Key log
          * 
          * @type {string}
-         **/
+         */
         const MODES_KEYLOG = "KeyLog";
 
         /**
          * Default: COntroller index
          * 
          * @type {number}
-         **/
+         */
         const DEFAULT_CONTROLLER_INDEX = 0;
 
         /**
          * Default: Delay (Millisecond)
          * 
          * @type {number}
-         **/
+         */
         const DEFAULT_DELAY = 8;
 
         /**
          * Default: Log limit
          * 
          * @type {number}
-         **/
+         */
         const DEFAULT_LOG_LIMIT = 100;
 
         /**
          * Default: Modes
          * 
          * @type {string[]}
-         **/
+         */
         const DEFAULT_MODES = [MODES_CONTROLLER, MODES_KEYLOG];
 
         /**
          * Default: Styles
          * 
          * @type {string}
-         **/
-        const DEFAULT_STYLES = "Front6Pad";
+         */
+         const DEFAULT_STYLES = "DualPad KeyLog_ButtonSymbol_PS_DualShock";
+        //  const DEFAULT_STYLES = "Front6Pad";
 
         /**
          * Get parameter key: Button index converts
          * 
          * @type {string}
-         **/
+         */
          const GET_KEY_BUTTON_INDEX_CONVERTS = "converts";
 
         /**
          * Get parameter key: Controller index
          * 
          * @type {string}
-         **/
+         */
         const GET_KEY_CONTROLLER_INDEX = "controller";
+
+        /**
+         * Get parameter key: Directional button indexes
+         * 
+         * @type {string}
+         */
+        const GET_KEY_DIRECTIONAL_BUTTON_INDEXES = "directionals";
 
         /**
          * Get parameter key: Exclude button indexs
@@ -1205,7 +1218,7 @@
          * @type {string}
          * @description Comma Separated Value
          * @example index.html?excludes=8,9
-         **/
+         */
         const GET_KEY_EXCLUDE_BUTTONS = "excludes";
 
         /**
@@ -1214,7 +1227,7 @@
          * @type {string}
          * @description Log limit is Key log lines
          * @example index.html?log=15
-         **/
+         */
         const GET_KEY_LOG_LIMIT = "log";
 
         /**
@@ -1223,7 +1236,7 @@
          * @type {string}
          * @description Millisecond
          * @example index.html?delay=4
-         **/
+         */
         const GET_KEY_INPUT_DELAY = "delay";
 
         /**
@@ -1231,7 +1244,7 @@
          * 
          * @type {string}
          * @example index.html?modes=Debug
-         **/
+         */
         const GET_KEY_MODES = "modes";
 
         /**
@@ -1240,7 +1253,7 @@
          * @type {string}
          * @description Comma Separated Value
          * @example index.html?styles=SkinSakura,SkinChoco,Skin7
-         **/
+         */
         const GET_KEY_STYLES = "styles";
 
         /** @type {string} */
@@ -1261,8 +1274,22 @@
         /** @type {number} */
         let timestamp = 0;
 
+        /**
+         * Latest gamepad
+         * 
+         * @type {Gamepad}
+         */
+        let latestGamepad;
+
         /** @type {number} */
         let controllerIndex = DEFAULT_CONTROLLER_INDEX;
+
+        /**
+         * Input delay (Mirisekanndo)
+         * 
+         * @type {number}
+         */
+        let delay = DEFAULT_DELAY;
 
         /** @type {HTMLElement} */
         let baseContainer = document.getElementById(ID_CONTAINER);
@@ -1308,16 +1335,22 @@
             static DEFAULT_THRESHOLD = 0.6;
 
             /** @type {string} */
-            static LEFT = "Left";
+            static VALUE_LEFT = "Left";
 
             /** @type {string} */
-            static RIGHT = "Right";
+            static VALUE_RIGHT = "Right";
 
             /** @type {string} */
-            static UP = "Up";
+            static VALUE_UP = "Up";
 
             /** @type {string} */
-            static DOWN = "Down";
+            static VALUE_DOWN = "Down";
+
+            /** @type {string} */
+            static POSITION_BUTTON = "B";
+
+            /** @type {string} */
+            static POSITION_COMMAND = "C";
 
             /** @type {string} */
             static POSITION_LEFT = "L";
@@ -1336,23 +1369,24 @@
              */
             static factoryByAxes = (position, xAxis, yAxis, threshold = Axis.DEFAULT_THRESHOLD) => {
                 const getValue = (axis, valueA, valueB) => {
-                    let res;
+                    let res = [];
                     if ((threshold * -1) > axis) {
-                        res = valueA;
+                        res.push(valueA);
                     } else if (threshold < axis) {
-                        res = valueB;
+                        res.push(valueB);
                     }
                     return res;
                 }
-                return new Axis(position, getValue(xAxis, Axis.LEFT, Axis.RIGHT), getValue(yAxis, Axis.UP, Axis.DOWN));
+                return new Axis(position, getValue(xAxis, Axis.VALUE_LEFT, Axis.VALUE_RIGHT), getValue(yAxis, Axis.VALUE_UP, Axis.VALUE_DOWN));
             }
 
             /**
-             * @param {string} [xAxis]
-             * @param {string} [yAxis]
              * @param {string} position
+             * @param {string[]} [xAxis]
+             * @param {string[]} [yAxis]
+             * @param {boolead} [hold]
              */
-            constructor(position, xAxis, yAxis) {
+            constructor(position, xAxis = [], yAxis = [], hold = false) {
 
                 /** @type {string} */
                 this._position = position;
@@ -1362,6 +1396,22 @@
 
                 /** @type {string} */
                 this._yAxis = yAxis;
+
+                /** @type {boolean} */
+                this._hold = hold;
+            }
+
+            /**
+             * Hold
+             * 
+             * @param {boolean} [hold]
+             * @returns {boolean}
+             */
+            hold = (hold) => {
+                if ((true === hold) || (false === hold)) {
+                    return (this._hold = hold);
+                }
+                return this._hold;
             }
 
             /**
@@ -1370,7 +1420,7 @@
              * @returns {boolean}
              */
             notEntered = () => {
-                return !this._xAxis && !this._yAxis;
+                return !this._xAxis.length && !this._yAxis.length;
             }
 
             /**
@@ -1385,18 +1435,26 @@
             /**
              * X-Axis
              * 
-             * @returns {string}
+             * @param {string[]} [axis]
+             * @returns {string[]}
              */
-            xAxis = () => {
+            xAxis = (axis) => {
+                if (axis) {
+                    return (this._xAxis = axis);
+                }
                 return this._xAxis;
             }
 
             /**
              * Y-Axis
              * 
-             * @returns {string}
+             * @param {string[]} [axis]
+             * @returns {string[]}
              */
-            yAxis = () => {
+            yAxis = (axis) => {
+                if (axis) {
+                    return (this._yAxis = axis);
+                }
                 return this._yAxis;
             }
         }
@@ -1413,14 +1471,31 @@
              * 
              * @param {array} button
              * @param {number} index
+             * @param {boolean} [hold]
              */
-            constructor(button, index) {
+            constructor(button, index, hold = false) {
 
                 /** @type {number} */
                 this._index = index;
 
                 /** @type {boolean} */
                 this._button = button;
+
+                /** @type {boolean} */
+                this._hold = hold;
+            }
+
+            /**
+             * Hold
+             * 
+             * @param {boolean} [hold]
+             * @returns {boolean}
+             */
+            hold = (hold) => {
+                if ((true === hold) || (false === hold)) {
+                    return (this._hold = hold);
+                }
+                return this._hold;
             }
 
             /**
@@ -1442,6 +1517,13 @@
             }
         }
 
+        let directionalButtons = {
+            up: [12],
+            down: [13],
+            left: [14],
+            right: [15]
+        } 
+        
         /**
          * Buttons Class
          * 
@@ -1456,6 +1538,7 @@
             static factory = (buttons) => {
                 let buttonArray = [];
                 let buttonIndexes = [];
+                let directional = new Axis(Axis.POSITION_BUTTON);
                 for (let i = 0; i < buttons.length; i++) {
                     if (!excludeButtons.includes(String(i)) && buttons[i].pressed) {
                         buttonIndexes = [];
@@ -1466,19 +1549,35 @@
                         }
                         buttonIndexes.forEach(buttonIndex => {
                             buttonArray.push(new Button(buttons[i], buttonIndex));
+                            if (directionalButtons.up.includes(buttonIndex)) {
+                                directional.yAxis().push(Axis.VALUE_UP);
+                            }
+                            if (directionalButtons.down.includes(buttonIndex)) {
+                                directional.yAxis().push(Axis.VALUE_DOWN);
+                            }
+                            if (directionalButtons.left.includes(buttonIndex)) {
+                                directional.xAxis().push(Axis.VALUE_LEFT);
+                            }
+                            if (directionalButtons.right.includes(buttonIndex)) {
+                                directional.xAxis().push(Axis.VALUE_RIGHT);
+                            }
                         });
                     }
                 }
-                return new Buttons(buttonArray);
+                return new Buttons(buttonArray, directional);
             }
 
             /**
              * @param {Button[]} [buttons]
+             * @param {Axis} [directional]
              */
-            constructor(buttons) {
+            constructor(buttons, directional) {
 
                 /** @type {Button[]} */
                 this._buttons = buttons;
+
+                /** @type {Axis} */
+                this._directional = directional;
             }
 
             /**
@@ -1491,6 +1590,15 @@
             }
 
             /**
+             * Directional
+             * 
+             * @returns {Axis}
+             */
+             directional = () => {
+                 return this._directional;
+             }
+
+            /**
              * Get the all
              * 
              * @return {Button[]}
@@ -1498,6 +1606,16 @@
             getAll = () => {
                 return this._buttons;
             }
+
+            // /**
+            //  * Find the button
+            //  * 
+            //  * @param {number} index
+            //  * @returns {Button}
+            //  */
+            // find = (index) => {
+            //     return this.getAll()[index];
+            // }
 
             /**
              * Not entered
@@ -1525,11 +1643,47 @@
             /**
              * @param {array} gamepad
              * @param {number} index Controller Index
+             * @param {Gamepad} [beforeGamepad]
+             * @returns {Gamepad}
              */
-            static factory = (gamepad, index) => {
+            static factory = (gamepad, index, beforeGamepad) => {
+
+                /**
+                 * @param {Gamepad} gamepad
+                 * @returns {Axis} Merged Axis
+                 */
+                 const mergeAxis = (gamepad) => {
+                    let mergeAxis = new Axis(Axis.POSITION_COMMAND);
+                    [gamepad.buttons().directional(), gamepad.leftAxis()].forEach(command => {
+                        command.xAxis().forEach(val => {
+                            if (!mergeAxis.xAxis().includes(val)) {
+                                mergeAxis.xAxis().push(val);
+                            }
+                        });
+                        command.yAxis().forEach(val => {
+                            if (!mergeAxis.yAxis().includes(val)) {
+                                mergeAxis.yAxis().push(val);
+                            }
+                        });
+                    });
+                    return mergeAxis;
+                }
+
+                /** @type {Gamepad} */
+                let gp;
+
+                /** @type {Buttons} */
                 let buttons;
+
+                /** @type {Axis} */
                 let leftAxis;
+
+                /** @type {Axis} */
                 let rightAxis;
+
+                /** @type {Axis} */
+                let newCommandAxis;
+
                 if (gamepad && gamepad.connected) {
                     buttons = Buttons.factory(gamepad.buttons);
                     if (gamepad.axes && (4 == gamepad.axes.length)) {
@@ -1547,7 +1701,46 @@
                     leftAxis = new Axis();
                     rightAxis = new Axis(); 
                 }
-                return new Gamepad(buttons, leftAxis, rightAxis, index);
+                gp = new Gamepad(buttons, leftAxis, rightAxis, index, gamepad.timestamp);
+                newCommandAxis = mergeAxis(gp);
+                gp.commands(newCommandAxis);
+                if (beforeGamepad && (index == beforeGamepad.index())) {
+                    /**
+                     * @param {Axis} newAxis
+                     * @param {Axis} beforeAxis
+                     * @param {boolean} hold
+                     * @returns {void}
+                     */
+                    const updateAxisHold = (newAxis, beforeAxis, hold) => {
+                        if ((newAxis.xAxis().length || newAxis.yAxis().length)
+                                && (newAxis.xAxis().join("-") == beforeAxis.xAxis().join("-"))
+                                && (newAxis.yAxis().join("-") == beforeAxis.yAxis().join("-"))) {
+                            hold = (hold || beforeAxis.hold());
+                            hold = true;
+                        } else {
+                            hold = false;
+                        }
+                        newAxis.hold(hold);
+                    }
+                    let hold = 1 < (gp.timestamp() - beforeGamepad.timestamp());  // Hold Check
+                    if (beforeGamepad.commands()) {
+                        updateAxisHold(newCommandAxis, beforeGamepad.commands(), hold);
+                        gp.buttons().directional().hold(newCommandAxis.hold());
+                        gp.leftAxis().hold(newCommandAxis.hold());
+                    }
+                    // updateAxisHold(gp.leftAxis(), beforeGamepad.leftAxis(), hold);
+                    updateAxisHold(gp.rightAxis(), beforeGamepad.rightAxis(), hold);
+                    gp.buttons().getAll().forEach(button => {
+                        if (button.pressed()) {
+                            beforeGamepad.buttons().getAll().forEach(btn => {
+                                if ((button.index() == btn.index()) && btn.pressed()) {
+                                    button.hold(hold || btn.hold());
+                                }
+                            });
+                        }
+                    });
+                }
+                return gp;
             }
 
             /**
@@ -1555,11 +1748,15 @@
              * @param {Axis} leftAxis
              * @param {Axis} rightAxis
              * @param {number} [index]
+             * @param {number} [timestamp]
              */
-            constructor(buttons, leftAxis, rightAxis, index) {
+            constructor(buttons, leftAxis, rightAxis, index, timestamp) {
                 
                 /** @type {Buttons} */
                 this._buttons = buttons;
+
+                /** @type {Axis} */
+                this._commands;
 
                 /** @type {Axis} */
                 this._leftAxis = leftAxis;
@@ -1569,6 +1766,9 @@
 
                 /** @type {number} */
                 this._index = index;
+
+                /** @type {number} */
+                this._timestamp = timestamp;
             }
 
             /**
@@ -1578,6 +1778,28 @@
              */
             buttons = () => {
                 return this._buttons;
+            }
+
+            /**
+             * Commands
+             * 
+             * @param {Axis} commands
+             * @returns {Axis}
+             */
+            commands = (commands) => {
+                if (commands) {
+                    return (this._commands = commands);
+                }
+                return this._commands;
+            }
+
+            /**
+             * Index
+             * 
+             * @returns {number}
+             */
+            index = () => {
+                return this._index;
             }
 
             /**
@@ -1606,6 +1828,15 @@
             rightAxis = () => {
                 return this._rightAxis;
             }
+
+            /**
+             * Timestamp
+             * 
+             * @returns {number}
+             */
+            timestamp = () => {
+                return this._timestamp;
+            }
         }
 
         /**
@@ -1621,10 +1852,10 @@
          * Format the Button Input CSS Class
          * 
          * @param {Button} button
-         * @returns {string}
+         * @returns {string[]}
          */
         const formatButtonInputClassName = (button) => {
-            return `Button_${button.index()}`;
+            return [`Button_${button.index()}`, `Button_${button.hold() ? "Hold" : "Press"}_${button.index()}`];
         }
 
         /**
@@ -1634,17 +1865,17 @@
          * @returns {string[]}
          */
         const formatAxisInputClassNames = (axis) => {
-            const format = (position, value) => {
-                return `Stick${position}_${value}`;
+            const format = (position, value, hold) => {
+                return [`Stick${position}_${value}`, `Stick${position}_${hold ? "Hold" : "Press"}_${value}`];
             }
             let classNames = [];
             if (!axis.notEntered()) {
-                if (axis.xAxis()) {
-                    classNames.push(format(axis.position(), axis.xAxis()));
-                }
-                if (axis.yAxis()) {
-                    classNames.push(format(axis.position(), axis.yAxis()));
-                }
+                axis.xAxis().forEach(axisVal => {
+                    classNames = classNames.concat(format(axis.position(), axisVal, axis.hold()));
+                });
+                axis.yAxis().forEach(axisVal => {
+                    classNames = classNames.concat(format(axis.position(), axisVal, axis.hold()));
+                });
             }
             return classNames;
         }
@@ -1755,19 +1986,20 @@
         const scanGameControllers = () => {
             let gamepadList = getGamePads();
             updateDebug(gamepadList);
-            if (gamepadList[controllerIndex] && (timestamp != gamepadList[controllerIndex].timestamp)) {
-                timestamp = gamepadList[controllerIndex].timestamp;
-                let gamepad = Gamepad.factory(gamepadList[controllerIndex], controllerIndex);
-                if (gamepad.notEntered()) {
+            if (gamepadList[controllerIndex] && (!latestGamepad || (latestGamepad.timestamp() != gamepadList[controllerIndex].timestamp))) {
+                // timestamp = gamepadList[controllerIndex].timestamp;
+                latestGamepad = Gamepad.factory(gamepadList[controllerIndex], controllerIndex, latestGamepad);
+                if (latestGamepad.notEntered()) {
                     addLog([]);
                     updateGameController();
                 } else {
                     let classNames = [];
-                    classNames = classNames.concat(formatAxisInputClassNames(gamepad.leftAxis()));
-                    classNames = classNames.concat(formatAxisInputClassNames(gamepad.rightAxis()));
-                    gamepad.buttons().getAll().forEach(button => {
+                    classNames = classNames.concat(formatAxisInputClassNames(latestGamepad.leftAxis()));
+                    classNames = classNames.concat(formatAxisInputClassNames(latestGamepad.rightAxis()));
+                    classNames = classNames.concat(formatAxisInputClassNames(latestGamepad.buttons().directional()));
+                    latestGamepad.buttons().getAll().forEach(button => {
                         if (button.pressed()) {
-                            classNames.push(formatButtonInputClassName(button));
+                            classNames = classNames.concat(formatButtonInputClassName(button));
                         }
                     });
                     if (addLog(classNames)) {
@@ -1786,7 +2018,7 @@
             if (!('ongamepadconnected' in window)) {
                 let params = (new URL(window.location.href)).searchParams;
                 let styles = params.get(GET_KEY_STYLES) ? params.get(GET_KEY_STYLES).split(",").join(" ") : DEFAULT_STYLES;
-                let delay = (0 < Number.parseInt(params.get(GET_KEY_INPUT_DELAY))) ? Number.parseInt(params.get(GET_KEY_INPUT_DELAY)) : DEFAULT_DELAY;
+                delay = (0 < Number.parseInt(params.get(GET_KEY_INPUT_DELAY))) ? Number.parseInt(params.get(GET_KEY_INPUT_DELAY)) : delay;
                 const main = () => {
                     scanGameControllers();
                     setTimeout(main, delay);
@@ -1813,6 +2045,22 @@
                         }
                     });
                 }
+                if (params.get(GET_KEY_DIRECTIONAL_BUTTON_INDEXES)
+                        && (4 == params.get(GET_KEY_DIRECTIONAL_BUTTON_INDEXES).split("-").length)) {
+                    let dpi = [];
+                    params.get(GET_KEY_DIRECTIONAL_BUTTON_INDEXES).split("-").forEach((dpIndexes, index) => {
+                        dpi[index] = [];
+                        dpIndexes.split(",").forEach(dpIndex => {
+                            dpi[index].push(Number.parseInt(dpIndex));
+                        });
+                    });
+                    directionalButtons = {
+                        up: dpi[0],
+                        down: dpi[1],
+                        left: dpi[2],
+                        right: dpi[3]
+                    }
+                }
                 baseContainer.dataset.modes = modes.join(" ");
                 baseContainer.dataset.styles = styles;
                 baseContainer.dataset.controller = controllerIndex;
@@ -1831,6 +2079,10 @@
                 settingsContainer.querySelector("dd.modes").innerText = modes.join(",");
                 settingsContainer.querySelector("dd.styles").innerText = styles;
                 settingsContainer.querySelector("dd.styles").setAttribute("title", styles);
+                let directionalContainers = settingsContainer.querySelectorAll("dd.directionals dd");
+                [directionalButtons.up, directionalButtons.down, directionalButtons.left, directionalButtons.right].forEach((vals, index) => {
+                    directionalContainers.item(index).append(vals.join(","));
+                });
             }
         }
 
