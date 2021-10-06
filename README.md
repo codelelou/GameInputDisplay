@@ -48,7 +48,7 @@ URLは「`http://absolute/C:/GameInputDisplay/index.html`」のように設定�
 ゲームによってコントローラーが違うなど頻繁にスキンを切替える場合は、スキン別にシーンを作成する方法が向いているかもしれません。  
 
 後はお好みに応じてパラメーター設定を行ってください。  
-たとえばアケコンでストリートファイターVをプレイする場合は、URLを「`http://absolute/C:/GameInputDisplay/index.html?styles=ArcadeController,KeyLog_StreetFighterV`」のようにしてパラメーター設定を行います。  
+例えばアケコンでストリートファイターVをプレイする場合は、URLを「`http://absolute/C:/GameInputDisplay/index.html?styles=ArcadeController,KeyLog_StreetFighterV`」のようにしてパラメーター設定を行います。  
 
 # パラメーター設定
 
@@ -155,10 +155,10 @@ Windowsであればタスクマネージャーの「プロセス」から配信�
 
 ## styles
 
-既定値：DualPad,KeyLog_ButtonSymbol_PS_DualShock  
+既定値：ProPad,KeyLog_ButtonSymbol_PS_DualShock  
 
 PlayStation4純正パッド（DualShock4）での標準的な使用ケースの割合の多さを想定し、stylesを指定することなく使用できるように規定値を変更しました。  
-「DualPad」がコントローラースキン用のスタイル名で、「KeyLog_ButtonSymbol_PS_DualShock」がキーログ用のスタイル名です。  
+「ProPad」がコントローラースキン用のスタイル名で、「KeyLog_ButtonSymbol_PS_DualShock」がキーログ用のスタイル名です。  
 バージョン「01.03.00」未満の既定値は「Front6Pad」でした。  
 
 コントローラースキンやキーログ用キーコンフィグプリセットの指定ができます。  
@@ -168,7 +168,7 @@ PlayStation4純正パッド（DualShock4）での標準的な使用ケースの�
 
 ### コントローラースキン
 
-- DualPad（既定・DualShock4/DualSense風）
+- ProPad（既定・DualShock4/DualSense風）
 - Front6Pad（6ボタンゲームパッド風）
 - ArcadeController（アーケードコントローラー風）
 - ButtonBox（HitBox・レバーレスコントローラー風）
@@ -203,7 +203,7 @@ PlayStation4純正パッド（DualShock4）での標準的な使用ケースの�
 - ボタン4 = L1
 - ボタン5 = R1
 - ボタン6 = L2
-- ボタン7 = R3
+- ボタン7 = R2
 - ボタン8 = SHARE
 - ボタン9 = OPTIONS
 - ボタン10 = L3（左スティック押込）
@@ -233,12 +233,12 @@ PlayStation4純正パッド（DualShock4）での標準的な使用ケースの�
 - ボタン7 = 強キック  
 
 **アケコンなど格闘ゲーム向けのコントローラーのボタン配置（番号）向け**のため、コントローラーによっては適切に表示されない場合があります。  
-PS4純正パッドを使用する場合は「`KeyLog_SFV_DualPad`」が向いていると思われます。  
+PS4純正パッドを使用する場合は「`KeyLog_SFV_ProPad`」が向いていると思われます。  
 
-### KeyLog_SFV_DualPad
+### KeyLog_SFV_ProPad
 
 「ストリートファイターV」向けのキーコンフィグをPS4純正パッド向けにカスタマイズしたものです。  
-「`index.html?styles=DualPad,KeyLog_SFV_DualPad`」のように指定します。
+「`index.html?styles=ProPad,KeyLog_SFV_ProPad`」のように指定します。
 
 - ボタン0 = 弱キック  
 - ボタン1 = 中キック  
@@ -401,7 +401,7 @@ PS4純正パッドを使用する場合は「`KeyLog_SFV_DualPad`」が向いて
 - ボタン4 = L1
 - ボタン5 = R1
 - ボタン6 = L2
-- ボタン7 = R3
+- ボタン7 = R2
 - ボタン8 = SHARE
 - ボタン9 = OPTIONS
 - ボタン10 = L3（左スティック押込）

@@ -433,47 +433,47 @@
             transform: rotate(60deg);
         }
 
-        /* [Styles: KeyLog_SFV_DualPad] Key Log: Button */
-        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
+        /* [Styles: KeyLog_SFV_ProPad] Key Log: Button */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
             content: unset;
             background-color: unset;
             transform: unset;
         }
-        /* [Styles: KeyLog_SFV_DualPad] Key Log: Button: Punch: Light */
-        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(11)::after,
-        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(11)::after {
+        /* [Styles: KeyLog_SFV_ProPad] Key Log: Button: Punch: Light */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(11)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(11)::after {
             content: "\1F44A";
             background-color: #00ffff;
         }
-        /* [Styles: KeyLog_SFV_DualPad] Key Log: Button: Punch: Med */
-        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(13)::after,
-        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(13)::after {
+        /* [Styles: KeyLog_SFV_ProPad] Key Log: Button: Punch: Med */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(13)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(13)::after {
             content: "\1F44A";
             background-color: #ffff00;
         }
-        /* [Styles: KeyLog_SFV_DualPad] Key Log: Button: Punch: Heavy */
-        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(15)::after,
-        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(15)::after {
+        /* [Styles: KeyLog_SFV_ProPad] Key Log: Button: Punch: Heavy */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(15)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(15)::after {
             content: "\1F44A";
             background-color: #ff0000;
         }
-        /* [Styles: KeyLog_SFV_DualPad] Key Log: Button: Kick: Light */
-        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(21)::after,
-        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(21)::after {
+        /* [Styles: KeyLog_SFV_ProPad] Key Log: Button: Kick: Light */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(21)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(21)::after {
             content: "\1F9B6";
             background-color: #00ffff;
             transform: rotate(60deg);
         }
-        /* [Styles: KeyLog_SFV_DualPad] Key Log: Button: Kick: Med */
-        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(23)::after,
-        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(23)::after {
+        /* [Styles: KeyLog_SFV_ProPad] Key Log: Button: Kick: Med */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(23)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(23)::after {
             content: "\1F9B6";
             background-color: #ffff00;
             transform: rotate(60deg);
         }
-        /* [Styles: KeyLog_SFV_DualPad] Key Log: Button: Kick: Heavy */
-        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(25)::after,
-        #GameInputDisplay[data-styles~="KeyLog_SFV_DualPad"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(25)::after {
+        /* [Styles: KeyLog_SFV_ProPad] Key Log: Button: Kick: Heavy */
+        #GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(25)::after,
+        #GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(25)::after {
             content: "\1F9B6";
             background-color: #ff0000;
             transform: rotate(60deg);
@@ -643,9 +643,88 @@
             background-size: contain;
         }
 
+        /* Skin: ProPad */
+        #GameInputDisplay[data-styles~="ProPad"] > ul::before {
+            background-image: url("./skins/ProPad/Base.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_0 > li {
+            /* 他のスキンをリセット */
+            background-image: unset;
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_0 > li:nth-child(1) {
+            background-image: url("./skins/ProPad/Button_0.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_1 > li:nth-child(2) {
+            background-image: url("./skins/ProPad/Button_1.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_2 > li:nth-child(3) {
+            background-image: url("./skins/ProPad/Button_2.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_3 > li:nth-child(4) {
+            background-image: url("./skins/ProPad/Button_3.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_4 > li:nth-child(5) {
+            background-image: url("./skins/ProPad/Button_4.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_5 > li:nth-child(6) {
+            background-image: url("./skins/ProPad/Button_5.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_6 > li:nth-child(7) {
+            background-image: url("./skins/ProPad/Button_6.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_7 > li:nth-child(8) {
+            background-image: url("./skins/ProPad/Button_7.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_8 > li:nth-child(9) {
+            background-image: url("./skins/ProPad/Button_8.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_9 > li:nth-child(10) {
+            background-image: url("./skins/ProPad/Button_9.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_10 > li:nth-child(11) {
+            background-image: url("./skins/ProPad/Button_10.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_11 > li:nth-child(12) {
+            background-image: url("./skins/ProPad/Button_11.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_12 > li:nth-child(13) {
+            background-image: url("./skins/ProPad/Button_12.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_13 > li:nth-child(14) {
+            background-image: url("./skins/ProPad/Button_13.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_14 > li:nth-child(15) {
+            background-image: url("./skins/ProPad/Button_14.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_15 > li:nth-child(16) {
+            background-image: url("./skins/ProPad/Button_15.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_16 > li:nth-child(17) {
+            background-image: url("./skins/ProPad/Button_16.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_17 > li:nth-child(18) {
+            background-image: url("./skins/ProPad/Button_17.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.StickL_Up > li:nth-child(30) {
+            background-image: url("./skins/ProPad/StickL_8.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.StickL_Down > li:nth-child(30) {
+            background-image: url("./skins/ProPad/StickL_2.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.StickL_Left > li:nth-child(30) {
+            background-image: url("./skins/ProPad/StickL_4.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.StickL_Right > li:nth-child(30) {
+            background-image: url("./skins/ProPad/StickL_6.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.StickL_Down.StickL_Left > li:nth-child(30) {
+            background-image: url("./skins/ProPad/StickL_1.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.StickL_Down.StickL_Right > li:nth-child(30) {
+            background-image: url("./skins/ProPad/StickL_3.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.StickL_Up.StickL_Left > li:nth-child(30) {
+            background-image: url("./skins/ProPad/StickL_7.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.StickL_Up.StickL_Right > li:nth-child(30) {
+            background-image: url("./skins/ProPad/StickL_9.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Up > li:nth-child(40) {
+            background-image: url("./skins/ProPad/StickR_8.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Down > li:nth-child(40) {
+            background-image: url("./skins/ProPad/StickR_2.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Left > li:nth-child(40) {
+            background-image: url("./skins/ProPad/StickR_4.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Right > li:nth-child(40) {
+            background-image: url("./skins/ProPad/StickR_6.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Down.StickR_Left > li:nth-child(40) {
+            background-image: url("./skins/ProPad/StickR_1.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Down.StickR_Right > li:nth-child(40) {
+            background-image: url("./skins/ProPad/StickR_3.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Up.StickR_Left > li:nth-child(40) {
+            background-image: url("./skins/ProPad/StickR_7.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Up.StickR_Right > li:nth-child(40) {
+            background-image: url("./skins/ProPad/StickR_9.png");
+        }
+
         /* Skin: DualPad */
         #GameInputDisplay[data-styles~="DualPad"] > ul::before {
             background-image: url("./skins/DualPad/Base.png");
+        } #GameInputDisplay[data-styles~="DualPad"] > ul.Button_0 > li {
+            /* 他のスキンをリセット */
+            background-image: unset;
         } #GameInputDisplay[data-styles~="DualPad"] > ul.Button_0 > li:nth-child(1) {
             background-image: url("./skins/DualPad/Button_0.png");
         } #GameInputDisplay[data-styles~="DualPad"] > ul.Button_1 > li:nth-child(2) {
@@ -703,6 +782,9 @@
         /* Skin: Front6Pad */
         #GameInputDisplay[data-styles~="Front6Pad"] > ul::before {
             background-image: url("./skins/Front6Pad/Base.png");
+        } #GameInputDisplay[data-styles~="Front6Pad"] > ul.Button_0 > li {
+            /* 他のスキンをリセット */
+            background-image: unset;
         } #GameInputDisplay[data-styles~="Front6Pad"] > ul.Button_0 > li:nth-child(1) {
             background-image: url("./skins/Front6Pad/Button_0.png");
         } #GameInputDisplay[data-styles~="Front6Pad"] > ul.Button_1 > li:nth-child(2) {
@@ -748,6 +830,9 @@
         /* Skin: ButtonBox */
         #GameInputDisplay[data-styles~="ButtonBox"] > ul::before {
             background-image: url("./skins/ButtonBox/Base.png");
+        } #GameInputDisplay[data-styles~="ButtonBox"] > ul.Button_0 > li {
+            /* 他のスキンをリセット */
+            background-image: unset;
         } #GameInputDisplay[data-styles~="ButtonBox"] > ul.Button_0 > li:nth-child(1) {
             background-image: url("./skins/ButtonBox/Button_0.png");
         } #GameInputDisplay[data-styles~="ButtonBox"] > ul.Button_1 > li:nth-child(2) {
@@ -795,6 +880,9 @@
         /* Skin: DualBox */
         #GameInputDisplay[data-styles~="DualBox"] > ul::before {
             background-image: url("./skins/DualBox/Base.png");
+        } #GameInputDisplay[data-styles~="DualBox"] > ul.Button_0 > li {
+            /* 他のスキンをリセット */
+            background-image: unset;
         } #GameInputDisplay[data-styles~="DualBox"] > ul.Button_0 > li:nth-child(1) {
             background-image: url("./skins/DualBox/Button_0.png");
         } #GameInputDisplay[data-styles~="DualBox"] > ul.Button_1 > li:nth-child(2) {
@@ -858,6 +946,9 @@
         /* Skin: ArcadeController */
         #GameInputDisplay[data-styles~="ArcadeController"] > ul::before {
             background-image: url("./skins/ArcadeController/Base.png");
+        } #GameInputDisplay[data-styles~="ArcadeController"] > ul.Button_0 > li {
+            /* 他のスキンをリセット */
+            background-image: unset;
         } #GameInputDisplay[data-styles~="ArcadeController"] > ul.Button_0 > li:nth-child(1) {
             background-image: url("./skins/ArcadeController/Button_0.png");
         } #GameInputDisplay[data-styles~="ArcadeController"] > ul.Button_1 > li:nth-child(2) {
@@ -921,7 +1012,7 @@
 	<title>Game Input Display</title>
 </head>
 <body>
-    <div id="GameInputDisplay" data-version="01.04.00">
+    <div id="GameInputDisplay" data-version="01.04.01">
         <ul id="GIDGameController"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
         <div id="GIDKeyLog">
         </div>
@@ -1102,7 +1193,7 @@
          * 
          * @type {string}
          */
-         const DEFAULT_STYLES = "DualPad KeyLog_ButtonSymbol_PS_DualShock";
+         const DEFAULT_STYLES = "ProPad KeyLog_ButtonSymbol_PS_DualShock";
         //  const DEFAULT_STYLES = "Front6Pad";
 
         /**
