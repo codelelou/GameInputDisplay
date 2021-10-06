@@ -261,11 +261,11 @@ PS4純正パッドを使用する場合は「`KeyLog_SFV_ProPad`」が向いて�
 スタイル名は「KeyLog_SFV_KC_アクション_ボタン番号」の書式で、次のようになっています（末尾の「X」を割り当てるボタン番号に置き換えてください）。  
 
 - 弱パンチ = KeyLog_SFV_KC_PL_X  
-- 弱パンチ = KeyLog_SFV_KC_PM_X  
-- 弱パンチ = KeyLog_SFV_KC_PH_X  
+- 中パンチ = KeyLog_SFV_KC_PM_X  
+- 強パンチ = KeyLog_SFV_KC_PH_X  
 - 弱キック = KeyLog_SFV_KC_KL_X  
-- 弱キック = KeyLog_SFV_KC_KM_X  
-- 弱キック = KeyLog_SFV_KC_KH_X    
+- 中キック = KeyLog_SFV_KC_KM_X  
+- 強キック = KeyLog_SFV_KC_KH_X    
 
 例えば次のようにカスタムキーコンフィグを設定するとします。
 
