@@ -249,6 +249,39 @@ PS4純正パッドを使用する場合は「`KeyLog_SFV_ProPad`」が向いて�
 - ボタン6 = 弱中強パンチ同時押し  
 - ボタン7 = 弱中強キック同時押し  
 
+### パラメーター「styles」のみでカスタムキーコンフィグを設定する  
+
+パラメーター設定「styles」のみ（カスタムCSS不要）でカスタムキーコンフィグを設定することも可能です。  
+ほとんどのゲームコントローラーで設定可能だと思いますが、一部例外があるかもしれません。  
+
+ボタン番号毎に弱中強のパンチ・キックを指定したスタイル名を半角カンマ（「,」）で繋げてstylesパラメーターに設定する感じになります。  
+使用するゲームコントローラーの**ボタン番号はデバッグモード（`index.html?modes=Debug`）で調べることができます**。  
+
+プリセットとして弱中強のアクションのそれぞれに**ボタン番号0～19までスタイル名を用意しています**。 
+スタイル名は「KeyLog_SFV_KC_アクション_ボタン番号」の書式で、次のようになっています（末尾の「X」を割り当てるボタン番号に置き換えてください）。  
+
+- 弱パンチ = KeyLog_SFV_KC_PL_X  
+- 弱パンチ = KeyLog_SFV_KC_PM_X  
+- 弱パンチ = KeyLog_SFV_KC_PH_X  
+- 弱キック = KeyLog_SFV_KC_KL_X  
+- 弱キック = KeyLog_SFV_KC_KM_X  
+- 弱キック = KeyLog_SFV_KC_KH_X    
+
+例えば次のようにカスタムキーコンフィグを設定するとします。
+
+- ボタン0 = KeyLog_SFV_KC_KL_0 = 弱キック  
+- ボタン1 = KeyLog_SFV_KC_KM_1 = 中キック  
+- ボタン2 = KeyLog_SFV_KC_PL_2 = 弱パンチ  
+- ボタン3 = KeyLog_SFV_KC_PM_3 = 中パンチ  
+- ボタン4 = KeyLog_SFV_KC_PL_4,KeyLog_SFV_KC_KL_4 = 弱パンチ・弱キック同時押し（投げ）  
+- ボタン5 = KeyLog_SFV_KC_PH_5 = 強パンチ  
+- ボタン6 = KeyLog_SFV_KC_PH_6,KeyLog_SFV_KC_KH_6 = 強パンチ・強キック同時押し（Vトリガー）  
+- ボタン7 = KeyLog_SFV_KC_KH_7 = 強キック  
+
+この場合のキーコンフィグ用スタイル名は「`KeyLog_SFV_KC_KL_0,KeyLog_SFV_KC_KM_1,KeyLog_SFV_KC_PL_2,KeyLog_SFV_KC_PM_3,KeyLog_SFV_KC_PL_4,KeyLog_SFV_KC_KL_4,KeyLog_SFV_KC_PH_5,KeyLog_SFV_KC_PH_6,KeyLog_SFV_KC_KH_6,KeyLog_SFV_KC_KH_7`」になります。  
+
+パラメーター設定「styles」を指定する際は同時にコントローラースキンの指定が必要になりますので、「`index.html?styles=DualBox,KeyLog_SFV_KC_KL_0,KeyLog_SFV_KC_KM_1,KeyLog_SFV_KC_PL_2,KeyLog_SFV_KC_PM_3,KeyLog_SFV_KC_PL_4,KeyLog_SFV_KC_KL_4,KeyLog_SFV_KC_PH_5,KeyLog_SFV_KC_PH_6,KeyLog_SFV_KC_KH_6,KeyLog_SFV_KC_KH_7`」のように指定します。  
+
 ### KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK
 
 - ボタン0 = 弱キック  
@@ -260,10 +293,13 @@ PS4純正パッドを使用する場合は「`KeyLog_SFV_ProPad`」が向いて�
 - ボタン6 = 強パンチ・強キック同時押し（Vトリガー）  
 - ボタン7 = 強キック  
 
-ストリートファイターVでR1ボタンに投げを、R2ボタンにVトリガーを設定した場合の標準的なキーコンフィグになります。  
+ストリートファイターVでR1ボタンに投げを、R2ボタンにVトリガーを設定した場合の標準的なキーコンフィグのプリセットになります。  
 一般的なアケコンなどのボタン配置（番号）向けのため、PS4純正パッドなどには向きません。  
 
 #### CSS（キーコンフィグ）の解説
+
+パラメーター設定「styles」ではなく、カスタムCSSでカスタムキーコンフィグを設定するような場合の参考にしてください。  
+カスタムCSSであればアイコンや色、表示順などより細かくカスタマイズ可能ですし、別のゲームタイトル仕様のキーログのスタイルにすることも可能です。  
 
 ~~~
 /* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button */
@@ -351,7 +387,7 @@ PS4純正パッドを使用する場合は「`KeyLog_SFV_ProPad`」が向いて�
 - ボタン6 = 強パンチ・中キック同時押し（Vシフト）  
 - ボタン7 = 強キック  
 
-ストリートファイターVでR1ボタンに投げを、R2ボタンにVシフトを設定した場合の標準的なキーコンフィグになります。  
+ストリートファイターVでR1ボタンに投げを、R2ボタンにVシフトを設定した場合の標準的なキーコンフィグのプリセットになります。  
 一般的なアケコンなどのボタン配置（番号）向けのため、PS4純正パッドなどには向きません。  
 
 ### KeyLog_SFV_Lelou_Front6Pad
@@ -366,7 +402,7 @@ PS4純正パッドを使用する場合は「`KeyLog_SFV_ProPad`」が向いて�
 - ボタン7 = 弱中キック同時押し  
 - ボタン10 = 十字キー上入力  
 
-このキーコンフィグは特殊で、本ソフトウェアの開発者がストリートファイターVをプレイする時のキーコンフィグになります（6ボタンパッドを使用）。  
+このキーコンフィグは特殊で、本ソフトウェアの開発者がストリートファイターVをプレイする時のキーコンフィグのプリセットになります（6ボタンパッドを使用）。  
 
 「`index.html?excludes=12&directionals=10-13-14-15&styles=Front6Pad,KeyLog_SFV_Lelou_Front6Pad`」のように指定します。  
 パラメーター設定例では上入力をパラメーター設定「excludes」で十字キー上を無効化し、パラメーター設定「directionals」で上入力がボタン10（ボタン12から変更）になるように指定しています。  
