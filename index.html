@@ -107,7 +107,7 @@
         } #GIDDebug::before,
         #GIDDebug::after {
             display: block;
-            position: absolute;
+            position: fixed;
             bottom: 4px;
             height: 32px;
             line-height: 32px;
@@ -851,13 +851,17 @@
             background-image: url("./skins/ProPad/Button_10.png");
         } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_11 > li:nth-child(12) {
             background-image: url("./skins/ProPad/Button_11.png");
-        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_12 > li:nth-child(13) {
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_12 > li:nth-child(13),
+        #GameInputDisplay[data-styles~="ProPad"] > ul.StickB_Up > li:nth-child(13) {
             background-image: url("./skins/ProPad/Button_12.png");
-        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_13 > li:nth-child(14) {
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_13 > li:nth-child(14),
+        #GameInputDisplay[data-styles~="ProPad"] > ul.StickB_Down > li:nth-child(14) {
             background-image: url("./skins/ProPad/Button_13.png");
-        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_14 > li:nth-child(15) {
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_14 > li:nth-child(15),
+        #GameInputDisplay[data-styles~="ProPad"] > ul.StickB_Left > li:nth-child(15) {
             background-image: url("./skins/ProPad/Button_14.png");
-        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_15 > li:nth-child(16) {
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_15 > li:nth-child(16),
+        #GameInputDisplay[data-styles~="ProPad"] > ul.StickB_Right > li:nth-child(16) {
             background-image: url("./skins/ProPad/Button_15.png");
         } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_16 > li:nth-child(17) {
             background-image: url("./skins/ProPad/Button_16.png");
@@ -1085,13 +1089,17 @@
             background-image: url("./skins/DualBox/Button_10.png");
         } #GameInputDisplay[data-styles~="DualBox"] > ul.Button_11 > li:nth-child(12) {
             background-image: url("./skins/DualBox/Button_11.png");
-        } #GameInputDisplay[data-styles~="DualBox"] > ul.Button_12 > li:nth-child(13) {
+        } #GameInputDisplay[data-styles~="DualBox"] > ul.Button_12 > li:nth-child(13),
+        #GameInputDisplay[data-styles~="DualBox"] > ul.StickB_Up > li:nth-child(13) {
             background-image: url("./skins/DualBox/Button_12.png");
-        } #GameInputDisplay[data-styles~="DualBox"] > ul.Button_13 > li:nth-child(14) {
+        } #GameInputDisplay[data-styles~="DualBox"] > ul.Button_13 > li:nth-child(14),
+        #GameInputDisplay[data-styles~="DualBox"] > ul.StickB_Down > li:nth-child(14) {
             background-image: url("./skins/DualBox/Button_13.png");
-        } #GameInputDisplay[data-styles~="DualBox"] > ul.Button_14 > li:nth-child(15) {
+        } #GameInputDisplay[data-styles~="DualBox"] > ul.Button_14 > li:nth-child(15),
+        #GameInputDisplay[data-styles~="DualBox"] > ul.StickB_Left > li:nth-child(15) {
             background-image: url("./skins/DualBox/Button_14.png");
-        } #GameInputDisplay[data-styles~="DualBox"] > ul.Button_15 > li:nth-child(16) {
+        } #GameInputDisplay[data-styles~="DualBox"] > ul.Button_15 > li:nth-child(16),
+        #GameInputDisplay[data-styles~="DualBox"] > ul.StickB_Right > li:nth-child(16) {
             background-image: url("./skins/DualBox/Button_15.png");
         } #GameInputDisplay[data-styles~="DualBox"] > ul.Button_16 > li:nth-child(17) {
             background-image: url("./skins/DualBox/Button_16.png");
@@ -1306,7 +1314,7 @@
 	<title>Game Input Display</title>
 </head>
 <body>
-    <div id="GameInputDisplay" data-version="01.04.04">
+    <div id="GameInputDisplay" data-version="01.05.00">
         <ul id="GIDGameController"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
         <div id="GIDKeyLog">
         </div>
@@ -1459,14 +1467,14 @@
          * 
          * @type {number}
          */
-         const DEFAULT_DELAY = 8;
+        const DEFAULT_DELAY = 8;
 
         /**
          * Default: Items
          * 
          * @type {number}
          */
-         const DEFAULT_KEY_LOG_ITEMS = 40;
+        const DEFAULT_KEY_LOG_ITEMS = 40;
 
         /**
          * Default: Log limit
@@ -1487,8 +1495,7 @@
          * 
          * @type {string}
          */
-         const DEFAULT_STYLES = "ProPad KeyLog_ButtonSymbol_PS_DualShock";
-        //  const DEFAULT_STYLES = "Front6Pad";
+        const DEFAULT_STYLES = "ProPad KeyLog_ButtonSymbol_PS_DualShock";
 
         /**
          * Get parameter key: Button index converts
@@ -1823,12 +1830,75 @@
             }
         }
 
-        let directionalButtons = {
+        /**
+         * Default: Directional button: Up
+         * 
+         * @type {object}
+         */
+        const DEFAULT_DIRECTIONAL_BUTTONS = {
             up: [12],
             down: [13],
             left: [14],
             right: [15]
-        } 
+        };
+
+        // /**
+        //  * Default: Directional button: Up
+        //  * 
+        //  * @type {number[]}
+        //  */
+        // const DEFAULT_DIRECTIONAL_BUTTON_UP = [12];
+
+        // /**
+        //  * Default: Directional button: Down
+        //  * 
+        //  * @type {number[]}
+        //  */
+        // const DEFAULT_DIRECTIONAL_BUTTON_DOWN = [13];
+
+        // /**
+        //  * Default: Directional button: Left
+        //  * 
+        //  * @type {number[]}
+        //  */
+        // const DEFAULT_DIRECTIONAL_BUTTON_LEFT = [14];
+
+        // /**
+        //  * Default: Directional button: Right
+        //  * 
+        //  * @type {number[]}
+        //  */
+        // const DEFAULT_DIRECTIONAL_BUTTON_RIGHT = [15];
+        
+        /**
+         * Directional buttons
+         * 
+         * @type {object}
+         */
+        let directionalButtons;
+
+        /**
+         * Update the directional buttons
+         * 
+         * @param {array} gamepad GamepadAPI.getGamepads()[index]
+         * @returns {object}
+         */
+        const updateDirectionalButtons = (gamepad) => {
+            let res;
+            if (directionalButtons) {
+                res = directionalButtons;
+            } else if (gamepad && gamepad.axes && (10 == gamepad.axes.length)) {
+                res = (directionalButtons = {
+                    up: [],
+                    down: [],
+                    left: [],
+                    right: []
+                });
+            } else {
+                res = (directionalButtons = DEFAULT_DIRECTIONAL_BUTTONS);
+            }
+            return res;
+        }
         
         /**
          * Buttons Class
@@ -1898,10 +1968,14 @@
             /**
              * Directional
              * 
+             * @param {Axis} [directional]
              * @returns {Axis}
              */
-             directional = () => {
-                 return this._directional;
+            directional = (directional) => {
+                if (directional) {
+                    return (this._directional = directional);
+                }
+                return this._directional;
              }
 
             /**
@@ -1928,6 +2002,62 @@
             }
 
         }
+
+        /**
+         * Axis: 10: Up and Left
+         * 
+         * @type {number}
+         */
+         const AXIS_10_UP_LEFT = 1;
+
+        /**
+         * Axis: 10: Left
+         * 
+         * @type {number}
+         */
+         const AXIS_10_LEFT = 0.7142857313156128;
+
+        /**
+         * Axis: 10: Down and Left
+         * 
+         * @type {number}
+         */
+         const AXIS_10_DOWN_LEFT = 0.4285714626312256;
+
+        /**
+         * Axis: 10: Down
+         * 
+         * @type {number}
+         */
+         const AXIS_10_DOWN = 0.14285719394683838;
+
+        /**
+         * Axis: 10: Down and Right
+         * 
+         * @type {number}
+         */
+         const AXIS_10_DOWN_RIGHT = -0.1428571343421936;
+
+        /**
+         * Axis: 10: Right
+         * 
+         * @type {number}
+         */
+         const AXIS_10_RIGHT = -0.4285714030265808;
+
+        /**
+         * Axis: 10: Up and Right
+         * 
+         * @type {number}
+         */
+         const AXIS_10_UP_RIGHT = -0.7142857313156128;
+
+        /**
+         * Axis: 10: Up
+         * 
+         * @type {number}
+         */
+         const AXIS_10_UP = -1;
 
         /**
          * Gamepad Class
@@ -1966,7 +2096,7 @@
                 }
 
                 /** @type {Gamepad} */
-                let gp;
+                let newGamepad;
 
                 /** @type {Buttons} */
                 let buttons;
@@ -1980,14 +2110,55 @@
                 /** @type {Axis} */
                 let newCommandAxis;
 
+                /** @type {Axis} */
+                let directional;
+
                 if (gamepad && gamepad.connected) {
                     buttons = Buttons.factory(gamepad.buttons);
-                    if (gamepad.axes && (4 == gamepad.axes.length)) {
-                        leftAxis = Axis.factoryByAxes(Axis.POSITION_LEFT, gamepad.axes[0], gamepad.axes[1]);
-                        rightAxis = Axis.factoryByAxes(Axis.POSITION_RIGHT, gamepad.axes[2], gamepad.axes[3]);
-                    } else if (gamepad.axes && ((9 == gamepad.axes.length) || (10 == gamepad.axes.length))) {
-                        leftAxis = Axis.factoryByAxes(Axis.POSITION_LEFT, gamepad.axes[0], gamepad.axes[1]);
-                        rightAxis = Axis.factoryByAxes(Axis.POSITION_RIGHT, gamepad.axes[2], gamepad.axes[5]);
+                    if (gamepad.axes) {
+                        switch (gamepad.axes.length) {
+                            case 4:
+                                leftAxis = Axis.factoryByAxes(Axis.POSITION_LEFT, gamepad.axes[0], gamepad.axes[1]);
+                                rightAxis = Axis.factoryByAxes(Axis.POSITION_RIGHT, gamepad.axes[2], gamepad.axes[3]);
+                                break;
+                            case 10:
+                                let directional = buttons.directional();
+                                switch (gamepad.axes[9]) {
+                                    case AXIS_10_UP:
+                                        directional.yAxis().push(Axis.VALUE_UP);
+                                        break;
+                                    case AXIS_10_UP_LEFT:
+                                        directional.yAxis().push(Axis.VALUE_UP);
+                                        directional.xAxis().push(Axis.VALUE_LEFT);
+                                        break;
+                                    case AXIS_10_UP_RIGHT:
+                                        directional.yAxis().push(Axis.VALUE_UP);
+                                        directional.xAxis().push(Axis.VALUE_RIGHT);
+                                        break;
+                                    case AXIS_10_DOWN:
+                                        directional.yAxis().push(Axis.VALUE_DOWN);
+                                        break;
+                                    case AXIS_10_DOWN_LEFT:
+                                        directional.yAxis().push(Axis.VALUE_DOWN);
+                                        directional.xAxis().push(Axis.VALUE_LEFT);
+                                        break;
+                                    case AXIS_10_DOWN_RIGHT:
+                                        directional.yAxis().push(Axis.VALUE_DOWN);
+                                        directional.xAxis().push(Axis.VALUE_RIGHT);
+                                        break;
+                                    case AXIS_10_LEFT:
+                                        directional.xAxis().push(Axis.VALUE_LEFT);
+                                        break;
+                                    case AXIS_10_RIGHT:
+                                        directional.xAxis().push(Axis.VALUE_RIGHT);
+                                        break;
+                                }
+                            case 9:
+                                leftAxis = Axis.factoryByAxes(Axis.POSITION_LEFT, gamepad.axes[0], gamepad.axes[1]);
+                                rightAxis = Axis.factoryByAxes(Axis.POSITION_RIGHT, gamepad.axes[2], gamepad.axes[5]);
+                            default:
+                                break;
+                        }
                     } else {
                        leftAxis = new Axis();
                        rightAxis = new Axis(); 
@@ -1997,9 +2168,9 @@
                     leftAxis = new Axis();
                     rightAxis = new Axis(); 
                 }
-                gp = new Gamepad(buttons, leftAxis, rightAxis, index, gamepad.timestamp);
-                newCommandAxis = mergeAxis(gp);
-                gp.commands(newCommandAxis);
+                newGamepad = new Gamepad(buttons, leftAxis, rightAxis, index, gamepad.timestamp);
+                newCommandAxis = mergeAxis(newGamepad);
+                newGamepad.commands(newCommandAxis);
                 if (beforeGamepad && (index == beforeGamepad.index())) {
                     /**
                      * @param {Axis} newAxis
@@ -2018,15 +2189,15 @@
                         }
                         newAxis.hold(hold);
                     }
-                    let hold = 1 < gp.timestamp() - beforeGamepad.timestamp();  // TODO Hold Check
+                    let hold = 1 < newGamepad.timestamp() - beforeGamepad.timestamp();  // TODO Hold Check
                     if (beforeGamepad.commands()) {
                         updateAxisHold(newCommandAxis, beforeGamepad.commands(), hold);
-                        gp.buttons().directional().hold(newCommandAxis.hold());
-                        gp.leftAxis().hold(newCommandAxis.hold());
+                        newGamepad.buttons().directional().hold(newCommandAxis.hold());
+                        newGamepad.leftAxis().hold(newCommandAxis.hold());
                     }
-                    // updateAxisHold(gp.leftAxis(), beforeGamepad.leftAxis(), hold);
-                    updateAxisHold(gp.rightAxis(), beforeGamepad.rightAxis(), hold);
-                    gp.buttons().getAll().forEach(button => {
+                    // updateAxisHold(newGamepad.leftAxis(), beforeGamepad.leftAxis(), hold);
+                    updateAxisHold(newGamepad.rightAxis(), beforeGamepad.rightAxis(), hold);
+                    newGamepad.buttons().getAll().forEach(button => {
                         if (button.pressed()) {
                             beforeGamepad.buttons().getAll().forEach(btn => {
                                 if ((button.index() == btn.index()) && btn.pressed()) {
@@ -2036,7 +2207,7 @@
                         }
                     });
                 }
-                return gp;
+                return newGamepad;
             }
 
             /**
@@ -2113,7 +2284,10 @@
              * @returns {boolean}
              */
             notEntered = () => {
-                return this.buttons().notEntered() && this.leftAxis().notEntered() && this.rightAxis().notEntered();
+                return this.buttons().notEntered()
+                        && this.buttons().directional().notEntered()
+                        && this.leftAxis().notEntered()
+                        && this.rightAxis().notEntered();
             }
 
             /**
@@ -2295,9 +2469,11 @@
          */
         const scanGameControllers = () => {
             let gamepadList = getGamePads();
+            let gamepad = gamepadList[controllerIndex];
             updateDebug(gamepadList);
-            if (gamepadList[controllerIndex] && (!latestGamepad || (latestGamepad.timestamp() != gamepadList[controllerIndex].timestamp))) {
-                latestGamepad = Gamepad.factory(gamepadList[controllerIndex], controllerIndex, latestGamepad);
+            if (gamepad && (!latestGamepad || (latestGamepad.timestamp() != gamepad.timestamp))) {
+                updateDirectionalButtons(gamepad);
+                latestGamepad = Gamepad.factory(gamepad, controllerIndex, latestGamepad);
                 if (latestGamepad.notEntered()) {
                     addLog([]);
                     updateGameController();
@@ -2389,9 +2565,11 @@
             settingsContainer.querySelector("dd.styles").setAttribute("title", styles);
             settingsContainer.querySelector("dd.items").innerText = keyLogItems;
             let directionalContainers = settingsContainer.querySelectorAll("dd.directionals dd");
-            [directionalButtons.up, directionalButtons.down, directionalButtons.left, directionalButtons.right].forEach((vals, index) => {
-                directionalContainers.item(index).append(vals.join(","));
-            });
+            if (directionalButtons) {
+                [directionalButtons.up, directionalButtons.down, directionalButtons.left, directionalButtons.right].forEach((vals, index) => {
+                    directionalContainers.item(index).append(vals.join(","));
+                });
+            }
 
             if (!('ongamepadconnected' in window)) {
                 // const looper = window.requestAnimationFrame
