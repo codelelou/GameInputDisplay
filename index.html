@@ -30,15 +30,20 @@
             display: none;
         } #GameInputDisplay[data-modes~="Debug"] > #GIDGameController,
         #GameInputDisplay[data-modes~="Debug"] > #GIDKeyLog {
+            /* margin-top: 40px; */
         } #GameInputDisplay[data-modes~="Debug"]::after {
             content: "ver." attr(data-version);
             display: block;
             position: absolute;
-            right: 20px;
+            right: 10px;
             top: 0;
             padding: 2px 4px;
-            background-color: rgba(0, 0, 0, 1);
+            height: 36px;
+            line-height: 36px;
+            background-color: rgba(0, 0, 0, .9);
             color: #ffffff;
+            font-size: 24px;
+            text-align: left;
         }
 
         /* Settings */
@@ -99,6 +104,23 @@
             list-style: none;
             overflow: auto;
             z-index: 500;
+        } #GIDDebug::before,
+        #GIDDebug::after {
+            display: block;
+            position: absolute;
+            bottom: 4px;
+            height: 32px;
+            line-height: 32px;
+            color: rgba(255, 255, 255, .6);
+            text-align: left;
+        } #GIDDebug::before {
+            content: "[Lag]";
+            right: 50px;
+            font-size: 14px;
+        } #GIDDebug::after {
+            content: attr(data-lag);
+            right: 10px;
+            font-size: 28px;
         }
         #GIDDebug > li {
             margin: 0;
@@ -1284,11 +1306,11 @@
 	<title>Game Input Display</title>
 </head>
 <body>
-    <div id="GameInputDisplay" data-version="01.04.03">
+    <div id="GameInputDisplay" data-version="01.04.04">
         <ul id="GIDGameController"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
         <div id="GIDKeyLog">
         </div>
-        <ul id="GIDDebug">
+        <ul id="GIDDebug" data-lag="">
             <li class="settings">
                 <dl id="GIDSettings">
                     <dt class="controllerIndex">Controller Index</dt>
@@ -1554,9 +1576,6 @@
 
         /** @type {string} */
         const ID_Settings = "GIDSettings";
-
-        /** @type {number} */
-        let timestamp = 0;
 
         /**
          * Latest gamepad
@@ -1999,7 +2018,7 @@
                         }
                         newAxis.hold(hold);
                     }
-                    let hold = 1 < (gp.timestamp() - beforeGamepad.timestamp());  // TODO Hold Check
+                    let hold = 1 < gp.timestamp() - beforeGamepad.timestamp();  // TODO Hold Check
                     if (beforeGamepad.commands()) {
                         updateAxisHold(newCommandAxis, beforeGamepad.commands(), hold);
                         gp.buttons().directional().hold(newCommandAxis.hold());
@@ -2157,6 +2176,9 @@
             return classNames;
         }
 
+        /** @type {number} */
+        let timestamp = Date.now();
+
         /**
          * Update the debug
          * 
@@ -2171,6 +2193,9 @@
                 let axesContainer = document.createElement("ol");
                 let buttonsContainer = document.createElement("ol");
                 let button;
+                let newTimestamp = Date.now();
+                document.getElementById(ID_DEBUG).dataset.lag = (newTimestamp - timestamp);
+                timestamp = newTimestamp;
                 for (let i = 0; (i < 4) && i < gamepads.length; i++) {
                     gamepad = gamepads[i];
                     if (gamepad) {
@@ -2272,7 +2297,6 @@
             let gamepadList = getGamePads();
             updateDebug(gamepadList);
             if (gamepadList[controllerIndex] && (!latestGamepad || (latestGamepad.timestamp() != gamepadList[controllerIndex].timestamp))) {
-                // timestamp = gamepadList[controllerIndex].timestamp;
                 latestGamepad = Gamepad.factory(gamepadList[controllerIndex], controllerIndex, latestGamepad);
                 if (latestGamepad.notEntered()) {
                     addLog([]);
@@ -2370,14 +2394,17 @@
             });
 
             if (!('ongamepadconnected' in window)) {
-                const looper = window.requestAnimationFrame
-                            || window.webkitRequestAnimationFrame
-                            || window.mozRequestAnimationFrame
-                            || window.msRequestAnimationFrame
-                            || window.oRequestAnimationFrame
-                            || ((callback) => {
-                                window.setTimeout(callback, delay);
-                            });
+                // const looper = window.requestAnimationFrame
+                //         || window.webkitRequestAnimationFrame
+                //         || window.mozRequestAnimationFrame
+                //         || window.msRequestAnimationFrame
+                //         || window.oRequestAnimationFrame
+                //         || ((callback) => {
+                //             window.setTimeout(callback, delay);
+                //         });
+                const looper = (callback) => {
+                    window.setTimeout(callback, delay);
+                };
                 const main = () => {
                     scanGameControllers();
                     looper(main);
