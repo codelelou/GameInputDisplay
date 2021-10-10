@@ -899,6 +899,33 @@
             background-image: url("./skins/ProPad/StickR_7.png");
         } #GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Up.StickR_Right > li:nth-child(40) {
             background-image: url("./skins/ProPad/StickR_9.png");
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_10_6 > li:nth-child(7),
+        #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_10_7 > li:nth-child(8) {
+            opacity: .1;
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_20_6 > li:nth-child(7),
+        #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_20_7 > li:nth-child(8) {
+            opacity: .2;
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_30_6 > li:nth-child(7),
+        #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_30_7 > li:nth-child(8) {
+            opacity: .3;
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_40_6 > li:nth-child(7),
+        #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_40_7 > li:nth-child(8) {
+            opacity: .4;
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_50_6 > li:nth-child(7),
+        #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_50_7 > li:nth-child(8) {
+            opacity: .5;
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_60_6 > li:nth-child(7),
+        #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_60_7 > li:nth-child(8) {
+            opacity: .6;
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_70_6 > li:nth-child(7),
+        #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_70_7 > li:nth-child(8) {
+            opacity: .7;
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_80_6 > li:nth-child(7),
+        #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_80_7 > li:nth-child(8) {
+            opacity: .8;
+        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_90_6 > li:nth-child(7),
+        #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_90_7 > li:nth-child(8) {
+            opacity: .9;
         }
 
         /* Skin: DualPad */
@@ -1314,7 +1341,7 @@
 	<title>Game Input Display</title>
 </head>
 <body>
-    <div id="GameInputDisplay" data-version="01.05.00">
+    <div id="GameInputDisplay" data-version="01.05.01">
         <ul id="GIDGameController"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
         <div id="GIDKeyLog">
         </div>
@@ -1455,120 +1482,6 @@
          */
         const MODES_KEYLOG = "KeyLog";
 
-        /**
-         * Default: COntroller index
-         * 
-         * @type {number}
-         */
-        const DEFAULT_CONTROLLER_INDEX = 0;
-
-        /**
-         * Default: Delay (Millisecond)
-         * 
-         * @type {number}
-         */
-        const DEFAULT_DELAY = 8;
-
-        /**
-         * Default: Items
-         * 
-         * @type {number}
-         */
-        const DEFAULT_KEY_LOG_ITEMS = 40;
-
-        /**
-         * Default: Log limit
-         * 
-         * @type {number}
-         */
-        const DEFAULT_LOG_LIMIT = 30;
-
-        /**
-         * Default: Modes
-         * 
-         * @type {string[]}
-         */
-        const DEFAULT_MODES = [MODES_CONTROLLER, MODES_KEYLOG];
-
-        /**
-         * Default: Styles
-         * 
-         * @type {string}
-         */
-        const DEFAULT_STYLES = "ProPad KeyLog_ButtonSymbol_PS_DualShock";
-
-        /**
-         * Get parameter key: Button index converts
-         * 
-         * @type {string}
-         */
-         const GET_KEY_BUTTON_INDEX_CONVERTS = "converts";
-
-        /**
-         * Get parameter key: Controller index
-         * 
-         * @type {string}
-         */
-        const GET_KEY_CONTROLLER_INDEX = "controller";
-
-        /**
-         * Get parameter key: Directional button indexes
-         * 
-         * @type {string}
-         */
-        const GET_KEY_DIRECTIONAL_BUTTON_INDEXES = "directionals";
-
-        /**
-         * Get parameter key: Exclude button indexs
-         * 
-         * @type {string}
-         * @description Comma Separated Value
-         * @example index.html?excludes=8,9
-         */
-        const GET_KEY_EXCLUDE_BUTTONS = "excludes";
-
-        /**
-         * Get parameter key: Log limit
-         * 
-         * @type {string}
-         * @description Log limit is Key log lines
-         * @example index.html?log=15
-         */
-        const GET_KEY_LOG_LIMIT = "log";
-
-        /**
-         * Get parameter key: Input delay
-         * 
-         * @type {string}
-         * @description Millisecond
-         * @example index.html?delay=4
-         */
-        const GET_KEY_INPUT_DELAY = "delay";
-
-        /**
-         * Get parameter key: Models
-         * 
-         * @type {string}
-         * @example index.html?modes=Debug
-         */
-         const GET_KEY_MODES = "modes";
-
-        /**
-         * Get parameter key: Items
-         * 
-         * @type {string}
-         */
-         const GET_KEY_KEY_LOG_ITEMS = "items";
-
-        /**
-         * Get parameter key: Styles
-         * 
-         * @type {string}
-         * @description Comma Separated Value
-         * @example index.html?styles=SkinSakura,SkinChoco,Skin7
-         */
-        const GET_KEY_STYLES = "styles";
-
         /** @type {string} */
         const ID_CONTAINER = "GameInputDisplay";
 
@@ -1585,64 +1498,11 @@
         const ID_Settings = "GIDSettings";
 
         /**
-         * Latest gamepad
-         * 
-         * @type {Gamepad}
-         */
-        let latestGamepad;
-
-        /** @type {number} */
-        let controllerIndex = DEFAULT_CONTROLLER_INDEX;
-
-        /**
-         * Input delay (Mirisekanndo)
-         * 
-         * @type {number}
-         */
-        let delay = DEFAULT_DELAY;
-
-        /** @type {HTMLElement} */
-        let baseContainer = document.getElementById(ID_CONTAINER);
-
-        /** @type {HTMLElement} */
-        let controllerContainer = document.getElementById(ID_GAMECONTROLLER);
-
-        /** @type {HTMLElement} */
-        let debugContainer = document.querySelectorAll(`#${ID_DEBUG} > .controllers > dl`);
-
-        /** @type {HTMLElement} */
-        let keyLogContainer = document.getElementById(ID_KEYLOG);
-
-        /** @type {HTMLElement} */
-        let settingsContainer = document.querySelector(`#${ID_DEBUG} > .settings > dl`);
-
-        /** @type {string[]} */
-        let logs = [];
-
-        /** @type {number} */
-        let logLimit = DEFAULT_LOG_LIMIT;
-
-        /** @type {string} */
-        let latestLog;
-
-        /** @type {Map} */
-        let buttonIndexConverts = new Map();
-
-        /** @type {number[]} */
-        let excludeButtons = [];
-
-        /** @type {string[]} */
-        let modes = DEFAULT_MODES;
-
-        /** @type {number} */
-        let keyLogItems = DEFAULT_KEY_LOG_ITEMS;
-
-        /**
          * Axis Class
          * 
          * @class
          */
-         class Axis {
+        class Axis {
 
             /** @type {number} */
             static DEFAULT_THRESHOLD = 0.6;
@@ -1826,56 +1686,44 @@
              * @returns {boolean}
              */
             pressed = () => {
-                return this._button.pressed;
+                return this._rawButton().pressed;
             }
+
+            /**
+             * Touched
+             * 
+             * @returns {boolean}
+             */
+            touched = () => {
+                return this._rawButton().touched;
+            }
+
+            /**
+             * Value
+             * 
+             * @returns {number}
+             */
+            value = () => {
+                return this._rawButton().value;
+            }
+
+            /**
+             * Raw button
+             * 
+             * @returns {object}
+             */
+            _rawButton = () => {
+                if (!this._button) {
+                    return {
+                        pressed: false,
+                        touched: false,
+                        value: 0
+                    }
+                }
+                return this._button;
+            }
+
         }
-
-        /**
-         * Default: Directional button: Up
-         * 
-         * @type {object}
-         */
-        const DEFAULT_DIRECTIONAL_BUTTONS = {
-            up: [12],
-            down: [13],
-            left: [14],
-            right: [15]
-        };
-
-        // /**
-        //  * Default: Directional button: Up
-        //  * 
-        //  * @type {number[]}
-        //  */
-        // const DEFAULT_DIRECTIONAL_BUTTON_UP = [12];
-
-        // /**
-        //  * Default: Directional button: Down
-        //  * 
-        //  * @type {number[]}
-        //  */
-        // const DEFAULT_DIRECTIONAL_BUTTON_DOWN = [13];
-
-        // /**
-        //  * Default: Directional button: Left
-        //  * 
-        //  * @type {number[]}
-        //  */
-        // const DEFAULT_DIRECTIONAL_BUTTON_LEFT = [14];
-
-        // /**
-        //  * Default: Directional button: Right
-        //  * 
-        //  * @type {number[]}
-        //  */
-        // const DEFAULT_DIRECTIONAL_BUTTON_RIGHT = [15];
-        
-        /**
-         * Directional buttons
-         * 
-         * @type {object}
-         */
-        let directionalButtons;
 
         /**
          * Update the directional buttons
@@ -1885,17 +1733,18 @@
          */
         const updateDirectionalButtons = (gamepad) => {
             let res;
+            let directionalButtons = parameterSetting.directionalButtons();
             if (directionalButtons) {
                 res = directionalButtons;
             } else if (gamepad && gamepad.axes && (10 == gamepad.axes.length)) {
-                res = (directionalButtons = {
+                res = (parameterSetting.directionalButtons({
                     up: [],
                     down: [],
                     left: [],
                     right: []
-                });
+                }));
             } else {
-                res = (directionalButtons = DEFAULT_DIRECTIONAL_BUTTONS);
+                res = parameterSetting.directionalButtons(ParameterSetting.DEFAULT_DIRECTIONAL_BUTTONS);
             }
             return res;
         }
@@ -1916,7 +1765,8 @@
                 let buttonIndexes = [];
                 let directional = new Axis(Axis.POSITION_BUTTON);
                 for (let i = 0; i < buttons.length; i++) {
-                    if (!excludeButtons.includes(String(i)) && buttons[i].pressed) {
+                    if (!parameterSetting.excludeButtons().includes(String(i)) && buttons[i].pressed) {
+                        let buttonIndexConverts = parameterSetting.buttonIndexConverts();
                         buttonIndexes = [];
                         if (buttonIndexConverts.has(i)) {
                             buttonIndexes = buttonIndexConverts.get(i);
@@ -1924,6 +1774,7 @@
                             buttonIndexes = [i];
                         }
                         buttonIndexes.forEach(buttonIndex => {
+                            let directionalButtons = parameterSetting.directionalButtons();
                             buttonArray.push(new Button(buttons[i], buttonIndex));
                             if (directionalButtons.up.includes(buttonIndex)) {
                                 directional.yAxis().push(Axis.VALUE_UP);
@@ -2310,6 +2161,450 @@
         }
 
         /**
+         * Directional buttons hash
+         * 
+         * @typeof {DirectionalButtonsHash}
+         * @type {object}
+         * @property {number[]} up
+         * @property {number[]} down
+         * @property {number[]} left
+         * @property {number[]} right
+         */
+
+        /**
+         * Parameter setting class
+         * 
+         * @class
+         */
+        class ParameterSetting {
+
+            /**
+             * Default: COntroller index
+             * 
+             * @type {number}
+             */
+            static DEFAULT_CONTROLLER_INDEX = 0;
+
+            /**
+             * Default: Delay (Millisecond)
+             * 
+             * @type {number}
+             */
+            static DEFAULT_DELAY = 8;
+
+            /**
+             * Default: Directional buttons
+             * 
+             * @type {DirectionalButtonsHash} 
+             */
+            static DEFAULT_DIRECTIONAL_BUTTONS = {
+                up: [12],
+                down: [13],
+                left: [14],
+                right: [15]
+            };
+
+            /**
+             * Default: Items
+             * 
+             * @type {number}
+             */
+            static DEFAULT_KEY_LOG_ITEMS = 40;
+
+            /**
+             * Default: Log limit
+             * 
+             * @type {number}
+             */
+            static DEFAULT_LOG_LIMIT = 30;
+
+            /**
+             * Default: Modes
+             * 
+             * @type {string[]}
+             */
+            static DEFAULT_MODES = `${MODES_CONTROLLER},${MODES_KEYLOG}`;
+
+            /**
+             * Default: Styles
+             * 
+             * @type {string}
+             */
+            static DEFAULT_STYLES = "ProPad,KeyLog_ButtonSymbol_PS_DualShock";
+
+            /**
+             * Get parameter key: Button index converts
+             * 
+             * @type {string}
+             */
+            static KEY_BUTTON_INDEX_CONVERTS = "converts";
+
+            /**
+             * Get parameter key: Controller index
+             * 
+             * @type {string}
+             */
+            static KEY_CONTROLLER_INDEX = "controller";
+
+            /**
+             * Get parameter key: Directional button indexes
+             * 
+             * @type {string}
+             */
+            static KEY_DIRECTIONAL_BUTTON_INDEXES = "directionals";
+
+            /**
+             * Get parameter key: Exclude button indexs
+             * 
+             * @type {string}
+             * @description Comma Separated Value
+             * @example index.html?excludes=8,9
+             */
+            static KEY_EXCLUDE_BUTTONS = "excludes";
+
+            /**
+             * Get parameter key: Input delay
+             * 
+             * @type {string}
+             * @description Millisecond
+             * @example index.html?delay=4
+             */
+            static KEY_INPUT_DELAY = "delay";
+
+            /**
+             * Get parameter key: Items
+             * 
+             * @type {string}
+             */
+            static KEY_KEY_LOG_ITEMS = "items";
+
+            /**
+             * Get parameter key: Log limit
+             * 
+             * @type {string}
+             * @description Log limit is Key log lines
+             * @example index.html?log=15
+             */
+            static KEY_LOG_LIMIT = "log";
+
+            /**
+             * Get parameter key: Models
+             * 
+             * @type {string}
+             * @example index.html?modes=Debug
+             */
+            static KEY_MODES = "modes";
+
+            /**
+             * Get parameter key: Styles
+             * 
+             * @type {string}
+             * @description Comma Separated Value
+             * @example index.html?styles=SkinSakura,SkinChoco,Skin7
+             */
+            static KEY_STYLES = "styles";
+
+            /**
+             * @returns {ParameterSetting}
+             */
+            static factory = () => {
+                return new ParameterSetting();
+            }
+
+            constructor()  {
+
+                /** @type {URLSearchParams} */
+                this._searchParams = (new URL(window.location.href)).searchParams;
+
+                this.updateParams();
+            }
+
+            /**
+             * Button index converts
+             * 
+             * @returns {Map}
+             */
+            buttonIndexConverts = () => {
+                return this._buttonIndexConverts;
+            }
+
+            /**
+             * Check the modes
+             * 
+             * @param {(string|string[])} modes
+             * @returns {boolean}
+             */
+            checkModes = (modes) => {
+                let res = false;
+                if (!Array.isArray(modes)) {
+                    return this.checkModes([modes]);
+                } else {
+                    let ms = this.modes();
+                    for (let mode of modes) {
+                        if (!res || ms.includes(mode)) {
+                            res = true;
+                            break;
+                        }
+                    }
+                }
+                return res;
+            }
+
+            /**
+             * Controller index
+             * 
+             * @returns {number}
+             */
+            controllerIndex = () => {
+                return this._controllerIndex;
+            }
+
+            /**
+             * Delay
+             * 
+             * @returns {number}
+             */
+            delay = () => {
+                return this._delay;
+            }
+
+            /**
+             * Directional buttons
+             * 
+             * @param {DirectionalButtonsHash} [directionalButtons]
+             * @returns {DirectionalButtonsHash}
+             */
+            directionalButtons = (directionalButtons) => {
+                if (directionalButtons) {
+                    return (this._directionalButtons = directionalButtons);
+                }
+                return this._directionalButtons;
+            }
+
+            /**
+             * Exclude buttons
+             * 
+             * @returns {number[]}
+             */
+            excludeButtons = () => {
+                return this._excludeButtons;
+            }
+
+            /**
+             * Find
+             * 
+             * @param {string} key
+             * @param {string} [defaultValue = ""]
+             * @returns {string}
+             */
+            find = (key, defaultValue = "") => {
+                let res = this.searchParams().get(key);
+                if ((undefined === res) || (null === res)) {
+                    return defaultValue;
+                }
+                return res;
+            }
+
+            /**
+             * Key log items
+             * 
+             * @returns {number}
+             */
+            keyLogItems = () => {
+                return this._keyLogItems;
+            }
+
+            /**
+             * Log limit
+             * 
+             * @return {number}
+             */
+            logLimit = () => {
+                return this._logLimit;
+            }
+
+            /**
+             * Modes
+             * 
+             * @returns {string[]}
+             */
+            modes = () => {
+                return this._modes;
+            }
+
+            /**
+             * Search params
+             * 
+             * @returns {URLSearchParams}
+             */
+            searchParams = () => {
+                return this._searchParams;
+            }
+
+            /**
+             * Styles
+             * 
+             * @returns {string}
+             */
+            styles = () => {
+                return this._styles;
+            }
+
+            /**
+             * Update the parameters
+             * 
+             * @returns {void}
+             */
+            updateParams = () => {
+
+                let buttonIndexConverts = new Map();
+                let directionalButtons = {
+                    up: [],
+                    down: [],
+                    left: [],
+                    right: []
+                };
+
+                let biConverts = this.find(ParameterSetting.KEY_BUTTON_INDEX_CONVERTS);
+                let dButtons = this.find(ParameterSetting.KEY_DIRECTIONAL_BUTTON_INDEXES);
+
+                if ("" != biConverts) {
+                    let convert = [];
+                    let convertFrom;
+                    let convertTo;
+                    let regexp = /\d+/igu;
+                    biConverts.split(",").forEach(cnvt => {
+                        convert = cnvt.match(regexp);
+                        if (2 == convert.length) {
+                            convertFrom = parseInt(convert[0]);
+                            convertTo = parseInt(convert[1]);
+                            if (!buttonIndexConverts.has(convertFrom)) {
+                                buttonIndexConverts.set(convertFrom, [convertTo]);
+                            } else {
+                                buttonIndexConverts.get(convertFrom).push(convertTo);
+                            }
+                        }
+                    });
+                }
+
+                if (dButtons && (4 == dButtons.split("-").length)) {
+                    let dpi = [];
+                    dButtons.split("-").forEach((dpIndexes, index) => {
+                        dpi[index] = [];
+                        dpIndexes.split(",").forEach(dpIndex => {
+                            dpi[index].push(Number.parseInt(dpIndex));
+                        });
+                    });
+                    directionalButtons = {
+                        up: dpi[0],
+                        down: dpi[1],
+                        left: dpi[2],
+                        right: dpi[3]
+                    }
+                }
+
+                /**
+                 * Button index converts
+                 * 
+                 * @type {Map}
+                 */
+                this._buttonIndexConverts = buttonIndexConverts;
+
+
+                /**
+                 * Controller index
+                 * 
+                 * @type {number}
+                 */
+                this._controllerIndex = this.find(ParameterSetting.KEY_CONTROLLER_INDEX, ParameterSetting.DEFAULT_CONTROLLER_INDEX);
+
+                /**
+                 * Delay
+                 * 
+                 * @type {number}
+                 */
+                this._delay = this.find(ParameterSetting.KEY_INPUT_DELAY, ParameterSetting.DEFAULT_DELAY);
+
+                /**
+                 * Directiona buttons
+                 * 
+                 * @type {DirectionalButtonsHash}
+                 */
+                this._directional = directionalButtons;
+
+                /**
+                 * Exclude buttons
+                 * 
+                 * @types {number[]}
+                 */
+                this._excludeButtons = this.find(ParameterSetting.KEY_EXCLUDE_BUTTONS).split(",");
+
+                /**
+                 * Key log items
+                 * 
+                 * @type {number}
+                 */
+                this._keyLogItems = this.find(ParameterSetting.KEY_KEY_LOG_ITEMS, ParameterSetting.DEFAULT_KEY_LOG_ITEMS);
+
+                /**
+                 * Log limit
+                 * 
+                 * @type {number}
+                 */
+                this._logLimit = this.find(ParameterSetting.KEY_LOG_LIMIT, ParameterSetting.DEFAULT_LOG_LIMIT);
+
+                /**
+                 * Modes
+                 * 
+                 * @type {string[]}
+                 */
+                this._modes = this.find(ParameterSetting.KEY_MODES, ParameterSetting.DEFAULT_MODES).split(",");
+
+                /**
+                 * Styles
+                 * 
+                 * @type {string}
+                 */
+                this._styles = this.find(ParameterSetting.KEY_STYLES, ParameterSetting.DEFAULT_STYLES).split(",").join(" ");
+            }
+        }
+
+        /** @type {HTMLElement} */
+        let controllerContainer = document.getElementById(ID_GAMECONTROLLER);
+
+        /** @type {HTMLElement} */
+        let debugContainer = document.querySelectorAll(`#${ID_DEBUG} > .controllers > dl`);
+
+        /** @type {HTMLElement} */
+        let keyLogContainer = document.getElementById(ID_KEYLOG);
+
+        /** @type {HTMLElement} */
+        let keyLogTemplate = document.createElement("ul");
+
+        /**
+         * Latest gamepad
+         * 
+         * @type {Gamepad}
+         */
+        let latestGamepad;
+
+        /** @type {string} */
+        let latestLog;
+
+        /** @type {string[]} */
+        let logs = [];
+
+        /** @type {number} */
+        let timestamp = Date.now();
+
+        /**
+         * Parameter settings
+         * 
+         * @type {ParameterSetting}
+         */
+        let parameterSetting = ParameterSetting.factory();
+
+        /**
          * Get the Game Pads
          * 
          * @returns {array}
@@ -2325,7 +2620,9 @@
          * @returns {string[]}
          */
         const formatButtonInputClassName = (button) => {
-            return [`Button_${button.index()}`, `Button_${button.hold() ? "Hold" : "Press"}_${button.index()}`];
+            return [`Button_${button.index()}`,
+                    `Button_${button.hold() ? "Hold" : "Press"}_${button.index()}`,
+                    `Button_Value_${Math.floor(button.value() * 10) * 10}_${button.index()}`];
         }
 
         /**
@@ -2350,9 +2647,6 @@
             return classNames;
         }
 
-        /** @type {number} */
-        let timestamp = Date.now();
-
         /**
          * Update the debug
          * 
@@ -2360,12 +2654,14 @@
          * @returns {void}
          */
         const updateDebug = (gamepads) => {
-            if (modes.includes(MODES_DEBUG)) {
+            if (parameterSetting.checkModes(MODES_DEBUG)) {
                 let gamepad;
                 let bodyContainers;
                 let liContainer;
-                let axesContainer = document.createElement("ol");
-                let buttonsContainer = document.createElement("ol");
+                let olElement = document.createElement("ol");
+                let liElement = document.createElement("li");
+                let axesContainer = olElement.cloneNode(false);
+                let buttonsContainer = olElement.cloneNode(false);
                 let button;
                 let newTimestamp = Date.now();
                 document.getElementById(ID_DEBUG).dataset.lag = (newTimestamp - timestamp);
@@ -2376,12 +2672,12 @@
                         axesContainer.innerHTML = "";
                         buttonsContainer.innerHTML = "";
                         for (let j = 0; j < gamepad.axes.length; j++) {
-                            liContainer = document.createElement("li");
+                            liContainer = liElement.cloneNode(false);
                             liContainer.innerText = gamepad.axes[j];
                             axesContainer.appendChild(liContainer);
                         }
                         for (let j = 0; j < gamepad.buttons.length; j++) {
-                            liContainer = document.createElement("li");
+                            liContainer = liElement.cloneNode(false);
                             button = gamepad.buttons[j];
                             liContainer.dataset.pressed = button.pressed;
                             liContainer.dataset.touched = button.touched;
@@ -2403,25 +2699,15 @@
             }
         }
 
-        let keyLogTemplate = document.createElement("ul");
-
         /**
          * Update the key log
          * 
          * @returns {void}
          */
         const updateKeyLog = () => {
-            if (modes.includes(MODES_KEYLOG) || modes.includes(MODES_DEBUG)) {
+            if (parameterSetting.checkModes(MODES_KEYLOG, MODES_DEBUG)) {
                 keyLogTemplate.className = logs[0];
                 keyLogContainer.prepend(keyLogTemplate.cloneNode(true));
-                
-                // for (let i = 0; i < logs.length; i++) {
-                //     if (keyLogContainer.children[i]) {
-                //         keyLogContainer.children[i].className = logs[i];
-                //     } else {
-                //         break;
-                //     }
-                // }
             }
         }
 
@@ -2432,7 +2718,7 @@
          * @returns {void}
          */
         const updateGameController = (className = "") => {
-            if (modes.includes(MODES_CONTROLLER) || modes.includes(MODES_DEBUG)) {
+            if (parameterSetting.checkModes(MODES_CONTROLLER, MODES_DEBUG)) {
                 controllerContainer.className = className;
             }
         }
@@ -2449,7 +2735,7 @@
                 latestLog = className;
                 if ("" != latestLog) {
                     logs.unshift(latestLog = className);
-                    if (logLimit < logs.length) {
+                    if (parameterSetting.logLimit() < logs.length) {
                         logs.pop();
                         if (keyLogContainer.lastChild) {
                             keyLogContainer.removeChild(keyLogContainer.lastChild);
@@ -2469,6 +2755,7 @@
          */
         const scanGameControllers = () => {
             let gamepadList = getGamePads();
+            let controllerIndex = parameterSetting.controllerIndex();
             let gamepad = gamepadList[controllerIndex];
             updateDebug(gamepadList);
             if (gamepad && (!latestGamepad || (latestGamepad.timestamp() != gamepad.timestamp))) {
@@ -2495,82 +2782,67 @@
         }
 
         /**
-         * Initialize
+         * Initialize the HTML
          * 
          * @returns {void}
          */
-        const init = () => {
-            let params = (new URL(window.location.href)).searchParams;
-            let styles = params.get(GET_KEY_STYLES) ? params.get(GET_KEY_STYLES).split(",").join(" ") : DEFAULT_STYLES;
+        const initHtml = () => {
+            let baseContainer = document.getElementById(ID_CONTAINER);
             let keyLogTemplateSub = document.createElement("li");
-            delay = (0 < Number.parseInt(params.get(GET_KEY_INPUT_DELAY))) ? Number.parseInt(params.get(GET_KEY_INPUT_DELAY)) : delay;
-            controllerIndex = params.get(GET_KEY_CONTROLLER_INDEX) ? params.get(GET_KEY_CONTROLLER_INDEX) : controllerIndex;
-            logLimit = (0 < Number.parseInt(params.get(GET_KEY_LOG_LIMIT))) ? Number.parseInt(params.get(GET_KEY_LOG_LIMIT)) : logLimit;
-            excludeButtons = params.get(GET_KEY_EXCLUDE_BUTTONS) ? params.get(GET_KEY_EXCLUDE_BUTTONS).split(",") : excludeButtons;
-            modes = params.get(GET_KEY_MODES) ? params.get(GET_KEY_MODES).split(",") : modes;
-            keyLogItems = (0 < Number.parseInt(params.get(GET_KEY_KEY_LOG_ITEMS))) ? Number.parseInt(params.get(GET_KEY_KEY_LOG_ITEMS)) : keyLogItems;
-            for (let i = 0; i < keyLogItems; i++) {
+            for (let i = 0; i < parameterSetting.keyLogItems(); i++) {
                 keyLogTemplate.appendChild(keyLogTemplateSub.cloneNode(false));
             }
-            if (params.get(GET_KEY_BUTTON_INDEX_CONVERTS)) {
-                let convert = [];
-                let convertFrom;
-                let convertTo;
-                let regexp = /\d+/igu;
-                params.get(GET_KEY_BUTTON_INDEX_CONVERTS).split(",").forEach(cnvt => {
-                    convert = cnvt.match(regexp);
-                    if (2 == convert.length) {
-                        convertFrom = parseInt(convert[0]);
-                        convertTo = parseInt(convert[1]);
-                        if (!buttonIndexConverts.has(convertFrom)) {
-                            buttonIndexConverts.set(convertFrom, [convertTo]);
-                        } else {
-                            buttonIndexConverts.get(convertFrom).push(convertTo);
-                        }
-                    }
-                });
-            }
-            if (params.get(GET_KEY_DIRECTIONAL_BUTTON_INDEXES)
-                    && (4 == params.get(GET_KEY_DIRECTIONAL_BUTTON_INDEXES).split("-").length)) {
-                let dpi = [];
-                params.get(GET_KEY_DIRECTIONAL_BUTTON_INDEXES).split("-").forEach((dpIndexes, index) => {
-                    dpi[index] = [];
-                    dpIndexes.split(",").forEach(dpIndex => {
-                        dpi[index].push(Number.parseInt(dpIndex));
-                    });
-                });
-                directionalButtons = {
-                    up: dpi[0],
-                    down: dpi[1],
-                    left: dpi[2],
-                    right: dpi[3]
-                }
-            }
-            baseContainer.dataset.modes = modes.join(" ");
-            baseContainer.dataset.styles = styles;
-            baseContainer.dataset.controller = controllerIndex;
-            baseContainer.dataset.log = logLimit;
-            baseContainer.dataset.excludeButtons = excludeButtons.join(" ");
+            baseContainer.dataset.modes = parameterSetting.modes().join(" ");
+            baseContainer.dataset.styles = parameterSetting.styles();
+            baseContainer.dataset.controller = parameterSetting.controllerIndex();
+            baseContainer.dataset.log = parameterSetting.logLimit();
+            baseContainer.dataset.excludeButtons = parameterSetting.excludeButtons().join(" ");
+            updateSettingsContainer();
+        }
 
-            // Update the settings container
-            settingsContainer.querySelector("dd.controllerIndex").innerText = controllerIndex;
-            settingsContainer.querySelector("dd.excludes").innerText = excludeButtons;
-            settingsContainer.querySelector("dd.excludes").setAttribute("title", excludeButtons);
-            settingsContainer.querySelector("dd.converts").innerText = params.get(GET_KEY_BUTTON_INDEX_CONVERTS);
-            settingsContainer.querySelector("dd.converts").setAttribute("title", params.get(GET_KEY_BUTTON_INDEX_CONVERTS));
-            settingsContainer.querySelector("dd.logLimit").innerText = logLimit;
-            settingsContainer.querySelector("dd.inputDelay").innerText = `${delay}ms`;
-            settingsContainer.querySelector("dd.modes").innerText = modes.join(",");
-            settingsContainer.querySelector("dd.styles").innerText = styles;
-            settingsContainer.querySelector("dd.styles").setAttribute("title", styles);
-            settingsContainer.querySelector("dd.items").innerText = keyLogItems;
+        /**
+         * Update the settings container
+         * 
+         * @returns {void}
+         */
+        const updateSettingsContainer = () => {
+            let settingsContainer = document.querySelector(`#${ID_DEBUG} > .settings > dl`);
+            settingsContainer.querySelector("dd.controllerIndex").innerText = parameterSetting.controllerIndex();
+            [settingsContainer.querySelector("dd.excludes")].forEach(ele => {
+                let excludeButtons = parameterSetting.excludeButtons().join(" ");
+                ele.innerText = excludeButtons;
+                ele.setAttribute("title", excludeButtons);
+            });
+            [settingsContainer.querySelector("dd.converts")].forEach(ele => {
+                let buttonIndexConverts = parameterSetting.find(ParameterSetting.KEY_BUTTON_INDEX_CONVERTS);
+                ele.innerText = buttonIndexConverts;
+                ele.setAttribute("title", buttonIndexConverts);
+            });
+            settingsContainer.querySelector("dd.logLimit").innerText = parameterSetting.logLimit();
+            settingsContainer.querySelector("dd.inputDelay").innerText = `${parameterSetting.delay()}ms`;
+            settingsContainer.querySelector("dd.modes").innerText = parameterSetting.modes().join(",");
+            [settingsContainer.querySelector("dd.styles")].forEach(ele => {
+                let styles = parameterSetting.styles();
+                ele.innerText = styles;
+                ele.setAttribute("title", styles);
+            });
+            settingsContainer.querySelector("dd.items").innerText = parameterSetting.keyLogItems();
             let directionalContainers = settingsContainer.querySelectorAll("dd.directionals dd");
+            let directionalButtons = parameterSetting.directionalButtons();
             if (directionalButtons) {
                 [directionalButtons.up, directionalButtons.down, directionalButtons.left, directionalButtons.right].forEach((vals, index) => {
                     directionalContainers.item(index).append(vals.join(","));
                 });
             }
+        }
 
+        /**
+         * Initialize
+         * 
+         * @returns {void}
+         */
+        const init = () => {
+            initHtml();
             if (!('ongamepadconnected' in window)) {
                 // const looper = window.requestAnimationFrame
                 //         || window.webkitRequestAnimationFrame
@@ -2581,12 +2853,11 @@
                 //             window.setTimeout(callback, delay);
                 //         });
                 const looper = (callback) => {
-                    window.setTimeout(callback, delay);
+                    window.setTimeout(callback, parameterSetting.delay());
                 };
                 const main = () => {
                     scanGameControllers();
                     looper(main);
-                    // window.setTimeout(main, 4);
                 }
                 main();
             }
