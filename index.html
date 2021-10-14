@@ -827,7 +827,9 @@
         } #GameInputDisplay[data-styles~="ProPad"] > ul > li {
             /* 他のスキンをリセット */
             background-image: unset;
-        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_0 > li:nth-child(1) {
+        }
+        /* 押したボタンの差分画像（ul.Button_{ボタン番号}） */
+        #GameInputDisplay[data-styles~="ProPad"] > ul.Button_0 > li:nth-child(1) {
             background-image: url("./skins/ProPad/Button_0.png");
         } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_1 > li:nth-child(2) {
             background-image: url("./skins/ProPad/Button_1.png");
@@ -867,7 +869,9 @@
             background-image: url("./skins/ProPad/Button_16.png");
         } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_17 > li:nth-child(18) {
             background-image: url("./skins/ProPad/Button_17.png");
-        } #GameInputDisplay[data-styles~="ProPad"] > ul.StickL_Up > li:nth-child(30) {
+        }
+        /* 左スティックの差分画像 */
+        #GameInputDisplay[data-styles~="ProPad"] > ul.StickL_Up > li:nth-child(30) {
             background-image: url("./skins/ProPad/StickL_8.png");
         } #GameInputDisplay[data-styles~="ProPad"] > ul.StickL_Down > li:nth-child(30) {
             background-image: url("./skins/ProPad/StickL_2.png");
@@ -883,7 +887,9 @@
             background-image: url("./skins/ProPad/StickL_7.png");
         } #GameInputDisplay[data-styles~="ProPad"] > ul.StickL_Up.StickL_Right > li:nth-child(30) {
             background-image: url("./skins/ProPad/StickL_9.png");
-        } #GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Up > li:nth-child(40) {
+        }
+        /* 右スティックの差分画像 */
+        #GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Up > li:nth-child(40) {
             background-image: url("./skins/ProPad/StickR_8.png");
         } #GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Down > li:nth-child(40) {
             background-image: url("./skins/ProPad/StickR_2.png");
@@ -899,33 +905,45 @@
             background-image: url("./skins/ProPad/StickR_7.png");
         } #GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Up.StickR_Right > li:nth-child(40) {
             background-image: url("./skins/ProPad/StickR_9.png");
-        } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_10_6 > li:nth-child(7),
+        }
+        /* コントローラーIndex識別用差分画像（Switchコンなどに見られる） */
+        #GameInputDisplay[data-styles~="ProPad"][data-controller="0"] > ul > li:nth-child(42) {
+            background-image: url("./skins/ProPad/Controller_0.png");
+        } #GameInputDisplay[data-styles~="ProPad"][data-controller="1"] > ul > li:nth-child(42) {
+            background-image: url("./skins/ProPad/Controller_1.png");
+        } #GameInputDisplay[data-styles~="ProPad"][data-controller="2"] > ul > li:nth-child(42) {
+            background-image: url("./skins/ProPad/Controller_2.png");
+        } #GameInputDisplay[data-styles~="ProPad"][data-controller="3"] > ul > li:nth-child(42) {
+            background-image: url("./skins/ProPad/Controller_3.png");
+        }
+        /* トリガーボタン（L2/R2）の入力強度の表現（.Button_Value_{入力強度%}_{ボタン番号}） */
+        #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_10_6 > li:nth-child(7),
         #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_10_7 > li:nth-child(8) {
-            opacity: .1;
+            opacity: .1;  /* 不透明度 */
         } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_20_6 > li:nth-child(7),
         #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_20_7 > li:nth-child(8) {
-            opacity: .2;
+            opacity: .2;  /* 不透明度 */
         } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_30_6 > li:nth-child(7),
         #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_30_7 > li:nth-child(8) {
-            opacity: .3;
+            opacity: .3;  /* 不透明度 */
         } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_40_6 > li:nth-child(7),
         #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_40_7 > li:nth-child(8) {
-            opacity: .4;
+            opacity: .4;  /* 不透明度 */
         } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_50_6 > li:nth-child(7),
         #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_50_7 > li:nth-child(8) {
-            opacity: .5;
+            opacity: .5;  /* 不透明度 */
         } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_60_6 > li:nth-child(7),
         #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_60_7 > li:nth-child(8) {
-            opacity: .6;
+            opacity: .6;  /* 不透明度 */
         } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_70_6 > li:nth-child(7),
         #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_70_7 > li:nth-child(8) {
-            opacity: .7;
+            opacity: .7;  /* 不透明度 */
         } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_80_6 > li:nth-child(7),
         #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_80_7 > li:nth-child(8) {
-            opacity: .8;
+            opacity: .8;  /* 不透明度 */
         } #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_90_6 > li:nth-child(7),
         #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_90_7 > li:nth-child(8) {
-            opacity: .9;
+            opacity: .9;  /* 不透明度 */
         }
 
         /* Skin: DualPad */
@@ -1034,6 +1052,14 @@
         #GameInputDisplay[data-styles~="Front6Pad"] > ul.StickL_Right > li:nth-child(16),
         #GameInputDisplay[data-styles~="Front6Pad"] > ul.StickR_Right > li:nth-child(16) {
             background-image: url("./skins/Front6Pad/Button_15.png");
+        } #GameInputDisplay[data-styles~="Front6Pad"][data-controller="0"] > ul > li:nth-child(32) {
+            background-image: url("./skins/Front6Pad/Controller_0.png");
+        } #GameInputDisplay[data-styles~="Front6Pad"][data-controller="1"] > ul > li:nth-child(32) {
+            background-image: url("./skins/Front6Pad/Controller_1.png");
+        } #GameInputDisplay[data-styles~="Front6Pad"][data-controller="2"] > ul > li:nth-child(32) {
+            background-image: url("./skins/Front6Pad/Controller_2.png");
+        } #GameInputDisplay[data-styles~="Front6Pad"][data-controller="3"] > ul > li:nth-child(32) {
+            background-image: url("./skins/Front6Pad/Controller_3.png");
         }
 
         /* Skin: ButtonBox */
@@ -1084,6 +1110,14 @@
             background-image: url("./skins/ButtonBox/Button_15.png");
         } #GameInputDisplay[data-styles~="ButtonBox"] > ul.Button_16 > li:nth-child(17) {
             background-image: url("./skins/ButtonBox/Button_16.png");
+        } #GameInputDisplay[data-styles~="ButtonBox"][data-controller="0"] > ul > li:nth-child(32) {
+            background-image: url("./skins/ButtonBox/Controller_0.png");
+        } #GameInputDisplay[data-styles~="ButtonBox"][data-controller="1"] > ul > li:nth-child(32) {
+            background-image: url("./skins/ButtonBox/Controller_1.png");
+        } #GameInputDisplay[data-styles~="ButtonBox"][data-controller="2"] > ul > li:nth-child(32) {
+            background-image: url("./skins/ButtonBox/Controller_2.png");
+        } #GameInputDisplay[data-styles~="ButtonBox"][data-controller="3"] > ul > li:nth-child(32) {
+            background-image: url("./skins/ButtonBox/Controller_3.png");
         }
 
         /* Skin: DualBox */
@@ -1154,6 +1188,14 @@
         } #GameInputDisplay[data-styles~="DualBox"] > ul.StickL_Up.StickL_Right > li:nth-child(30),
         #GameInputDisplay[data-styles~="DualBox"] > ul.StickR_Up.StickR_Right > li:nth-child(30) {
             background-image: url("./skins/DualBox/Stick_9.png");
+        } #GameInputDisplay[data-styles~="DualBox"][data-controller="0"] > ul > li:nth-child(32) {
+            background-image: url("./skins/DualBox/Controller_0.png");
+        } #GameInputDisplay[data-styles~="DualBox"][data-controller="1"] > ul > li:nth-child(32) {
+            background-image: url("./skins/DualBox/Controller_1.png");
+        } #GameInputDisplay[data-styles~="DualBox"][data-controller="2"] > ul > li:nth-child(32) {
+            background-image: url("./skins/DualBox/Controller_2.png");
+        } #GameInputDisplay[data-styles~="DualBox"][data-controller="3"] > ul > li:nth-child(32) {
+            background-image: url("./skins/DualBox/Controller_3.png");
         }
 
         /* Skin: ArcadeController */
@@ -1220,6 +1262,14 @@
         #GameInputDisplay[data-styles~="ArcadeController"] > ul.StickL_Up.StickL_Right > li:nth-child(30),
         #GameInputDisplay[data-styles~="ArcadeController"] > ul.StickR_Up.StickR_Right > li:nth-child(30) {
             background-image: url("./skins/ArcadeController/Stick_9.png");
+        } #GameInputDisplay[data-styles~="ArcadeController"][data-controller="0"] > ul > li:nth-child(32) {
+            background-image: url("./skins/ArcadeController/Controller_0.png");
+        } #GameInputDisplay[data-styles~="ArcadeController"][data-controller="1"] > ul > li:nth-child(32) {
+            background-image: url("./skins/ArcadeController/Controller_1.png");
+        } #GameInputDisplay[data-styles~="ArcadeController"][data-controller="2"] > ul > li:nth-child(32) {
+            background-image: url("./skins/ArcadeController/Controller_2.png");
+        } #GameInputDisplay[data-styles~="ArcadeController"][data-controller="3"] > ul > li:nth-child(32) {
+            background-image: url("./skins/ArcadeController/Controller_3.png");
         }
 
 
@@ -1341,7 +1391,7 @@
 	<title>Game Input Display</title>
 </head>
 <body>
-    <div id="GameInputDisplay" data-version="01.05.01">
+    <div id="GameInputDisplay" data-version="01.05.02">
         <ul id="GIDGameController"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
         <div id="GIDKeyLog">
         </div>
@@ -1918,6 +1968,15 @@
         class Gamepad {
 
             /**
+             * Get the Game Pads
+             * 
+             * @returns {array}
+             */
+            static getGamePads = () => {
+                return navigator.getGamepads ? navigator.getGamepads() : (navigator.webkitGetGamepads ? navigator.webkitGetGamepads() : []);
+            }
+
+            /**
              * @param {array} gamepad
              * @param {number} index Controller Index
              * @param {Gamepad} [beforeGamepad]
@@ -2341,7 +2400,7 @@
                 } else {
                     let ms = this.modes();
                     for (let mode of modes) {
-                        if (!res || ms.includes(mode)) {
+                        if (!res && ms.includes(mode)) {
                             res = true;
                             break;
                         }
@@ -2605,15 +2664,6 @@
         let parameterSetting = ParameterSetting.factory();
 
         /**
-         * Get the Game Pads
-         * 
-         * @returns {array}
-         */
-        const getGamePads = () => {
-            return navigator.getGamepads ? navigator.getGamepads() : (navigator.webkitGetGamepads ? navigator.webkitGetGamepads() : []);
-        }
-
-        /**
          * Format the Button Input CSS Class
          * 
          * @param {Button} button
@@ -2668,6 +2718,7 @@
                 timestamp = newTimestamp;
                 for (let i = 0; (i < 4) && i < gamepads.length; i++) {
                     gamepad = gamepads[i];
+                    bodyContainers = debugContainer.item(i);
                     if (gamepad) {
                         axesContainer.innerHTML = "";
                         buttonsContainer.innerHTML = "";
@@ -2685,15 +2736,23 @@
                             liContainer.innerText = button.value;
                             buttonsContainer.appendChild(liContainer);
                         }
-                        bodyContainers = debugContainer.item(i);
                         bodyContainers.dataset.connected = gamepad.connected;
-                        bodyContainers.querySelector("dd.id").innerHTML = gamepad.id;
-                        bodyContainers.querySelector("dd.index").innerHTML = gamepad.index;
-                        bodyContainers.querySelector("dd.connected").innerHTML = gamepad.connected ? "Yes" : "No";
-                        bodyContainers.querySelector("dd.mapping").innerHTML = gamepad.mapping;
-                        bodyContainers.querySelector("dd.timestamp").innerHTML = gamepad.timestamp;
+                        [{key: "dd.id", value: gamepad.id},
+                                {key: "dd.index", value: gamepad.index},
+                                {key: "dd.connected", value: (gamepad.connected ? "Yes" : "No")},
+                                {key: "dd.mapping", value: gamepad.mapping},
+                                {key: "dd.timestamp", value: gamepad.timestamp}].forEach(mapping => {
+                            [bodyContainers.querySelector(mapping.key)].forEach(ele => {
+                                if (ele.innerText !== mapping.value) {
+                                    ele.innerText = mapping.value;
+                                }
+                            });
+                        });
                         bodyContainers.querySelector("dd.axes ol").innerHTML = axesContainer.innerHTML;
                         bodyContainers.querySelector("dd.buttons ol").innerHTML = buttonsContainer.innerHTML;
+                    } else {
+                        // 接続を解除するとnullになる機種もあれば最後の状態を取得できる機種（DualShock4）もある
+                        bodyContainers.querySelector("dd.connected").innerText = "";
                     }
                 }
             }
@@ -2705,7 +2764,7 @@
          * @returns {void}
          */
         const updateKeyLog = () => {
-            if (parameterSetting.checkModes(MODES_KEYLOG, MODES_DEBUG)) {
+            if (parameterSetting.checkModes([MODES_KEYLOG, MODES_DEBUG])) {
                 keyLogTemplate.className = logs[0];
                 keyLogContainer.prepend(keyLogTemplate.cloneNode(true));
             }
@@ -2718,7 +2777,7 @@
          * @returns {void}
          */
         const updateGameController = (className = "") => {
-            if (parameterSetting.checkModes(MODES_CONTROLLER, MODES_DEBUG)) {
+            if (parameterSetting.checkModes([MODES_CONTROLLER, MODES_DEBUG])) {
                 controllerContainer.className = className;
             }
         }
@@ -2754,7 +2813,7 @@
          * @returns {void}
          */
         const scanGameControllers = () => {
-            let gamepadList = getGamePads();
+            let gamepadList = Gamepad.getGamePads();
             let controllerIndex = parameterSetting.controllerIndex();
             let gamepad = gamepadList[controllerIndex];
             updateDebug(gamepadList);
