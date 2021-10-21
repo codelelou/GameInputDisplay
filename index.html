@@ -215,24 +215,29 @@
             position: absolute;
             top: 0;
             left: 0;
+            max-width: 100%;
+            max-height: 100%;
             font-size: 24px;
             line-height: 38px;
+            overflow: hidden;
         }
         #GIDKeyLog > ul {
             display: none;
             flex-direction: row;
             margin: 0;
-            padding-left: 38px;
-        } /* #GIDKeyLog > ul[class*="StickB_Press_"],
+            padding: 0 0 0 38px;
+        } #GIDKeyLog > ul[class*="StickB_Press_"],
         #GIDKeyLog > ul[class*="StickL_Press_"],
-        #GIDKeyLog > ul[class*="Button_Press_"], */
-        #GIDKeyLog > ul[class*="_Press_"] {
+        #GIDKeyLog > ul[class*="Button_Press_"] {
             display: flex;
+            min-width: 42px;
+            min-height: 42px;
         }
         #GIDKeyLog > ul > li {
             display: none;
         } #GIDKeyLog > ul[class*="_Press_"] > li {
             display: inline-block;
+            vertical-align: middle;
         } #GIDKeyLog > ul[class*="_Press_"] > li::before,
         #GIDKeyLog > ul[class*="_Press_"] > li::after {
             display: inline-block;
@@ -247,20 +252,24 @@
         }
 
         /* Key Log: Directional */
-        #GIDKeyLog > ul[class*="_Press_"] > li:nth-child(1)::before {
-            margin-left: -36px;
+        #GIDKeyLog > ul[class*="_Press_"] > li:nth-child(1) {
+            display: flex;
+            flex-direction: row;
+        }
+        #GIDKeyLog > ul[class*="_Press_"] > li:nth-child(1)::before,
+        #GIDKeyLog > ul[class*="_Press_"] > li:nth-child(1)::after {
+            margin: 3px 0 0 -34px;
+        } #GIDKeyLog > ul[class*="_Press_"] > li:nth-child(1)::before {
             background-color: #000000;
             border-radius: 20%;
-        } #GIDKeyLog > ul[class*="StickB_"][class*="_Press_"] > li:nth-child(1)::before,
-        #GIDKeyLog > ul[class*="StickL_"][class*="_Press_"] > li:nth-child(1)::before {
-            content: "";
-        }
-        #GIDKeyLog > ul[class*="_Press_"] > li:nth-child(1)::after {
-            margin-left: -36px;
+        } #GIDKeyLog > ul[class*="_Press_"] > li:nth-child(1)::after {
             width: 36px;
             line-height: 36px;
             color: #ffffff;
             font-weight: 900;
+        } #GIDKeyLog > ul[class*="StickB_"][class*="_Press_"] > li:nth-child(1)::before,
+        #GIDKeyLog > ul[class*="StickL_"][class*="_Press_"] > li:nth-child(1)::before {
+            content: "";
         }
         #GIDKeyLog > ul[class*="StickB_"][class*="_Press_"] > li:nth-child(1)::after,
         #GIDKeyLog > ul[class*="StickL_"][class*="_Press_"] > li:nth-child(1)::after {
@@ -340,10 +349,51 @@
             border: #000000 2px solid;
         }
 
+        /* Key Log: Horizontally: Up to Down */
+        #GameInputDisplay[data-styles~="KeyLog_Horizontally_UD"] > #GIDKeyLog {
+            flex-direction: row;
+        }
+        #GameInputDisplay[data-styles~="KeyLog_Horizontally_UD"] > #GIDKeyLog > ul[class*="_Press_"] {
+            flex-direction: column;
+            padding: 42px 0 0 0;
+        } #GameInputDisplay[data-styles~="KeyLog_Horizontally_UD"] > #GIDKeyLog > ul > li:nth-child(1) {
+            flex-direction: column;
+            line-height: 0;
+        } #GameInputDisplay[data-styles~="KeyLog_Horizontally_UD"] > #GIDKeyLog > ul > li:nth-child(1)::before {
+            margin: -38px 0 0 3px;
+        }
+        #GameInputDisplay[data-styles~="KeyLog_Horizontally_UD"] > #GIDKeyLog > ul > li:nth-child(1)::after {
+            margin: -34px 0 0 0;
+        }
+
+        /* Key Log: Horizontally: Down to Up */
+        #GameInputDisplay[data-styles~="KeyLog_Horizontally_DU"] > #GIDGameController::before,
+        #GameInputDisplay[data-styles~="KeyLog_Horizontally_DU"] > #GIDGameController > li {
+            background-position: right top;
+        }
+        #GameInputDisplay[data-styles~="KeyLog_Horizontally_DU"] > #GIDKeyLog {
+            flex-direction: row;
+            top: unset;
+            bottom: 0;
+        }
+        #GameInputDisplay[data-styles~="KeyLog_Horizontally_DU"] > #GIDKeyLog > ul[class*="_Press_"] {
+            flex-direction: column-reverse;
+            padding: 0 0 42px 0;
+        } #GameInputDisplay[data-styles~="KeyLog_Horizontally_DU"] > #GIDKeyLog > ul > li:nth-child(1) {
+            flex-direction: column;
+            line-height: 0;
+        } #GameInputDisplay[data-styles~="KeyLog_Horizontally_DU"] > #GIDKeyLog > ul > li:nth-child(1)::before {
+            margin: 0 0 -34px 3px;
+        }
+        #GameInputDisplay[data-styles~="KeyLog_Horizontally_DU"] > #GIDKeyLog > ul > li:nth-child(1)::after {
+            margin: 0 0 -38px 0;
+        }
+
         /* [Styles: KeyLog_ButtonSymbol_PS_DualShock] */
         #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
             content: unset;
             background-color: unset;
+            color: #000000;
             transform: unset;
         }
         #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(11)::after,
@@ -374,7 +424,7 @@
         #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_11 > li:nth-child(27)::after,
         #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_16 > li:nth-child(32)::after,
         #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_17 > li:nth-child(33)::after {
-            background-color: rgba(64, 64, 64, .3);
+            background-color: rgba(255, 255, 255, .7);
             border-radius: 30%;
             font-size: 18px;
             font-weight: 900;
@@ -816,7 +866,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background-position: 50% 0;
+            background-position: right bottom;
             background-repeat: no-repeat;
             background-size: contain;
         }
@@ -1391,7 +1441,7 @@
 	<title>Game Input Display</title>
 </head>
 <body>
-    <div id="GameInputDisplay" data-version="01.05.02">
+    <div id="GameInputDisplay" data-version="01.05.03" data-standby="true">
         <ul id="GIDGameController"><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ul>
         <div id="GIDKeyLog">
         </div>
@@ -1882,7 +1932,7 @@
             /**
              * Get the all
              * 
-             * @return {Button[]}
+             * @returns {Button[]}
              */
             getAll = () => {
                 return this._buttons;
@@ -2476,7 +2526,7 @@
             /**
              * Log limit
              * 
-             * @return {number}
+             * @returns {number}
              */
             logLimit = () => {
                 return this._logLimit;
@@ -2517,12 +2567,13 @@
             updateParams = () => {
 
                 let buttonIndexConverts = new Map();
-                let directionalButtons = {
-                    up: [],
-                    down: [],
-                    left: [],
-                    right: []
-                };
+                let directionalButtons = ParameterSetting.DEFAULT_DIRECTIONAL_BUTTONS;
+                // let directionalButtons = {
+                //     up: [],
+                //     down: [],
+                //     left: [],
+                //     right: []
+                // };
 
                 let biConverts = this.find(ParameterSetting.KEY_BUTTON_INDEX_CONVERTS);
                 let dButtons = this.find(ParameterSetting.KEY_DIRECTIONAL_BUTTON_INDEXES);
@@ -2589,7 +2640,7 @@
                  * 
                  * @type {DirectionalButtonsHash}
                  */
-                this._directional = directionalButtons;
+                this._directionalButtons = directionalButtons;
 
                 /**
                  * Exclude buttons
@@ -2857,6 +2908,9 @@
             baseContainer.dataset.log = parameterSetting.logLimit();
             baseContainer.dataset.excludeButtons = parameterSetting.excludeButtons().join(" ");
             updateSettingsContainer();
+            window.setTimeout((() => {
+                baseContainer.dataset.standby = "false";
+            }), 3000);
         }
 
         /**
