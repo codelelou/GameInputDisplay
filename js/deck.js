@@ -783,7 +783,8 @@ class Deck {
                         this.find(button.index()).forEach(item => {
                             let container = item.container(true);
                             if (container) {
-                                if (!mediaViewerContainer.querySelector(`[data-value="${item.value()}"][data-index*="ButtonIndex_${button.index()}"]`)) {
+                                let itemValueHash = encodeURIComponent(item.value());
+                                if (!mediaViewerContainer.querySelector(`[data-value="${itemValueHash}"][data-index*="ButtonIndex_${button.index()}"]`)) {
                                     let rapper = document.createElement("div");
                                     let indexes = [];
                                     item.indexes().forEach(index => {
@@ -791,7 +792,7 @@ class Deck {
                                     });
                                     rapper.dataset.type = item.type();
                                     rapper.dataset.index = indexes.join(" ");
-                                    rapper.dataset.value = item.value();
+                                    rapper.dataset.value = itemValueHash;
                                     rapper.append(container.get());
                                     mediaViewerContainer.append(rapper);
                                 }
