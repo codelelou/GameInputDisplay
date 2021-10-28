@@ -1,0 +1,1668 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    overflow: hidden;
+}
+
+ul {
+    display: block;
+    list-style: none;
+}
+
+#GameInputDisplay:not([data-modes~="Debug"]) > #GIDDebug,
+#GameInputDisplay:not([data-modes~="Debug"]) > #GIDSettings,
+#GameInputDisplay:not([data-modes~="Debug"]) > #GIDGenerator,
+#GameInputDisplay:not([data-modes~="Debug"]):not([data-modes~="Controller"]) > #GIDGameController,
+#GameInputDisplay:not([data-modes~="Debug"]):not([data-modes~="KeyLog"]) > #GIDKeyLog {
+    display: none;
+} #GameInputDisplay[data-modes~="Debug"] > #GIDGameController,
+#GameInputDisplay[data-modes~="Debug"] > #GIDKeyLog {
+    /* margin-top: 40px; */
+} #GameInputDisplay[data-modes~="Debug"]::after {
+    content: "ver." attr(data-version);
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    padding: 2px 4px;
+    height: 36px;
+    line-height: 36px;
+    background-color: rgba(0, 0, 0, .9);
+    color: #ffffff;
+    font-size: 24px;
+    text-align: left;
+}
+
+/* Settings */
+#GIDSettings {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    color: #ffffff;
+    font-size: 85%;
+    z-index: 700;
+}
+#GIDSettings > dt,
+#GIDSettings > dd {
+    margin: 0;
+    padding: 0;
+    align-self: flex-end;
+    border-bottom: rgba(255, 255, 255, .7) 1px solid;
+} #GIDSettings > dt {
+    font-weight: 900;
+} #GIDSettings > dd {
+    margin-right: 12px;
+    padding: 0 4px;
+    min-width: 30px;
+    text-align: center;
+}
+#GIDSettings > dd > dl {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+#GIDSettings > dd > dl > dt,
+#GIDSettings > dd > dl > dd {
+    margin: 0;
+    padding: 0;
+    align-self: flex-end;
+} #GIDSettings > dd > dl > dt {
+    margin-left: 8px;
+    padding: 1px;
+    font-weight: 900;
+}
+
+/* Debug */
+#GIDDebug {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    padding: 10px;
+    width: 100%;
+    max-height: calc(100% - 120px);
+    background-color: rgba(0, 0, 0, .9);
+    color: #ffffff;
+    list-style: none;
+    overflow: auto;
+    z-index: 500;
+} #GIDDebug::before,
+#GIDDebug::after {
+    display: block;
+    position: fixed;
+    bottom: 4px;
+    height: 32px;
+    line-height: 32px;
+    color: rgba(255, 255, 255, .6);
+    text-align: left;
+} #GIDDebug::before {
+    content: "[Lag]";
+    right: 50px;
+    font-size: 14px;
+} #GIDDebug::after {
+    content: attr(data-lag);
+    right: 10px;
+    font-size: 28px;
+}
+#GIDDebug > li {
+    margin: 0;
+    padding: 0;
+}
+
+#GIDDebug > .controllers > dl {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 30px 0 0 0;
+} #GIDDebug > .controllers > dl:not([data-connected="true"]) {
+    display: none;
+} #GIDDebug > .controllers > dl:not(:first-child) {
+}
+#GIDDebug > .controllers > dl:not(.buttons) > dt,
+#GIDDebug > .controllers > dl:not(.buttons) > dd {
+    align-self: flex-end;
+    border-bottom: rgba(255, 255, 255, .7) 1px solid;
+} #GIDDebug > .controllers > dl > dt {
+    padding-right: 8px;
+    font-weight: 900;
+} #GIDDebug > .controllers > dl > dt:not(.id):not(.index):not(.axes):not(.buttons) {
+    margin-left: 12px;
+} #GIDDebug > .controllers > dl > dd {
+    margin: 0;
+    min-width: 50px;
+    text-align: center;
+}
+#GIDDebug > .controllers > dl > dt.id {
+    display: none;
+}
+#GIDDebug > .controllers > dl > dd.id {
+    width: 100%;
+    border: none;
+    font-size: 130%;
+    font-weight: 900;
+    order: 0;
+    text-align: left;
+}
+#GIDDebug > .controllers > dl > dt.axes,
+#GIDDebug > .controllers > dl > dd.axes,
+#GIDDebug > .controllers > dl > dt.buttons,
+#GIDDebug > .controllers > dl > dd.buttons {
+    width: 100%;
+    border: none;
+} #GIDDebug > .controllers > dl > dt.axes,
+#GIDDebug > .controllers > dl > dt.buttons {
+    margin-top: 8px;
+}
+#GIDDebug > .controllers > dl > dd > ol {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    font-size: 75%;
+    list-style-position: inside;
+}
+#GIDDebug > .controllers > dl > dd > ol > li {
+    position: relative;
+    margin: 0;
+    padding: 0 4px;
+    min-width: 30px;
+    line-height: 24px;
+    border: #808080 1px solid;
+    text-align: center;
+} #GIDDebug > .controllers > dl > dd.axes > ol > li {
+    min-width: 160px;
+} #GIDDebug > .controllers > dl > dd > ol > li::before {
+    content: "\A";
+    white-space: pre;
+} #GIDDebug > .controllers > dl > dd > ol > li::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 24px;
+    background-color: rgba(255, 255, 255, .3);
+} #GIDDebug > .controllers > dl > dd > ol > li[data-pressed="true"] {
+    background-color: rgba(255, 255, 255, .7);
+    color: #000000;
+    font-weight: 900;
+}
+
+/* Generator */
+#GIDGenerator {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    padding: 30px 0 0 0;
+    width: 960px;
+    background-color: rgba(255, 255, 255, .9);
+    border:rgba(0, 0, 0, 1) 5px solid;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    overflow: hidden;
+    transform: translate(-50%, 0);
+    z-index: 800;
+}
+
+#GIDGenerator #generator {
+    display: block;
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    padding: 20px;
+    width: 20px;
+    height: 24px;
+    overflow: hidden;
+    visibility: hidden;
+}
+#GIDGenerator #generator:not(:checked) ~ ul {
+    display: none;
+}
+
+#GIDGenerator fieldset {
+    margin: 16px 0 0 0;
+}
+#GIDGenerator fieldset legend {
+    padding: 0 8px;
+    text-align: left;
+}
+
+#GIDGenerator h1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    background-color: rgba(0, 0, 0, 1);
+    color: #ffffff;
+    font-size: 18px;
+    text-align: center;
+} #GIDGenerator h1 label {
+    display: block;
+    cursor: pointer;
+}
+#GIDGenerator h2 {
+    margin: 16px 0 8px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+#GIDGenerator input[type="number"]:not(:placeholder-shown),
+#GIDGenerator input[type="text"]:not(:placeholder-shown) {
+    font-weight: 900;
+}
+#GIDGenerator input[type="number"] {
+    text-align: right;
+} #GIDGenerator input[type="button"] {
+    cursor: pointer;
+} #GIDGenerator input[maxlength="1"] {
+    width: 36px;
+} #GIDGenerator input[maxlength="2"] {
+    width: 42px;
+} #GIDGenerator input[maxlength="3"] {
+    width: 50px;
+}
+
+#GIDGenerator label {
+    display: inline-block;
+    font-weight: 900;
+}
+
+#GIDGenerator select {
+    cursor: pointer;
+}
+
+#GIDGenerator ul,
+#GIDGenerator li {
+    margin: 0;
+    padding: 0;
+} #GIDGenerator > ul {
+    margin: 0;
+    padding: 16px 16px 90px 16px;
+    width: 100%;
+    height: 800px;
+    overflow: auto;
+} #GIDGenerator > ul > li {
+    margin: 16px 0 0 0;
+}
+
+#GIDGenerator .note {
+    display: inline;
+    font-size: 80%;
+    word-wrap: break-all !important;
+}
+
+#GIDGenerator input:invalid:focus {
+    background-color: rgba(255, 255, 0, 1);
+} #GIDGenerator input:invalid {
+    background-color: rgba(255, 0, 0, .7);
+} #GIDGenerator input:not([value=""]) {
+    /* border:rgba(0, 0, 0, 1) 2px solid; */
+}
+
+#GIDGenerator .modes,
+#GIDGenerator .controller,
+#GIDGenerator .delay {
+    display: inline-block;
+    margin: 0 16px 0 0;
+    width: 30%;
+    vertical-align: top;
+} #GIDGenerator .modes label,
+#GIDGenerator .controller label,
+#GIDGenerator .delay label {
+}
+
+#GIDGenerator #excludes,
+#GIDGenerator #converts {
+    width: 100%;
+}
+
+#GIDGenerator .directionals > fieldset > label {
+    width: 24%;
+    font-weight: normal;
+}
+#GIDGenerator .directionals > fieldset > label input {
+    margin: 0 0 0 2px;
+    width: calc(100% - 60px);
+}
+
+#GIDGenerator #styles {
+    width: 100%;
+}
+
+#GIDGenerator .keyLog li {
+    display: inline-block;
+    width: 48%;
+}
+
+#GIDGenerator .deck ul {
+    text-align: center;
+}
+#GIDGenerator .deck input[name="deckIndex"] {
+    width: 50px;
+    text-align: right;
+}
+#GIDGenerator .deck input[name="deckValue"] {
+    margin: 1px 0 1px 2px;
+    width: calc(100% - 60px);
+}
+#GIDGenerator #deckAdd {
+    display: block;
+    margin: 10px 0 0 auto;
+}
+#GIDGenerator .deck li:first-child [name="deckDel"] {
+    /* visibility: hidden;
+    pointer-events : none; */
+}
+#GIDGenerator [name="deckFile"] {
+    display: none;
+}
+
+#GIDGenerator .generate {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background-color: rgba(0, 0, 0, .8);
+    text-align: center;
+}
+#GIDGenerator #generate {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+
+}
+#GIDGenerator #result {
+    display: block;
+    position: absolute;
+    bottom: 38px;
+    left: 50%;
+    margin: 0 auto;
+    padding: 0 8px 2px 8px;
+    width: 90%;
+    background: transparent;
+    border: none;
+    border-bottom: rgba(255, 255, 255, 1) 1px solid;
+    color: #ffffff;
+    transform: translateX(-50%);
+}
+
+/* Key Log */
+#GIDKeyLog {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    max-height: 100%;
+    font-size: 24px;
+    line-height: 38px;
+    overflow: hidden;
+}
+#GIDKeyLog > ul {
+    display: none;
+    flex-direction: row;
+    margin: 0;
+    padding: 0 0 0 38px;
+} #GIDKeyLog > ul[class*="StickB_Press_"],
+#GIDKeyLog > ul[class*="StickL_Press_"],
+#GIDKeyLog > ul[class*="Button_Press_"] {
+    display: flex;
+    min-width: 42px;
+    min-height: 42px;
+}
+#GIDKeyLog > ul > li {
+    display: none;
+} #GIDKeyLog > ul[class*="_Press_"] > li {
+    display: inline-block;
+    vertical-align: middle;
+} #GIDKeyLog > ul[class*="_Press_"] > li::before,
+#GIDKeyLog > ul[class*="_Press_"] > li::after {
+    display: inline-block;
+    margin: 1px;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    border-radius: 100%;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Key Log: Directional */
+#GIDKeyLog > ul[class*="_Press_"] > li:nth-child(1) {
+    display: flex;
+    flex-direction: row;
+}
+#GIDKeyLog > ul[class*="_Press_"] > li:nth-child(1)::before,
+#GIDKeyLog > ul[class*="_Press_"] > li:nth-child(1)::after {
+    margin: 3px 0 0 -34px;
+} #GIDKeyLog > ul[class*="_Press_"] > li:nth-child(1)::before {
+    background-color: #000000;
+    border-radius: 20%;
+} #GIDKeyLog > ul[class*="_Press_"] > li:nth-child(1)::after {
+    width: 36px;
+    line-height: 36px;
+    color: #ffffff;
+    font-weight: 900;
+} #GIDKeyLog > ul[class*="StickB_"][class*="_Press_"] > li:nth-child(1)::before,
+#GIDKeyLog > ul[class*="StickL_"][class*="_Press_"] > li:nth-child(1)::before {
+    content: "";
+}
+#GIDKeyLog > ul[class*="StickB_"][class*="_Press_"] > li:nth-child(1)::after,
+#GIDKeyLog > ul[class*="StickL_"][class*="_Press_"] > li:nth-child(1)::after {
+    content: "\2B06";  /* Upwards Arrow */
+}
+/* Key Log: Directional: Left */
+#GIDKeyLog > ul.StickB_Left > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickL_Left > li:nth-child(1)::after {
+    transform: rotate(270deg);
+}
+/* Key Log: Directional: Right */
+#GIDKeyLog > ul.StickB_Right > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickL_Right > li:nth-child(1)::after {
+    transform: rotate(90deg);
+}
+/* Key Log: Directional: Down */
+#GIDKeyLog > ul.StickB_Down > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickB_Down.StickB_Left.StickB_Right > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickB_Down.StickB_Left.StickL_Right > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickB_Down.StickB_Right.StickL_Left > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickL_Down > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickL_Down.StickB_Left.StickB_Right > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickL_Down.StickB_Left.StickL_Right > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickL_Down.StickB_Right.StickL_Left > li:nth-child(1)::after {
+    transform: rotate(180deg);
+}
+/* Key Log: Directional: Down and Left */
+#GIDKeyLog > ul.StickB_Down.StickB_Left > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickB_Down.StickL_Left > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickB_Left.StickL_Down > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickL_Down.StickL_Left > li:nth-child(1)::after {
+    transform: rotate(225deg);
+}
+/* Key Log: Directional: Down and Right */
+#GIDKeyLog > ul.StickB_Down.StickB_Right > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickB_Down.StickL_Right > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickB_Right.StickL_Down > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickL_Down.StickL_Right > li:nth-child(1)::after {
+    transform: rotate(135deg);
+}
+/* Key Log: Directional: Up and Left */
+#GIDKeyLog > ul.StickB_Up.StickB_Left > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickB_Up.StickL_Left > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickB_Left.StickL_Up > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickL_Up.StickL_Left > li:nth-child(1)::after {
+    transform: rotate(315deg);
+}
+/* Key Log: Directional: Up and Right */
+#GIDKeyLog > ul.StickB_Up.StickB_Right > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickB_Up.StickL_Right > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickB_Right.StickL_Up > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickL_Up.StickL_Right > li:nth-child(1)::after {
+    transform: rotate(45deg);
+}
+/* Key Log: Directional: Up */
+#GIDKeyLog > ul.StickB_Up > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickB_Up.StickB_Left.StickB_Right > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickB_Up.StickB_Left.StickL_Right > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickB_Up.StickB_Right.StickL_Left > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickL_Up > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickL_Up.StickB_Left.StickB_Right > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickL_Up.StickB_Left.StickL_Right > li:nth-child(1)::after,
+#GIDKeyLog > ul.StickL_Up.StickB_Right.StickL_Left > li:nth-child(1)::after {
+    transform: unset;
+}
+/* Key Log: Directional: Left and Right */
+#GIDKeyLog > ul[class*="_Press_"].StickB_Left.StickB_Right:not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
+#GIDKeyLog > ul[class*="_Press_"].StickB_Left.StickL_Right:not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
+#GIDKeyLog > ul[class*="_Press_"].StickB_Right.StickL_Left:not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
+#GIDKeyLog > ul[class*="_Press_"].StickL_Left.StickL_Right:not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after {
+    content: "\2B0C";  /* Left Right Arrow */
+    transform: unset;
+}
+
+/* Key Log: Button */
+#GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
+    border: #000000 2px solid;
+}
+
+/* Key Log: Horizontally: Up to Down */
+#GameInputDisplay[data-styles~="KeyLog_Horizontally_UD"] > #GIDKeyLog {
+    flex-direction: row;
+}
+#GameInputDisplay[data-styles~="KeyLog_Horizontally_UD"] > #GIDKeyLog > ul[class*="_Press_"] {
+    flex-direction: column;
+    padding: 42px 0 0 0;
+} #GameInputDisplay[data-styles~="KeyLog_Horizontally_UD"] > #GIDKeyLog > ul > li:nth-child(1) {
+    flex-direction: column;
+    line-height: 0;
+} #GameInputDisplay[data-styles~="KeyLog_Horizontally_UD"] > #GIDKeyLog > ul > li:nth-child(1)::before {
+    margin: -38px 0 0 3px;
+}
+#GameInputDisplay[data-styles~="KeyLog_Horizontally_UD"] > #GIDKeyLog > ul > li:nth-child(1)::after {
+    margin: -34px 0 0 0;
+}
+
+/* Key Log: Horizontally: Down to Up */
+#GameInputDisplay[data-styles~="KeyLog_Horizontally_DU"] > #GIDGameController::before,
+#GameInputDisplay[data-styles~="KeyLog_Horizontally_DU"] > #GIDGameController > li {
+    background-position: right top;
+}
+#GameInputDisplay[data-styles~="KeyLog_Horizontally_DU"] > #GIDKeyLog {
+    flex-direction: row;
+    top: unset;
+    bottom: 0;
+}
+#GameInputDisplay[data-styles~="KeyLog_Horizontally_DU"] > #GIDKeyLog > ul[class*="_Press_"] {
+    flex-direction: column-reverse;
+    padding: 0 0 42px 0;
+} #GameInputDisplay[data-styles~="KeyLog_Horizontally_DU"] > #GIDKeyLog > ul > li:nth-child(1) {
+    flex-direction: column;
+    line-height: 0;
+} #GameInputDisplay[data-styles~="KeyLog_Horizontally_DU"] > #GIDKeyLog > ul > li:nth-child(1)::before {
+    margin: 0 0 -34px 3px;
+}
+#GameInputDisplay[data-styles~="KeyLog_Horizontally_DU"] > #GIDKeyLog > ul > li:nth-child(1)::after {
+    margin: 0 0 -38px 0;
+}
+
+/* [Styles: KeyLog_ButtonSymbol_PS_DualShock] */
+#GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
+    content: unset;
+    background-color: unset;
+    color: #000000;
+    transform: unset;
+}
+#GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(17)::after {
+    font-size: 28px;
+    font-weight: 900;
+} #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(11)::after {
+    content: "\00D7";  /* × */
+    background-color: rgba(124, 178, 232, 1);
+} #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(13)::after {
+    content: "\25CF";  /* 〇 */
+    background-color: rgba(255, 102, 102, 1);
+} #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(15)::after {
+    content: "\25A0";  /* □ */
+    background-color: rgba(255, 105, 248, 1);
+} #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(17)::after {
+    content: "\25B2";  /* △ */
+    background-color: rgba(64, 226, 160, 1);
+} #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(20)::after,
+#GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(26)::after,
+#GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_8 > li:nth-child(30)::after,
+#GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_9 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_10 > li:nth-child(22)::after,
+#GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_11 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_16 > li:nth-child(32)::after,
+#GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_17 > li:nth-child(33)::after {
+    background-color: rgba(255, 255, 255, .7);
+    border-radius: 30%;
+    font-size: 18px;
+    font-weight: 900;
+} #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_8 > li:nth-child(30)::after,
+#GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_9 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_17 > li:nth-child(33)::after {
+    padding-top: 6px;
+    height: 24px;
+    line-height: 10px;
+    font-size: 9px;
+    white-space: pre;
+} #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(20)::after {
+    content: "L1";
+} #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(25)::after {
+    content: "R1";
+} #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(21)::after {
+    content: "L2";
+} #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(26)::after {
+    content: "R2";
+} #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_8 > li:nth-child(30)::after {
+    content: "SHA\ARE";
+} #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_9 > li:nth-child(31)::after {
+    content: "OPT\AIONS";
+} #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_10 > li:nth-child(22)::after {
+    content: "L3";
+} #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_11 > li:nth-child(27)::after {
+    content: "R3";
+} #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_16 > li:nth-child(32)::after {
+    content: "PS";
+} #GameInputDisplay[data-styles~="KeyLog_ButtonSymbol_PS_DualShock"] > #GIDKeyLog > ul.Button_Press_17 > li:nth-child(33)::after {
+    content: "Touch\Apad";
+}
+
+/* [KeyLog: Street Fighter V] Key Log: Button */
+#GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
+    content: unset;
+    color: unset;
+    background-color: unset;
+    transform: unset;
+}
+/* [KeyLog: Street Fighter V] Key Log: Button: Punch: Light */
+#GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(11)::after {
+    content: "\1F44A";
+    background-color: #00ffff;
+}
+/* [KeyLog: Street Fighter V] Key Log: Button: Punch: Med */
+#GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(13)::after {
+    content: "\1F44A";
+    background-color: #ffff00;
+}
+/* [KeyLog: Street Fighter V] Key Log: Button: Punch: Heavy */
+#GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(15)::after {
+    content: "\1F44A";
+    background-color: #ff0000;
+}
+/* [KeyLog: Street Fighter V] Key Log: Button: Kick: Light */
+#GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(21)::after {
+    content: "\1F9B6";
+    background-color: #00ffff;
+    transform: rotate(60deg);
+}
+/* [KeyLog: Street Fighter V] Key Log: Button: Kick: Med */
+#GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(23)::after {
+    content: "\1F9B6";
+    background-color: #ffff00;
+    transform: rotate(60deg);
+}
+/* [KeyLog: Street Fighter V] Key Log: Button: Kick: Heavy */
+#GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_StreetFighterV"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(25)::after {
+    content: "\1F9B6";
+    background-color: #ff0000;
+    transform: rotate(60deg);
+}
+
+/* [Styles: KeyLog_SFV_ProPad] Key Log: Button */
+#GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
+    content: unset;
+    background-color: unset;
+    transform: unset;
+}
+/* [Styles: KeyLog_SFV_ProPad] Key Log: Button: Punch: Light */
+#GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(11)::after {
+    content: "\1F44A";
+    background-color: #00ffff;
+}
+/* [Styles: KeyLog_SFV_ProPad] Key Log: Button: Punch: Med */
+#GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(13)::after {
+    content: "\1F44A";
+    background-color: #ffff00;
+}
+/* [Styles: KeyLog_SFV_ProPad] Key Log: Button: Punch: Heavy */
+#GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(15)::after {
+    content: "\1F44A";
+    background-color: #ff0000;
+}
+/* [Styles: KeyLog_SFV_ProPad] Key Log: Button: Kick: Light */
+#GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(21)::after {
+    content: "\1F9B6";
+    background-color: #00ffff;
+    transform: rotate(60deg);
+}
+/* [Styles: KeyLog_SFV_ProPad] Key Log: Button: Kick: Med */
+#GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(23)::after {
+    content: "\1F9B6";
+    background-color: #ffff00;
+    transform: rotate(60deg);
+}
+/* [Styles: KeyLog_SFV_ProPad] Key Log: Button: Kick: Heavy */
+#GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_ProPad"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(25)::after {
+    content: "\1F9B6";
+    background-color: #ff0000;
+    transform: rotate(60deg);
+}
+
+/* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button */
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
+    /* コマンド入力（矢印アイコン）以外の標準設定されているパンチやキックのアイコンの設定をリセット */
+    content: unset;
+    color: unset;
+    background-color: unset;
+    transform: unset;
+}
+/* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button: Punch: Light （弱パンチ） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(11)::after {
+    content: "\1F44A";  /* パンチアイコン（ユニコード） */
+    background-color: #00ffff;  /* 青色 */
+}
+/* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button: Punch: Med （中パンチ） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(13)::after {
+    content: "\1F44A";  /* パンチアイコン（ユニコード） */
+    background-color: #ffff00;  /* 黄色 */
+}
+/* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button: Punch: Heavy （強パンチ） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(15)::after {
+    content: "\1F44A";  /* パンチアイコン（ユニコード） */
+    background-color: #ff0000;  /* 赤色 */
+}
+/* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button: Kick: Light （弱キック） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(21)::after {
+    content: "\1F9B6";  /* キックアイコン（ユニコード） */
+    background-color: #00ffff;  /* 青色 */
+    transform: rotate(60deg);  /* アイコンの傾き */
+}
+/* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button: Kick: Med （中キック） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(23)::after {
+    content: "\1F9B6";  /* キックアイコン（ユニコード） */
+    background-color: #ffff00;  /* 黄色 */
+    transform: rotate(60deg);  /* アイコンの傾き */
+}
+/* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK] Key Log: Button: Kick: Heavy （強キック） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VTrigger_B7HK"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(25)::after {
+    content: "\1F9B6";  /* キックアイコン（ユニコード） */
+    background-color: #ff0000;  /* 赤色 */
+    transform: rotate(60deg);  /* アイコンの傾き */
+}
+
+/* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button */
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
+    /* コマンド入力（矢印アイコン）以外の標準設定されているパンチやキックのアイコンの設定をリセット */
+    content: unset;
+    color: unset;
+    background-color: unset;
+    transform: unset;
+}
+/* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button: Punch: Light （弱パンチ） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(11)::after {
+    content: "\1F44A";  /* パンチアイコン（ユニコード） */
+    background-color: #00ffff;  /* 青色 */
+}
+/* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button: Punch: Med （中パンチ） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(13)::after {
+    content: "\1F44A";  /* パンチアイコン（ユニコード） */
+    background-color: #ffff00;  /* 黄色 */
+}
+/* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button: Punch: Heavy （強パンチ） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(15)::after {
+    content: "\1F44A";  /* パンチアイコン（ユニコード） */
+    background-color: #ff0000;  /* 赤色 */
+}
+/* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button: Kick: Light （弱キック） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(21)::after {
+    content: "\1F9B6";  /* キックアイコン（ユニコード） */
+    background-color: #00ffff;  /* 青色 */
+    transform: rotate(60deg);  /* アイコンの傾き */
+}
+/* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button: Kick: Med （中キック） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(23)::after {
+    content: "\1F9B6";  /* キックアイコン（ユニコード） */
+    background-color: #ffff00;  /* 黄色 */
+    transform: rotate(60deg);  /* アイコンの傾き */
+}
+/* [KeyLog: Street Fighter V: KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK] Key Log: Button: Kick: Heavy （強キック） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_B0LK_B1MK_B2LP_B3MP_B4Throw_B5HP_B6VShift_B7HK"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(25)::after {
+    content: "\1F9B6";  /* キックアイコン（ユニコード） */
+    background-color: #ff0000;  /* 赤色 */
+    transform: rotate(60deg);  /* アイコンの傾き */
+}
+
+/* [KeyLog: Street Fighter V: KeyLog_SFV_KC] Key Log: Button */
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
+    /* コマンド入力（矢印アイコン）以外の標準設定されているパンチやキックのアイコンの設定をリセット */
+    content: unset;
+    color: unset;
+    background-color: unset;
+    transform: unset;
+}
+/* [KeyLog: Street Fighter V: KeyLog_SFV_KC] Key Log: Button: Punch: Light （弱パンチ） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PL_0"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PL_1"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PL_2"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PL_3"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PL_4"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PL_5"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PL_6"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PL_7"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PL_8"] > #GIDKeyLog > ul.Button_Press_8 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PL_9"] > #GIDKeyLog > ul.Button_Press_9 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PL_10"] > #GIDKeyLog > ul.Button_Press_10 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PL_11"] > #GIDKeyLog > ul.Button_Press_11 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PL_12"] > #GIDKeyLog > ul.Button_Press_12 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PL_13"] > #GIDKeyLog > ul.Button_Press_13 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PL_14"] > #GIDKeyLog > ul.Button_Press_14 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PL_15"] > #GIDKeyLog > ul.Button_Press_15 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PL_16"] > #GIDKeyLog > ul.Button_Press_16 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PL_17"] > #GIDKeyLog > ul.Button_Press_17 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PL_18"] > #GIDKeyLog > ul.Button_Press_18 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PL_19"] > #GIDKeyLog > ul.Button_Press_19 > li:nth-child(11)::after {
+    content: "\1F44A";  /* パンチアイコン（ユニコード） */
+    background-color: #00ffff;  /* 青色 */
+}
+/* [KeyLog: Street Fighter V: KeyLog_SFV_KC] Key Log: Button: Punch: Med （中パンチ） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PM_0"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PM_1"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PM_2"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PM_3"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PM_4"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PM_5"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PM_6"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PM_7"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PM_8"] > #GIDKeyLog > ul.Button_Press_8 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PM_9"] > #GIDKeyLog > ul.Button_Press_9 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PM_10"] > #GIDKeyLog > ul.Button_Press_10 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PM_11"] > #GIDKeyLog > ul.Button_Press_11 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PM_12"] > #GIDKeyLog > ul.Button_Press_12 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PM_13"] > #GIDKeyLog > ul.Button_Press_13 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PM_14"] > #GIDKeyLog > ul.Button_Press_14 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PM_15"] > #GIDKeyLog > ul.Button_Press_15 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PM_16"] > #GIDKeyLog > ul.Button_Press_16 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PM_17"] > #GIDKeyLog > ul.Button_Press_17 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PM_18"] > #GIDKeyLog > ul.Button_Press_18 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PM_19"] > #GIDKeyLog > ul.Button_Press_19 > li:nth-child(13)::after {
+    content: "\1F44A";  /* パンチアイコン（ユニコード） */
+    background-color: #ffff00;  /* 黄色 */
+}
+/* [KeyLog: Street Fighter V: KeyLog_SFV_KC] Key Log: Button: Punch: Heavy （強パンチ） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PH_0"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PH_1"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PH_2"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PH_3"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PH_4"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PH_5"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PH_6"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PH_7"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PH_8"] > #GIDKeyLog > ul.Button_Press_8 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PH_9"] > #GIDKeyLog > ul.Button_Press_9 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PH_10"] > #GIDKeyLog > ul.Button_Press_10 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PH_11"] > #GIDKeyLog > ul.Button_Press_11 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PH_12"] > #GIDKeyLog > ul.Button_Press_12 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PH_13"] > #GIDKeyLog > ul.Button_Press_13 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PH_14"] > #GIDKeyLog > ul.Button_Press_14 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PH_15"] > #GIDKeyLog > ul.Button_Press_15 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PH_16"] > #GIDKeyLog > ul.Button_Press_16 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PH_17"] > #GIDKeyLog > ul.Button_Press_17 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PH_18"] > #GIDKeyLog > ul.Button_Press_18 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_PH_19"] > #GIDKeyLog > ul.Button_Press_19 > li:nth-child(15)::after {
+    content: "\1F44A";  /* パンチアイコン（ユニコード） */
+    background-color: #ff0000;  /* 赤色 */
+}
+/* [KeyLog: Street Fighter V: KeyLog_SFV_KC] Key Log: Button: Kick: Light （弱キック） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KL_0"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KL_1"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KL_2"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KL_3"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KL_4"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KL_5"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KL_6"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KL_7"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KL_8"] > #GIDKeyLog > ul.Button_Press_8 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KL_9"] > #GIDKeyLog > ul.Button_Press_9 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KL_10"] > #GIDKeyLog > ul.Button_Press_10 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KL_11"] > #GIDKeyLog > ul.Button_Press_11 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KL_12"] > #GIDKeyLog > ul.Button_Press_12 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KL_13"] > #GIDKeyLog > ul.Button_Press_13 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KL_14"] > #GIDKeyLog > ul.Button_Press_14 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KL_15"] > #GIDKeyLog > ul.Button_Press_15 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KL_16"] > #GIDKeyLog > ul.Button_Press_16 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KL_17"] > #GIDKeyLog > ul.Button_Press_17 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KL_18"] > #GIDKeyLog > ul.Button_Press_18 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KL_19"] > #GIDKeyLog > ul.Button_Press_19 > li:nth-child(21)::after {
+    content: "\1F9B6";  /* キックアイコン（ユニコード） */
+    background-color: #00ffff;  /* 青色 */
+    transform: rotate(60deg);  /* アイコンの傾き */
+}
+/* [KeyLog: Street Fighter V: KeyLog_SFV_KC] Key Log: Button: Kick: Med （中キック） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KM_0"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KM_1"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KM_2"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KM_3"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KM_4"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KM_5"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KM_6"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KM_7"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KM_8"] > #GIDKeyLog > ul.Button_Press_8 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KM_9"] > #GIDKeyLog > ul.Button_Press_9 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KM_10"] > #GIDKeyLog > ul.Button_Press_10 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KM_11"] > #GIDKeyLog > ul.Button_Press_11 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KM_12"] > #GIDKeyLog > ul.Button_Press_12 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KM_13"] > #GIDKeyLog > ul.Button_Press_13 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KM_14"] > #GIDKeyLog > ul.Button_Press_14 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KM_15"] > #GIDKeyLog > ul.Button_Press_15 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KM_16"] > #GIDKeyLog > ul.Button_Press_16 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KM_17"] > #GIDKeyLog > ul.Button_Press_17 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KM_18"] > #GIDKeyLog > ul.Button_Press_18 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KM_19"] > #GIDKeyLog > ul.Button_Press_19 > li:nth-child(23)::after {
+    content: "\1F9B6";  /* キックアイコン（ユニコード） */
+    background-color: #ffff00;  /* 黄色 */
+    transform: rotate(60deg);  /* アイコンの傾き */
+}
+/* [KeyLog: Street Fighter V: KeyLog_SFV_KC] Key Log: Button: Kick: Heavy （強キック） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KH_0"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KH_1"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KH_2"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KH_3"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KH_4"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KH_5"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KH_6"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KH_7"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KH_8"] > #GIDKeyLog > ul.Button_Press_8 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KH_9"] > #GIDKeyLog > ul.Button_Press_9 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KH_10"] > #GIDKeyLog > ul.Button_Press_10 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KH_11"] > #GIDKeyLog > ul.Button_Press_11 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KH_12"] > #GIDKeyLog > ul.Button_Press_12 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KH_13"] > #GIDKeyLog > ul.Button_Press_13 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KH_14"] > #GIDKeyLog > ul.Button_Press_14 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KH_15"] > #GIDKeyLog > ul.Button_Press_15 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KH_16"] > #GIDKeyLog > ul.Button_Press_16 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KH_17"] > #GIDKeyLog > ul.Button_Press_17 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KH_18"] > #GIDKeyLog > ul.Button_Press_18 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_KC_KH_19"] > #GIDKeyLog > ul.Button_Press_19 > li:nth-child(25)::after {
+    content: "\1F9B6";  /* キックアイコン（ユニコード） */
+    background-color: #ff0000;  /* 赤色 */
+    transform: rotate(60deg);  /* アイコンの傾き */
+}
+
+/* [KeyLog: Street Fighter V: Front6Pad: Lelou Guile] Key Log: Button */
+#GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul[class*="Button_"] > li:not(:nth-child(1))::after {
+    /* コマンド入力（矢印アイコン）以外の標準設定されているパンチやキックのアイコンの設定をリセット */
+    content: unset;
+    color: unset;
+    background-color: unset;
+    transform: unset;
+}
+/* [KeyLog: Street Fighter V: Front6Pad: Lelou Guile] Key Log: Button: Punch: Light （弱パンチ） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul.Button_Press_2 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(11)::after {
+    content: "\1F44A";  /* パンチアイコン（ユニコード） */
+    background-color: #00ffff;  /* 青色 */
+}
+/* [KeyLog: Street Fighter V: Front6Pad: Lelou Guile] Key Log: Button: Punch: Med （中パンチ） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul.Button_Press_3 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul.Button_Press_5 > li:nth-child(13)::after {
+    content: "\1F44A";  /* パンチアイコン（ユニコード） */
+    background-color: #ffff00;  /* 黄色 */
+}
+/* [KeyLog: Street Fighter V: Front6Pad: Lelou Guile] Key Log: Button: Punch: Heavy （強パンチ） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul.Button_Press_4 > li:nth-child(15)::after {
+    content: "\1F44A";  /* パンチアイコン（ユニコード） */
+    background-color: #ff0000;  /* 赤色 */
+}
+/* [KeyLog: Street Fighter V: Front6Pad: Lelou Guile] Key Log: Button: Kick: Light （弱キック） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul.Button_Press_0 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(21)::after {
+    content: "\1F9B6";  /* キックアイコン（ユニコード） */
+    background-color: #00ffff;  /* 青色 */
+    transform: rotate(60deg);  /* アイコンの傾き */
+}
+/* [KeyLog: Street Fighter V: Front6Pad: Lelou Guile] Key Log: Button: Kick: Med （中キック）*/
+#GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul.Button_Press_1 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul.Button_Press_7 > li:nth-child(23)::after {
+    content: "\1F9B6";  /* キックアイコン（ユニコード） */
+    background-color: #ffff00;  /* 黄色 */
+    transform: rotate(60deg);  /* アイコンの傾き */
+}
+/* [KeyLog: Street Fighter V: Front6Pad: Lelou Guile] Key Log: Button: Kick: Heavy （強キック） */
+#GameInputDisplay[data-styles~="KeyLog_SFV_Lelou_Front6Pad"] > #GIDKeyLog > ul.Button_Press_6 > li:nth-child(25)::after {
+    content: "\1F9B6";  /* キックアイコン（ユニコード） */
+    background-color: #ff0000;  /* 赤色 */
+    transform: rotate(60deg);  /* アイコンの傾き */
+}
+
+/* Game Controller */
+#GIDGameController {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 960px;
+    height: 100%;
+} #GIDGameController::before {
+    content: '';
+    display: block;
+}
+#GIDGameController::before,
+#GIDGameController > li {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+/* Skin: ProPad */
+#GameInputDisplay[data-styles~="ProPad"] > ul::before {
+    background-image: url("../skins/ProPad/Base.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul > li {
+    /* 他のスキンをリセット */
+    background-image: unset;
+}
+/* 押したボタンの差分画像（ul.Button_{ボタン番号}） */
+#GameInputDisplay[data-styles~="ProPad"] > ul.Button_0 > li:nth-child(1) {
+    background-image: url("../skins/ProPad/Button_0.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_1 > li:nth-child(2) {
+    background-image: url("../skins/ProPad/Button_1.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_2 > li:nth-child(3) {
+    background-image: url("../skins/ProPad/Button_2.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_3 > li:nth-child(4) {
+    background-image: url("../skins/ProPad/Button_3.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_4 > li:nth-child(5) {
+    background-image: url("../skins/ProPad/Button_4.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_5 > li:nth-child(6) {
+    background-image: url("../skins/ProPad/Button_5.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_6 > li:nth-child(7) {
+    background-image: url("../skins/ProPad/Button_6.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_7 > li:nth-child(8) {
+    background-image: url("../skins/ProPad/Button_7.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_8 > li:nth-child(9) {
+    background-image: url("../skins/ProPad/Button_8.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_9 > li:nth-child(10) {
+    background-image: url("../skins/ProPad/Button_9.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_10 > li:nth-child(11) {
+    background-image: url("../skins/ProPad/Button_10.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_11 > li:nth-child(12) {
+    background-image: url("../skins/ProPad/Button_11.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_12 > li:nth-child(13),
+#GameInputDisplay[data-styles~="ProPad"] > ul.StickB_Up > li:nth-child(13) {
+    background-image: url("../skins/ProPad/Button_12.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_13 > li:nth-child(14),
+#GameInputDisplay[data-styles~="ProPad"] > ul.StickB_Down > li:nth-child(14) {
+    background-image: url("../skins/ProPad/Button_13.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_14 > li:nth-child(15),
+#GameInputDisplay[data-styles~="ProPad"] > ul.StickB_Left > li:nth-child(15) {
+    background-image: url("../skins/ProPad/Button_14.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_15 > li:nth-child(16),
+#GameInputDisplay[data-styles~="ProPad"] > ul.StickB_Right > li:nth-child(16) {
+    background-image: url("../skins/ProPad/Button_15.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_16 > li:nth-child(17) {
+    background-image: url("../skins/ProPad/Button_16.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_17 > li:nth-child(18) {
+    background-image: url("../skins/ProPad/Button_17.png");
+}
+/* 左スティックの差分画像 */
+#GameInputDisplay[data-styles~="ProPad"] > ul.StickL_Up > li:nth-child(30) {
+    background-image: url("../skins/ProPad/StickL_8.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.StickL_Down > li:nth-child(30) {
+    background-image: url("../skins/ProPad/StickL_2.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.StickL_Left > li:nth-child(30) {
+    background-image: url("../skins/ProPad/StickL_4.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.StickL_Right > li:nth-child(30) {
+    background-image: url("../skins/ProPad/StickL_6.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.StickL_Down.StickL_Left > li:nth-child(30) {
+    background-image: url("../skins/ProPad/StickL_1.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.StickL_Down.StickL_Right > li:nth-child(30) {
+    background-image: url("../skins/ProPad/StickL_3.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.StickL_Up.StickL_Left > li:nth-child(30) {
+    background-image: url("../skins/ProPad/StickL_7.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.StickL_Up.StickL_Right > li:nth-child(30) {
+    background-image: url("../skins/ProPad/StickL_9.png");
+}
+/* 右スティックの差分画像 */
+#GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Up > li:nth-child(40) {
+    background-image: url("../skins/ProPad/StickR_8.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Down > li:nth-child(40) {
+    background-image: url("../skins/ProPad/StickR_2.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Left > li:nth-child(40) {
+    background-image: url("../skins/ProPad/StickR_4.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Right > li:nth-child(40) {
+    background-image: url("../skins/ProPad/StickR_6.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Down.StickR_Left > li:nth-child(40) {
+    background-image: url("../skins/ProPad/StickR_1.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Down.StickR_Right > li:nth-child(40) {
+    background-image: url("../skins/ProPad/StickR_3.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Up.StickR_Left > li:nth-child(40) {
+    background-image: url("../skins/ProPad/StickR_7.png");
+} #GameInputDisplay[data-styles~="ProPad"] > ul.StickR_Up.StickR_Right > li:nth-child(40) {
+    background-image: url("../skins/ProPad/StickR_9.png");
+}
+/* コントローラーIndex識別用差分画像（Switchコンなどに見られる） */
+#GameInputDisplay[data-styles~="ProPad"][data-controller="0"] > ul > li:nth-child(42) {
+    background-image: url("../skins/ProPad/Controller_0.png");
+} #GameInputDisplay[data-styles~="ProPad"][data-controller="1"] > ul > li:nth-child(42) {
+    background-image: url("../skins/ProPad/Controller_1.png");
+} #GameInputDisplay[data-styles~="ProPad"][data-controller="2"] > ul > li:nth-child(42) {
+    background-image: url("../skins/ProPad/Controller_2.png");
+} #GameInputDisplay[data-styles~="ProPad"][data-controller="3"] > ul > li:nth-child(42) {
+    background-image: url("../skins/ProPad/Controller_3.png");
+}
+/* トリガーボタン（L2/R2）の入力強度の表現（.Button_Value_{入力強度%}_{ボタン番号}） */
+#GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_10_6 > li:nth-child(7),
+#GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_10_7 > li:nth-child(8) {
+    opacity: .1;  /* 不透明度 */
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_20_6 > li:nth-child(7),
+#GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_20_7 > li:nth-child(8) {
+    opacity: .2;  /* 不透明度 */
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_30_6 > li:nth-child(7),
+#GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_30_7 > li:nth-child(8) {
+    opacity: .3;  /* 不透明度 */
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_40_6 > li:nth-child(7),
+#GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_40_7 > li:nth-child(8) {
+    opacity: .4;  /* 不透明度 */
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_50_6 > li:nth-child(7),
+#GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_50_7 > li:nth-child(8) {
+    opacity: .5;  /* 不透明度 */
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_60_6 > li:nth-child(7),
+#GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_60_7 > li:nth-child(8) {
+    opacity: .6;  /* 不透明度 */
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_70_6 > li:nth-child(7),
+#GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_70_7 > li:nth-child(8) {
+    opacity: .7;  /* 不透明度 */
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_80_6 > li:nth-child(7),
+#GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_80_7 > li:nth-child(8) {
+    opacity: .8;  /* 不透明度 */
+} #GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_90_6 > li:nth-child(7),
+#GameInputDisplay[data-styles~="ProPad"] > ul.Button_Value_90_7 > li:nth-child(8) {
+    opacity: .9;  /* 不透明度 */
+}
+
+/* Skin: DualPad */
+#GameInputDisplay[data-styles~="DualPad"] > ul::before {
+    background-image: url("../skins/DualPad/Base.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul > li {
+    /* 他のスキンをリセット */
+    background-image: unset;
+} #GameInputDisplay[data-styles~="DualPad"] > ul.Button_0 > li:nth-child(1) {
+    background-image: url("../skins/DualPad/Button_0.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.Button_1 > li:nth-child(2) {
+    background-image: url("../skins/DualPad/Button_1.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.Button_2 > li:nth-child(3) {
+    background-image: url("../skins/DualPad/Button_2.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.Button_3 > li:nth-child(4) {
+    background-image: url("../skins/DualPad/Button_3.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.Button_4 > li:nth-child(5) {
+    background-image: url("../skins/DualPad/Button_4.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.Button_5 > li:nth-child(6) {
+    background-image: url("../skins/DualPad/Button_5.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.Button_6 > li:nth-child(7) {
+    background-image: url("../skins/DualPad/Button_6.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.Button_7 > li:nth-child(8) {
+    background-image: url("../skins/DualPad/Button_7.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.Button_8 > li:nth-child(9) {
+    background-image: url("../skins/DualPad/Button_8.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.Button_9 > li:nth-child(10) {
+    background-image: url("../skins/DualPad/Button_9.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.Button_10 > li:nth-child(11) {
+    background-image: url("../skins/DualPad/Button_10.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.Button_11 > li:nth-child(12) {
+    background-image: url("../skins/DualPad/Button_11.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.Button_12 > li:nth-child(13) {
+    background-image: url("../skins/DualPad/Button_12.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.Button_13 > li:nth-child(14) {
+    background-image: url("../skins/DualPad/Button_13.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.Button_14 > li:nth-child(15) {
+    background-image: url("../skins/DualPad/Button_14.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.Button_15 > li:nth-child(16) {
+    background-image: url("../skins/DualPad/Button_15.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.Button_16 > li:nth-child(17) {
+    background-image: url("../skins/DualPad/Button_16.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.Button_17 > li:nth-child(18) {
+    background-image: url("../skins/DualPad/Button_17.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.StickL_Up > li:nth-child(32) {
+    background-image: url("../skins/DualPad/StickL_Up.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.StickL_Down > li:nth-child(33) {
+    background-image: url("../skins/DualPad/StickL_Down.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.StickL_Left > li:nth-child(34) {
+    background-image: url("../skins/DualPad/StickL_Left.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.StickL_Right > li:nth-child(35) {
+    background-image: url("../skins/DualPad/StickL_Right.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.StickR_Up > li:nth-child(42) {
+    background-image: url("../skins/DualPad/StickR_Up.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.StickR_Down > li:nth-child(43) {
+    background-image: url("../skins/DualPad/StickR_Down.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.StickR_Left > li:nth-child(44) {
+    background-image: url("../skins/DualPad/StickR_Left.png");
+} #GameInputDisplay[data-styles~="DualPad"] > ul.StickR_Right > li:nth-child(45) {
+    background-image: url("../skins/DualPad/StickR_Right.png");
+}
+
+/* Skin: Front6Pad */
+#GameInputDisplay[data-styles~="Front6Pad"] > ul::before {
+    background-image: url("../skins/Front6Pad/Base.png");
+} #GameInputDisplay[data-styles~="Front6Pad"] > ul > li {
+    /* 他のスキンをリセット */
+    background-image: unset;
+} #GameInputDisplay[data-styles~="Front6Pad"] > ul.Button_0 > li:nth-child(1) {
+    background-image: url("../skins/Front6Pad/Button_0.png");
+} #GameInputDisplay[data-styles~="Front6Pad"] > ul.Button_1 > li:nth-child(2) {
+    background-image: url("../skins/Front6Pad/Button_1.png");
+} #GameInputDisplay[data-styles~="Front6Pad"] > ul.Button_2 > li:nth-child(3) {
+    background-image: url("../skins/Front6Pad/Button_2.png");
+} #GameInputDisplay[data-styles~="Front6Pad"] > ul.Button_3 > li:nth-child(4) {
+    background-image: url("../skins/Front6Pad/Button_3.png");
+} #GameInputDisplay[data-styles~="Front6Pad"] > ul.Button_4 > li:nth-child(5) {
+    background-image: url("../skins/Front6Pad/Button_4.png");
+} #GameInputDisplay[data-styles~="Front6Pad"] > ul.Button_5 > li:nth-child(6) {
+    background-image: url("../skins/Front6Pad/Button_5.png");
+} #GameInputDisplay[data-styles~="Front6Pad"] > ul.Button_6 > li:nth-child(7) {
+    background-image: url("../skins/Front6Pad/Button_6.png");
+} #GameInputDisplay[data-styles~="Front6Pad"] > ul.Button_7 > li:nth-child(8) {
+    background-image: url("../skins/Front6Pad/Button_7.png");
+} #GameInputDisplay[data-styles~="Front6Pad"] > ul.Button_8 > li:nth-child(9) {
+    background-image: url("../skins/Front6Pad/Button_8.png");
+} #GameInputDisplay[data-styles~="Front6Pad"] > ul.Button_9 > li:nth-child(10) {
+    background-image: url("../skins/Front6Pad/Button_9.png");
+} #GameInputDisplay[data-styles~="Front6Pad"] > ul.Button_10 > li:nth-child(11) {
+    background-image: url("../skins/Front6Pad/Button_10.png");
+} #GameInputDisplay[data-styles~="Front6Pad"] > ul.Button_11 > li:nth-child(12) {
+    background-image: url("../skins/Front6Pad/Button_11.png");
+} #GameInputDisplay[data-styles~="Front6Pad"] > ul.StickB_Up > li:nth-child(13),
+#GameInputDisplay[data-styles~="Front6Pad"] > ul.StickL_Up > li:nth-child(13),
+#GameInputDisplay[data-styles~="Front6Pad"] > ul.StickR_Up > li:nth-child(13) {
+    background-image: url("../skins/Front6Pad/Button_12.png");
+} #GameInputDisplay[data-styles~="Front6Pad"] > ul.StickB_Down > li:nth-child(14),
+#GameInputDisplay[data-styles~="Front6Pad"] > ul.StickL_Down > li:nth-child(14),
+#GameInputDisplay[data-styles~="Front6Pad"] > ul.StickR_Down > li:nth-child(14) {
+    background-image: url("../skins/Front6Pad/Button_13.png");
+} #GameInputDisplay[data-styles~="Front6Pad"] > ul.StickB_Left > li:nth-child(15),
+#GameInputDisplay[data-styles~="Front6Pad"] > ul.StickL_Left > li:nth-child(15),
+#GameInputDisplay[data-styles~="Front6Pad"] > ul.StickR_Left > li:nth-child(15) {
+    background-image: url("../skins/Front6Pad/Button_14.png");
+} #GameInputDisplay[data-styles~="Front6Pad"] > ul.StickB_Right > li:nth-child(16),
+#GameInputDisplay[data-styles~="Front6Pad"] > ul.StickL_Right > li:nth-child(16),
+#GameInputDisplay[data-styles~="Front6Pad"] > ul.StickR_Right > li:nth-child(16) {
+    background-image: url("../skins/Front6Pad/Button_15.png");
+} #GameInputDisplay[data-styles~="Front6Pad"][data-controller="0"] > ul > li:nth-child(32) {
+    background-image: url("../skins/Front6Pad/Controller_0.png");
+} #GameInputDisplay[data-styles~="Front6Pad"][data-controller="1"] > ul > li:nth-child(32) {
+    background-image: url("../skins/Front6Pad/Controller_1.png");
+} #GameInputDisplay[data-styles~="Front6Pad"][data-controller="2"] > ul > li:nth-child(32) {
+    background-image: url("../skins/Front6Pad/Controller_2.png");
+} #GameInputDisplay[data-styles~="Front6Pad"][data-controller="3"] > ul > li:nth-child(32) {
+    background-image: url("../skins/Front6Pad/Controller_3.png");
+}
+
+/* Skin: ButtonBox */
+#GameInputDisplay[data-styles~="ButtonBox"] > ul::before {
+    background-image: url("../skins/ButtonBox/Base.png");
+} #GameInputDisplay[data-styles~="ButtonBox"] > ul > li {
+    /* 他のスキンをリセット */
+    background-image: unset;
+} #GameInputDisplay[data-styles~="ButtonBox"] > ul.Button_0 > li:nth-child(1) {
+    background-image: url("../skins/ButtonBox/Button_0.png");
+} #GameInputDisplay[data-styles~="ButtonBox"] > ul.Button_1 > li:nth-child(2) {
+    background-image: url("../skins/ButtonBox/Button_1.png");
+} #GameInputDisplay[data-styles~="ButtonBox"] > ul.Button_2 > li:nth-child(3) {
+    background-image: url("../skins/ButtonBox/Button_2.png");
+} #GameInputDisplay[data-styles~="ButtonBox"] > ul.Button_3 > li:nth-child(4) {
+    background-image: url("../skins/ButtonBox/Button_3.png");
+} #GameInputDisplay[data-styles~="ButtonBox"] > ul.Button_4 > li:nth-child(5) {
+    background-image: url("../skins/ButtonBox/Button_4.png");
+} #GameInputDisplay[data-styles~="ButtonBox"] > ul.Button_5 > li:nth-child(6) {
+    background-image: url("../skins/ButtonBox/Button_5.png");
+} #GameInputDisplay[data-styles~="ButtonBox"] > ul.Button_6 > li:nth-child(7) {
+    background-image: url("../skins/ButtonBox/Button_6.png");
+} #GameInputDisplay[data-styles~="ButtonBox"] > ul.Button_7 > li:nth-child(8) {
+    background-image: url("../skins/ButtonBox/Button_7.png");
+} #GameInputDisplay[data-styles~="ButtonBox"] > ul.Button_8 > li:nth-child(9) {
+    background-image: url("../skins/ButtonBox/Button_8.png");
+} #GameInputDisplay[data-styles~="ButtonBox"] > ul.Button_9 > li:nth-child(10) {
+    background-image: url("../skins/ButtonBox/Button_9.png");
+} #GameInputDisplay[data-styles~="ButtonBox"] > ul.Button_10 > li:nth-child(11) {
+    background-image: url("../skins/ButtonBox/Button_10.png");
+} #GameInputDisplay[data-styles~="ButtonBox"] > ul.Button_11 > li:nth-child(12) {
+    background-image: url("../skins/ButtonBox/Button_11.png");
+} #GameInputDisplay[data-styles~="ButtonBox"] > ul.StickB_Up > li:nth-child(13),
+#GameInputDisplay[data-styles~="ButtonBox"] > ul.StickL_Up > li:nth-child(13),
+#GameInputDisplay[data-styles~="ButtonBox"] > ul.StickR_Up > li:nth-child(13) {
+    background-image: url("../skins/ButtonBox/Button_12.png");
+} #GameInputDisplay[data-styles~="ButtonBox"] > ul.StickB_Down > li:nth-child(14),
+#GameInputDisplay[data-styles~="ButtonBox"] > ul.StickL_Down > li:nth-child(14),
+#GameInputDisplay[data-styles~="ButtonBox"] > ul.StickR_Down > li:nth-child(14) {
+    background-image: url("../skins/ButtonBox/Button_13.png");
+} #GameInputDisplay[data-styles~="ButtonBox"] > ul.StickB_Left > li:nth-child(15),
+#GameInputDisplay[data-styles~="ButtonBox"] > ul.StickL_Left > li:nth-child(15),
+#GameInputDisplay[data-styles~="ButtonBox"] > ul.StickR_Left > li:nth-child(15) {
+    background-image: url("../skins/ButtonBox/Button_14.png");
+} #GameInputDisplay[data-styles~="ButtonBox"] > ul.StickB_Right > li:nth-child(16),
+#GameInputDisplay[data-styles~="ButtonBox"] > ul.StickL_Right > li:nth-child(16),
+#GameInputDisplay[data-styles~="ButtonBox"] > ul.StickR_Right > li:nth-child(16) {
+    background-image: url("../skins/ButtonBox/Button_15.png");
+} #GameInputDisplay[data-styles~="ButtonBox"] > ul.Button_16 > li:nth-child(17) {
+    background-image: url("../skins/ButtonBox/Button_16.png");
+} #GameInputDisplay[data-styles~="ButtonBox"][data-controller="0"] > ul > li:nth-child(32) {
+    background-image: url("../skins/ButtonBox/Controller_0.png");
+} #GameInputDisplay[data-styles~="ButtonBox"][data-controller="1"] > ul > li:nth-child(32) {
+    background-image: url("../skins/ButtonBox/Controller_1.png");
+} #GameInputDisplay[data-styles~="ButtonBox"][data-controller="2"] > ul > li:nth-child(32) {
+    background-image: url("../skins/ButtonBox/Controller_2.png");
+} #GameInputDisplay[data-styles~="ButtonBox"][data-controller="3"] > ul > li:nth-child(32) {
+    background-image: url("../skins/ButtonBox/Controller_3.png");
+}
+
+/* Skin: DualBox */
+#GameInputDisplay[data-styles~="DualBox"] > ul::before {
+    background-image: url("../skins/DualBox/Base.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul > li {
+    /* 他のスキンをリセット */
+    background-image: unset;
+} #GameInputDisplay[data-styles~="DualBox"] > ul.Button_0 > li:nth-child(1) {
+    background-image: url("../skins/DualBox/Button_0.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.Button_1 > li:nth-child(2) {
+    background-image: url("../skins/DualBox/Button_1.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.Button_2 > li:nth-child(3) {
+    background-image: url("../skins/DualBox/Button_2.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.Button_3 > li:nth-child(4) {
+    background-image: url("../skins/DualBox/Button_3.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.Button_4 > li:nth-child(5) {
+    background-image: url("../skins/DualBox/Button_4.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.Button_5 > li:nth-child(6) {
+    background-image: url("../skins/DualBox/Button_5.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.Button_6 > li:nth-child(7) {
+    background-image: url("../skins/DualBox/Button_6.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.Button_7 > li:nth-child(8) {
+    background-image: url("../skins/DualBox/Button_7.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.Button_8 > li:nth-child(9) {
+    background-image: url("../skins/DualBox/Button_8.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.Button_9 > li:nth-child(10) {
+    background-image: url("../skins/DualBox/Button_9.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.Button_10 > li:nth-child(11) {
+    background-image: url("../skins/DualBox/Button_10.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.Button_11 > li:nth-child(12) {
+    background-image: url("../skins/DualBox/Button_11.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.Button_12 > li:nth-child(13),
+#GameInputDisplay[data-styles~="DualBox"] > ul.StickB_Up > li:nth-child(13) {
+    background-image: url("../skins/DualBox/Button_12.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.Button_13 > li:nth-child(14),
+#GameInputDisplay[data-styles~="DualBox"] > ul.StickB_Down > li:nth-child(14) {
+    background-image: url("../skins/DualBox/Button_13.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.Button_14 > li:nth-child(15),
+#GameInputDisplay[data-styles~="DualBox"] > ul.StickB_Left > li:nth-child(15) {
+    background-image: url("../skins/DualBox/Button_14.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.Button_15 > li:nth-child(16),
+#GameInputDisplay[data-styles~="DualBox"] > ul.StickB_Right > li:nth-child(16) {
+    background-image: url("../skins/DualBox/Button_15.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.Button_16 > li:nth-child(17) {
+    background-image: url("../skins/DualBox/Button_16.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.StickL_Up > li:nth-child(30),
+#GameInputDisplay[data-styles~="DualBox"] > ul.StickR_Up > li:nth-child(30) {
+    background-image: url("../skins/DualBox/Stick_8.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.StickL_Down > li:nth-child(30),
+#GameInputDisplay[data-styles~="DualBox"] > ul.StickR_Down > li:nth-child(30) {
+    background-image: url("../skins/DualBox/Stick_2.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.StickL_Left > li:nth-child(30),
+#GameInputDisplay[data-styles~="DualBox"] > ul.StickR_Left > li:nth-child(30) {
+    background-image: url("../skins/DualBox/Stick_4.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.StickL_Right > li:nth-child(30),
+#GameInputDisplay[data-styles~="DualBox"] > ul.StickR_Right > li:nth-child(30) {
+    background-image: url("../skins/DualBox/Stick_6.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.StickL_Down.StickL_Left > li:nth-child(30),
+#GameInputDisplay[data-styles~="DualBox"] > ul.StickR_Down.StickR_Left > li:nth-child(30) {
+    background-image: url("../skins/DualBox/Stick_1.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.StickL_Down.StickL_Right > li:nth-child(30),
+#GameInputDisplay[data-styles~="DualBox"] > ul.StickR_Down.StickR_Right > li:nth-child(30) {
+    background-image: url("../skins/DualBox/Stick_3.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.StickL_Up.StickL_Left > li:nth-child(30),
+#GameInputDisplay[data-styles~="DualBox"] > ul.StickR_Up.StickR_Left > li:nth-child(30) {
+    background-image: url("../skins/DualBox/Stick_7.png");
+} #GameInputDisplay[data-styles~="DualBox"] > ul.StickL_Up.StickL_Right > li:nth-child(30),
+#GameInputDisplay[data-styles~="DualBox"] > ul.StickR_Up.StickR_Right > li:nth-child(30) {
+    background-image: url("../skins/DualBox/Stick_9.png");
+} #GameInputDisplay[data-styles~="DualBox"][data-controller="0"] > ul > li:nth-child(32) {
+    background-image: url("../skins/DualBox/Controller_0.png");
+} #GameInputDisplay[data-styles~="DualBox"][data-controller="1"] > ul > li:nth-child(32) {
+    background-image: url("../skins/DualBox/Controller_1.png");
+} #GameInputDisplay[data-styles~="DualBox"][data-controller="2"] > ul > li:nth-child(32) {
+    background-image: url("../skins/DualBox/Controller_2.png");
+} #GameInputDisplay[data-styles~="DualBox"][data-controller="3"] > ul > li:nth-child(32) {
+    background-image: url("../skins/DualBox/Controller_3.png");
+}
+
+/* Skin: ArcadeController */
+#GameInputDisplay[data-styles~="ArcadeController"] > ul::before {
+    background-image: url("../skins/ArcadeController/Base.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul > li {
+    /* 他のスキンをリセット */
+    background-image: unset;
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.Button_0 > li:nth-child(1) {
+    background-image: url("../skins/ArcadeController/Button_0.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.Button_1 > li:nth-child(2) {
+    background-image: url("../skins/ArcadeController/Button_1.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.Button_2 > li:nth-child(3) {
+    background-image: url("../skins/ArcadeController/Button_2.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.Button_3 > li:nth-child(4) {
+    background-image: url("../skins/ArcadeController/Button_3.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.Button_4 > li:nth-child(5) {
+    background-image: url("../skins/ArcadeController/Button_4.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.Button_5 > li:nth-child(6) {
+    background-image: url("../skins/ArcadeController/Button_5.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.Button_6 > li:nth-child(7) {
+    background-image: url("../skins/ArcadeController/Button_6.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.Button_7 > li:nth-child(8) {
+    background-image: url("../skins/ArcadeController/Button_7.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.Button_8 > li:nth-child(9) {
+    background-image: url("../skins/ArcadeController/Button_8.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.Button_9 > li:nth-child(10) {
+    background-image: url("../skins/ArcadeController/Button_9.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.Button_10 > li:nth-child(11) {
+    background-image: url("../skins/ArcadeController/Button_10.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.Button_11 > li:nth-child(12) {
+    background-image: url("../skins/ArcadeController/Button_11.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.Button_16 > li:nth-child(17) {
+    background-image: url("../skins/ArcadeController/Button_16.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.StickB_Up > li:nth-child(30),
+#GameInputDisplay[data-styles~="ArcadeController"] > ul.StickL_Up > li:nth-child(30),
+#GameInputDisplay[data-styles~="ArcadeController"] > ul.StickR_Up > li:nth-child(30) {
+    background-image: url("../skins/ArcadeController/Stick_8.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.StickB_Down > li:nth-child(30),
+#GameInputDisplay[data-styles~="ArcadeController"] > ul.StickL_Down > li:nth-child(30),
+#GameInputDisplay[data-styles~="ArcadeController"] > ul.StickR_Down > li:nth-child(30) {
+    background-image: url("../skins/ArcadeController/Stick_2.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.StickB_Left > li:nth-child(30),
+#GameInputDisplay[data-styles~="ArcadeController"] > ul.StickL_Left > li:nth-child(30),
+#GameInputDisplay[data-styles~="ArcadeController"] > ul.StickR_Left > li:nth-child(30) {
+    background-image: url("../skins/ArcadeController/Stick_4.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.StickB_Right > li:nth-child(30),
+#GameInputDisplay[data-styles~="ArcadeController"] > ul.StickL_Right > li:nth-child(30),
+#GameInputDisplay[data-styles~="ArcadeController"] > ul.StickR_Right > li:nth-child(30) {
+    background-image: url("../skins/ArcadeController/Stick_6.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.StickB_Down.StickB_Left > li:nth-child(30),
+#GameInputDisplay[data-styles~="ArcadeController"] > ul.StickL_Down.StickL_Left > li:nth-child(30),
+#GameInputDisplay[data-styles~="ArcadeController"] > ul.StickR_Down.StickR_Left > li:nth-child(30) {
+    background-image: url("../skins/ArcadeController/Stick_1.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.StickB_Down.StickB_Right > li:nth-child(30),
+#GameInputDisplay[data-styles~="ArcadeController"] > ul.StickL_Down.StickL_Right > li:nth-child(30),
+#GameInputDisplay[data-styles~="ArcadeController"] > ul.StickR_Down.StickR_Right > li:nth-child(30) {
+    background-image: url("../skins/ArcadeController/Stick_3.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.StickB_Up.StickB_Left > li:nth-child(30),
+#GameInputDisplay[data-styles~="ArcadeController"] > ul.StickL_Up.StickL_Left > li:nth-child(30),
+#GameInputDisplay[data-styles~="ArcadeController"] > ul.StickR_Up.StickR_Left > li:nth-child(30) {
+    background-image: url("../skins/ArcadeController/Stick_7.png");
+} #GameInputDisplay[data-styles~="ArcadeController"] > ul.StickB_Up.StickB_Right > li:nth-child(30),
+#GameInputDisplay[data-styles~="ArcadeController"] > ul.StickL_Up.StickL_Right > li:nth-child(30),
+#GameInputDisplay[data-styles~="ArcadeController"] > ul.StickR_Up.StickR_Right > li:nth-child(30) {
+    background-image: url("../skins/ArcadeController/Stick_9.png");
+} #GameInputDisplay[data-styles~="ArcadeController"][data-controller="0"] > ul > li:nth-child(32) {
+    background-image: url("../skins/ArcadeController/Controller_0.png");
+} #GameInputDisplay[data-styles~="ArcadeController"][data-controller="1"] > ul > li:nth-child(32) {
+    background-image: url("../skins/ArcadeController/Controller_1.png");
+} #GameInputDisplay[data-styles~="ArcadeController"][data-controller="2"] > ul > li:nth-child(32) {
+    background-image: url("../skins/ArcadeController/Controller_2.png");
+} #GameInputDisplay[data-styles~="ArcadeController"][data-controller="3"] > ul > li:nth-child(32) {
+    background-image: url("../skins/ArcadeController/Controller_3.png");
+}
+
+
+/* [KeyLog: Overlays] Key Log */
+#GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog,
+#GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul,
+#GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul > li {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul:not(:first-child) {
+    display: none;
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul > li {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul > li::after {
+    content: unset;
+    color: unset;
+    background-color: unset;
+    transform: unset;
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul.Button_0 > li:nth-child(1) {
+    background-image: url("../skins/Overlays/Button_0.png");
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul.Button_1 > li:nth-child(1) {
+    background-image: url("../skins/Overlays/Button_1.png");
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul.Button_2 > li:nth-child(1) {
+    background-image: url("../skins/Overlays/Button_2.png");
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul.Button_3 > li:nth-child(1) {
+    background-image: url("../skins/Overlays/Button_3.png");
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul.Button_4 > li:nth-child(1) {
+    background-image: url("../skins/Overlays/Button_4.png");
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul.Button_5 > li:nth-child(1) {
+    background-image: url("../skins/Overlays/Button_5.png");
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul.Button_6 > li:nth-child(1) {
+    background-image: url("../skins/Overlays/Button_6.png");
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul.Button_7 > li:nth-child(1) {
+    background-image: url("../skins/Overlays/Button_7.png");
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul.Button_8 > li:nth-child(1) {
+    background-image: url("../skins/Overlays/Button_8.png");
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul.Button_9 > li:nth-child(1) {
+    background-image: url("../skins/Overlays/Button_9.png");
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul.Button_10 > li:nth-child(1) {
+    background-image: url("../skins/Overlays/Button_10.png");
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul.Button_11 > li:nth-child(1) {
+    background-image: url("../skins/Overlays/Button_11.png");
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul.Button_12 > li:nth-child(1) {
+    background-image: url("../skins/Overlays/Button_12.png");
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul.Button_13 > li:nth-child(1) {
+    background-image: url("../skins/Overlays/Button_13.png");
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul.Button_14 > li:nth-child(1) {
+    background-image: url("../skins/Overlays/Button_14.png");
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul.Button_15 > li:nth-child(1) {
+    background-image: url("../skins/Overlays/Button_15.png");
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul.Button_16 > li:nth-child(1) {
+    background-image: url("../skins/Overlays/Button_16.png");
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul.Button_17 > li:nth-child(1) {
+    background-image: url("../skins/Overlays/Button_17.png");
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul.Button_18 > li:nth-child(1) {
+    background-image: url("../skins/Overlays/Button_18.png");
+} #GameInputDisplay[data-styles~="Overlays"] > #GIDKeyLog > ul.Button_19 > li:nth-child(1) {
+    background-image: url("../skins/Overlays/Button_19.png");
+}
+
+/* Skin: FlashOverlays */
+#GameInputDisplay[data-styles~="FlashOverlays"] > #GIDGameController {
+    max-width: 100%;
+}
+#GameInputDisplay[data-styles~="FlashOverlays"] > ul > li {
+    /* 他のスキンをリセット */
+    background-image: unset;
+    background-position: 50%;
+} #GameInputDisplay[data-styles~="FlashOverlays"] > ul.Button_0 > li:nth-child(1) {
+    background-image: url("../skins/FlashOverlays/Button_0.png");
+} #GameInputDisplay[data-styles~="FlashOverlays"] > ul.Button_1 > li:nth-child(2) {
+    background-image: url("../skins/FlashOverlays/Button_1.png");
+} #GameInputDisplay[data-styles~="FlashOverlays"] > ul.Button_2 > li:nth-child(3) {
+    background-image: url("../skins/FlashOverlays/Button_2.png");
+} #GameInputDisplay[data-styles~="FlashOverlays"] > ul.Button_3 > li:nth-child(4) {
+    background-image: url("../skins/FlashOverlays/Button_3.png");
+} #GameInputDisplay[data-styles~="FlashOverlays"] > ul.Button_4 > li:nth-child(5) {
+    background-image: url("../skins/FlashOverlays/Button_4.png");
+} #GameInputDisplay[data-styles~="FlashOverlays"] > ul.Button_5 > li:nth-child(6) {
+    background-image: url("../skins/FlashOverlays/Button_5.png");
+} #GameInputDisplay[data-styles~="FlashOverlays"] > ul.Button_6 > li:nth-child(7) {
+    background-image: url("../skins/FlashOverlays/Button_6.png");
+} #GameInputDisplay[data-styles~="FlashOverlays"] > ul.Button_7 > li:nth-child(8) {
+    background-image: url("../skins/FlashOverlays/Button_7.png");
+} #GameInputDisplay[data-styles~="FlashOverlays"] > ul.Button_8 > li:nth-child(9) {
+    background-image: url("../skins/FlashOverlays/Button_8.png");
+} #GameInputDisplay[data-styles~="FlashOverlays"] > ul.Button_9 > li:nth-child(10) {
+    background-image: url("../skins/FlashOverlays/Button_9.png");
+} #GameInputDisplay[data-styles~="FlashOverlays"] > ul.Button_10 > li:nth-child(11) {
+    background-image: url("../skins/FlashOverlays/Button_10.png");
+} #GameInputDisplay[data-styles~="FlashOverlays"] > ul.Button_11 > li:nth-child(12) {
+    background-image: url("../skins/FlashOverlays/Button_11.png");
+} #GameInputDisplay[data-styles~="FlashOverlays"] > ul.Button_12 > li:nth-child(13) {
+    background-image: url("../skins/FlashOverlays/Button_12.png");
+} #GameInputDisplay[data-styles~="FlashOverlays"] > ul.Button_13 > li:nth-child(14) {
+    background-image: url("../skins/FlashOverlays/Button_13.png");
+} #GameInputDisplay[data-styles~="FlashOverlays"] > ul.Button_14 > li:nth-child(15) {
+    background-image: url("../skins/FlashOverlays/Button_14.png");
+} #GameInputDisplay[data-styles~="FlashOverlays"] > ul.Button_15 > li:nth-child(16) {
+    background-image: url("../skins/FlashOverlays/Button_15.png");
+} #GameInputDisplay[data-styles~="FlashOverlays"] > ul.Button_16 > li:nth-child(17) {
+    background-image: url("../skins/FlashOverlays/Button_16.png");
+} #GameInputDisplay[data-styles~="FlashOverlays"] > ul.Button_17 > li:nth-child(18) {
+    background-image: url("../skins/FlashOverlays/Button_17.png");
+} #GameInputDisplay[data-styles~="FlashOverlays"] > ul.Button_18 > li:nth-child(19) {
+    background-image: url("../skins/FlashOverlays/Button_18.png");
+} #GameInputDisplay[data-styles~="FlashOverlays"] > ul.Button_19 > li:nth-child(20) {
+    background-image: url("../skins/FlashOverlays/Button_19.png");
+}
+
+/* Deck */
+#GIDDeck {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#GIDDeck > * {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+} #GIDDeck > [data-state="Pause"],
+#GIDDeck > [data-state="Play"] {
+    display: block;
+}
+
+#GIDDeck > * > * {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
