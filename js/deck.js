@@ -615,6 +615,13 @@ class DeckItem {
 class Deck {
 
     /**
+     * Name: Message
+     * 
+     * @type {string}
+     */
+    static NAME_MESSAGE = "GameInputDisplay";
+
+    /**
      * @param {number[]} [clearIndexes]
      * @param {number[]} [resetIndexes]
      */
@@ -808,8 +815,13 @@ class Deck {
             if ([DeckContainer_Abstract.TYPE_HTML, DeckContainer_Abstract.TYPE_OTHER].includes(item.type())) {
                 item.container(container => {
                     container.get().contentWindow.postMessage({
-                        action: "GameInputDisplay",
+                        action: Deck.NAME_MESSAGE,
                         message: {
+                            axes: {
+                                commands: gamepad.commands().values(),
+                                leftAxis: gamepad.leftAxis().values(),
+                                rightAxis: gamepad.rightAxis().values()
+                            },
                             state: container.state(),
                             type: item.type(),
                             url: window.location.href,

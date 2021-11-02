@@ -107,6 +107,15 @@
     }
 
     /**
+     * Values
+     * 
+     * @returns {string[]}
+     */
+    values = () => {
+        return [...this.xAxis(), ...this.yAxis()];
+    }
+
+    /**
      * X-Axis
      * 
      * @param {string[]} [axis]

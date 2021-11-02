@@ -416,7 +416,7 @@ class ParameterSetting {
             let value;
             deckSetting.split(",").forEach(item => {
                 index = Number(item.replace(/\-.+$/i, ""));
-                value = item.replace(/^\d+\-/i, "");
+                value = decodeURIComponent(item.replace(/^\d+\-/i, ""));
                 if (0 <= index) {
                     if (!setting[value]) {
                         setting[value] = [index];
@@ -800,7 +800,6 @@ class ParameterSettingGenerator {
             ele.name = "deckIndex";
             ele.type = "number";
             ele.min = 0;
-            // ele.max = 999;
             ele.maxlength = "3";
             ele.placeholder = "";
             ele.title = "ボタン番号";
@@ -813,37 +812,6 @@ class ParameterSettingGenerator {
             ele.title = "ファイルパス";
             return ele;
         })(inputElement.cloneNode(false));
-        // let fileContainer = (() => {
-        //     let cnt = document.createElement("label");
-        //     let fileElement = ((ele) => {
-        //         ele.name = "deckFile";
-        //         ele.type = "file";
-        //         ele.accept = "video/*,audio/*,image/*"
-        //         return ele;
-        //     })(inputElement.cloneNode(false));
-        //     let label = document.createElement("span");
-        //     label.innerText = "File";
-        //     label.title = "ファイルから入力する";
-        //     cnt.append(label);
-        //     cnt.append(fileElement);
-        //     return cnt;
-        // })();
-        // let buttonElement = ((ele) => {
-        //     ele.type = "button";
-        //     return ele;
-        // })(inputElement.cloneNode(false));
-        // let delButton = ((ele) => {
-        //     ele.name = "deckDel";
-        //     ele.value = "-";
-        //     ele.title = "Clear";
-        //     return ele;
-        // })(buttonElement.cloneNode(false));
-        // let addButton = ((ele) => {
-        //     ele.name = "deckAdd";
-        //     ele.value = "+";
-        //     ele.title = "Add";
-        //     return ele;
-        // })(buttonElement.cloneNode(false));
         let deckItemContainer = (() => {
             let container = document.createElement("li");
             [indexElement, valueElement].forEach(ele => {
@@ -896,11 +864,9 @@ class ParameterSettingGenerator {
                         case `${ParameterSetting.KEY_DIRECTIONAL_BUTTON_INDEXES}Right`:
                             directional[key] = value;
                             break;
-                        // case ParameterSetting.KEY_MODES:
-                        //     if (ParameterSetting.DEFAULT_MODES != value) {
-                        //         modes = value;
-                        //     }
-                        //     break;
+                        case ParameterSetting.KEY_MODES:
+                            modes = value;
+                            break;
                         case ParameterSetting.KEY_CONTROLLER_INDEX:
                             controllerIndex = value;
                             break;
@@ -931,7 +897,7 @@ class ParameterSettingGenerator {
                     return -1;
                 })();
                 if (ele.value && (0 <= deckIndex)) {
-                    deck.push(`${deckIndex}-${encodeURIComponent(ele.value)}`);
+                    deck.push(`${deckIndex}-${encodeURIComponent(encodeURIComponent(ele.value))}`);
                 }
             });
             if (0 < deck.length) {
@@ -981,21 +947,6 @@ class ParameterSettingGenerator {
                         break;
                 }
             });
-            // ele.querySelector('[name="deckFile"]').addEventListener("change", function() {
-            //     let reader = new FileReader();
-            //     reader.readAsDataURL(this.files[0]);
-            //     reader.onload = () => {
-            //         console.log(reader);
-            //     };
-            // });
-            // ele.querySelector('[name="deckDel"]').addEventListener("click", (event) => {
-            //     ele.querySelectorAll('[name="deckValue"]').forEach(input => {
-            //         input.value = "";
-            //     });
-            // });
-            // ele.querySelector('[name="deckAdd"]').addEventListener("click", () => {
-            //     this.addDeckItemContainer();
-            // });
             return ele;
         })(this._deckItemContainerTemplate.cloneNode(true)));
     }
@@ -1010,7 +961,8 @@ const updateParameterSettingGenerator = () => {
     let generator = new ParameterSettingGenerator();
     generator.addDeckItemContainer(0, "Clear");
     generator.addDeckItemContainer(11, "Reset");
-    for (let i = 1; i < 11; i++) {
+    generator.addDeckItemContainer(1, "./deck/Dices/dices.html");
+    for (let i = 2; i < 12; i++) {
         if (11 !== i) {
             generator.addDeckItemContainer(i, `C:\\Videos\\Sample_${i}.mp4`);
         }
@@ -1091,4 +1043,3 @@ const init = () => {
         main();
     }
 }
-

@@ -272,8 +272,6 @@ Windowsであればタスクマネージャーの「プロセス」から配信�
 
 ## deck  
 
-既定値：0-Clear,11-Reset  
-
 Deckモードでゲームコントローラーのボタンに割り当てるファイルを指定します。  
 対応ファイルは次の通りです。  
 
@@ -294,7 +292,7 @@ Webページはiframe（仮想ブラウザフレーム）として表示する�
 ファイルパスは絶対パス・フルパスか相対パスで、「{ボタン番号}-{ファイルパス}」のようにボタン番号とファイルパスを半角ハイフン（「-」）で繋ぎます。  
 複数指定する場合は半角カンマ（「,」）で区切ります。  
 
-**ファイルパスはURLエンコード（encodeURIComponent）が必要**です。  
+**ファイルパスはURLエンコードが2回必要（「{ボタン番号}-`encodeURIComponent(encodeURIComponent(ファイルパス))`」）**です。  
 [デバッグモード](https://codelelou.github.io/GameInputDisplay/index.html?modes=Debug)のパラメーター設定ジェネレーターが便利です。  
 
 ### 特殊ボタン  
@@ -310,6 +308,29 @@ Webページはiframe（仮想ブラウザフレーム）として表示する�
 
 音量調整ボタンとスキップボタンはパラメーター設定「directionals」で変更します。  
 十字キーボタンとは別に左スティックがあるゲームコントローラーであれば、「directionals=99-99-99-99」のように存在しないボタン番号を設定すると、十字キーボタンにもファイルを割り当てることができます。  
+
+### サイコロHTMLファイル（./deck/Dices/dices.html）
+
+方向入力で操作可能なサイコロツール（Deckモード用HTMLファイルのサンプル）。  
+
+十字キーボタン・左スティック・右スティックのいずれでも操作可能ですが、十字キーボタンと左スティックだとマスター音量や同時に表示・再生中の動画・音声ファイルと干渉するため、**右スティックでの操作を推奨**します。  
+またDeckモードではゲームコントローラーの入力は共有のため、他のファイルの同時表示中は操作が干渉する場合があります。このファイルを表示する前にクリアボタンを押して他のファイルを非表示にしておくことで干渉を避けることができます。  
+
+ボタンか入力欄がフォーカス中の時に操作可能で、フォーカス中は縁に黒い影ができ背景がゆっくり赤く点滅します。  
+横入力でフォーカスの移動ができます。  
+
+ボタン（［Stop］か［Roll］）がフォーカス中は、下入力でサイコロを止めたり振ったりできます。  
+サイコロが止まるとサイコロの目の合計値が表示されます。  
+
+面入力欄か個数入力欄がフォーカス中は、上下の入力で値を増減できます。  
+面は2～99、個数は1～9の間で設定できます。  
+
+#### サイコロの目をカスタマイズ
+
+「`./deck/Dices/dices.html?labels=A,2,3,4,5,6,7,8,9,10,J,Q,K`」のように、サイコロの目を指定することもできます。  
+サイコロの目は2つ以上必要で、半角カンマ（「,」）で区切ります。  
+
+labelsパラメーターが有効な場合は面入力欄と合計値が非表示になります。  
 
 ## styles
 
@@ -707,6 +728,29 @@ L2ボタンとR2ボタンはトリガータイプとして入力強度・押込�
 
 表示しない画像はそれらの画像ファイルを削除するか、何も表示しない透過だけの画像ファイルに変更します。  
 
+# Deckモード（応用編）
+
+## GameInputDisplay（Deckモード）からHTMLファイル（iframe）に送信されるメッセージ  
+
+DeckモードでHTMLファイルを表示すると、その後のゲームコントローラーの操作によって入力情報や状態を送信します。  
+
+```
+postMessage({
+  action: 'GameInputDisplay',  // {string} 値固定
+  message: {
+    axes: { // 
+      commands: ['Up','Down','Left','Right'],  // {string[]} 十字キーボタン: 'Up', 'Down', 'Left', 'Right' ハード・設定によっては全方向入力がありえる）
+      leftAxis: ['Up', 'Left'],  // {string[]} 左スティック: 'Up', 'Down', 'Left', 'Right' 1方向もくしは2方向の値
+      rightAxis: ['Down', 'Right']  // {string[]} 右スティック: 'Up', 'Down', 'Left', 'Right' 1方向もくしは2方向の値
+    },
+    state: 'Play',  // {string} iframeの状態： 'Play' = 表示中, 'Pause' = 表示中（のまま）, 'Clear' = 非表示
+    type: 'HTML',  // {string} Deckアイテムの種類: 'HTML' or 'Others'
+    url: window.location.href,  // {string} GameInputDisplayの「window.location.href」値
+    volume: 0.5  // {number} マスター音量: 0～1
+  }
+}, "*");
+```
+
 # ボタン番号資料
 
 ## DualShock4（PlayStation4純正パッド）
@@ -736,7 +780,7 @@ L2ボタンとR2ボタンはトリガータイプとして入力強度・押込�
 
 ## HTMLの構造
 
-~~~
+```
 <body>
   <div id="GameInputDisplay" data-version="${version}" data-controller="${controller}" data-log="${log}" data-ecludes="${ecludes}" data-modes="${modes}" data-styles="${styles}">
         <!-- version: "xx.xx.xx" -->
@@ -816,7 +860,7 @@ L2ボタンとR2ボタンはトリガータイプとして入力強度・押込�
     </ul>
   </div>
 </body>
-~~~
+```
 
 # Author
 [神戸ルル（Code Lelou）](https://twitter.com/codelelou)

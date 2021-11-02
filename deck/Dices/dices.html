@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="./css/dices.css">
+	<title>Dices</title>
+</head>
+<body>
+    <div id="CONTAINER">
+        <div id="MAIN" v-bind:data-ready="ready" v-bind:data-stop="stop" v-bind:data-current-focus="currentFocus" v-bind:data-deck="deck" v-bind:data-total="-1 !== dice.total()" v-bind:data-frame="frame">
+            <ul class="dices">
+                <li v-for="result in dice.results()" v-bind:data-label="result">{{ result }}</li>
+            </ul>
+            <div class="total textBorder" v-if="-1 !== dice.total()">{{ dice.total() }}</div>
+            <form ref="dices">
+                <input v-if="-1 !== dice.total()" v-on:focus="focus" v-on:change="change" v-model.number="face" ref="face" id="face" name="face" type="number" min="2" max="99" step="1"><label v-if="-1 !== dice.total()" for="face">面</label>
+                <input v-on:focus="focus" v-on:change="change" v-model.number="quantity" ref="quantity" id="quantity" name="quantity" type="number" min="1" max="9" step="1"><label for="quantity">個</label>
+                <input v-on:focus="focus" v-on:click="button" ref="button" id="button" name="button" type="button" v-bind:value="stop ? 'Roll' : 'Stop'">
+                <ul class="howTo textBorder">
+                    <li data-focus="face quantity">十字・スティック: &#x2194; 移動 / &#x2195; 増減</li>
+                    <li data-focus="button">十字・スティック: &#x2194; 移動 / &#x2193; Stop or Roll</li>
+                </ul>
+            </form>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@3.2.20/dist/vue.global.prod.js"></script>
+    <script src="../../js/utility.js"></script>
+    <script src="../../js/gamepad.js"></script>
+    <script src="../../js/deck.js"></script>
+    <script src="./js/dices.js"></script>
+</body>
+</html>

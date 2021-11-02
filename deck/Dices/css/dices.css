@@ -1,0 +1,181 @@
+@import url("http://fonts.googleapis.com/css?family=Kosugi+Maru");
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    overflow: hidden;
+}
+
+form {
+    margin: 50px 0 0 0;
+    width: 100%;
+    font-size: 36px;
+    text-align: center;
+}
+
+input {
+    font-size: 36px;
+    text-align: center;
+} input:focus {
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(0, 0, 0, 1);
+    filter: drop-shadow(0 0 .75rem rgba(0, 0, 0, 1));
+} #MAIN:not([data-stop="true"]) input:focus {
+    animation: flash 1000ms ease-in-out infinite alternate;
+} @keyframes flash {
+    0%{
+        background-color: rgba(255, 0, 0, 1);
+    }
+    100%  {
+        background-color: rgba(255, 255, 255, 1);
+    }
+}
+
+label {
+    margin: 0 2% 0 10px;
+}
+
+ul, li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+.textBorder {
+    text-shadow    : 
+    2px  2px 1px rgba(255, 255, 255, 1),
+   -2px  2px 1px rgba(255, 255, 255, 1),
+    2px -2px 1px rgba(255, 255, 255, 1),
+   -2px -2px 1px rgba(255, 255, 255, 1),
+    2px  0px 1px rgba(255, 255, 255, 1),
+    0px  2px 1px rgba(255, 255, 255, 1),
+   -2px  0px 1px rgba(255, 255, 255, 1),
+    0px -2px 1px rgba(255, 255, 255, 1);
+}
+
+#CONTAINER {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Kosugi Maru', sans-serif;
+} #CONTAINER::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background: rgba(255, 255, 255, .8);
+    filter: blur(12px);
+}
+
+#MAIN {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    padding: 2%;
+    width: 80%;
+    height: 80%;
+} #MAIN:not([data-ready="true"]) {
+    display: none;
+}
+
+.dices {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+}
+.dices > * {
+    display: inline-block;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 1%;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 48px;
+    text-align: center;
+    text-indent: -9999px;
+    vertical-align: middle;
+} .dices > *::before,
+.dices > *::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+} .dices > *::before {
+    background-color: rgba(255, 255, 255, 1);
+    border: rgba(0, 0, 0, 1) 5px solid;
+    border-radius: 20%;
+} .dices > *::after {
+    content: attr(data-label);
+    text-indent: 0;
+} #MAIN:not([data-stop="true"]) .dices > *::after {
+    filter: blur(12px);
+} #MAIN[data-total="false"] .dices > * {
+    width: 130px;
+    height: 130px;
+    line-height: 130px;
+    font-size: 56px;
+}
+
+.total {
+    margin: 2% 0 1% 0;
+    font-size: 192px;
+    font-weight: 900;
+} #MAIN[data-total="false"] .total {
+    display: none;
+} #MAIN:not([data-stop="true"]) .total {
+    filter: blur(24px);
+}
+
+#face {
+    width: 60px;
+}
+
+#quantity {
+    width: 50px;
+}
+
+#button {
+    padding: 8px 16px;
+    width: 180px;
+    cursor: pointer;
+    border: rgba(0, 0, 0, 1) 3px solid;
+    border-radius: 20px;
+}
+
+.howTo {
+    margin: 5% 0 0 0;
+} #MAIN[data-frame="false"] .howTo,
+.howTo > * {
+    display: none;
+} #MAIN[data-current-focus="face"] .howTo > [data-focus="face quantity"],
+#MAIN[data-current-focus="quantity"] .howTo > [data-focus="face quantity"],
+#MAIN[data-current-focus="button"] .howTo > [data-focus="button"] {
+    display: block;
+}
