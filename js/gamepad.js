@@ -6,7 +6,7 @@
  class Axis {
 
     /** @type {number} */
-    static DEFAULT_THRESHOLD = 0.6;
+    static DEFAULT_THRESHOLD = 0.45;
 
     /** @type {string} */
     static VALUE_LEFT = "Left";

@@ -695,6 +695,9 @@ const addLog = (log = []) => {
             }
             updateKeyLog();
             updateDeck(log);
+        } else {  // ニュートラル時の表示対応（スト6対応）
+            logs.unshift("");
+            updateKeyLog();
         }
         return true;
     }

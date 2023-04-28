@@ -1,0 +1,470 @@
+/* ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
+Street Fighter 6
+========== ========== ========== ========== ========== ========== ========== ========== ========== ========== */
+
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul {
+	display: flex;
+}
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul > li {
+	display: inline-block;
+}
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul > li::before,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul > li::after {
+	display: inline-block;
+} #GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul > li::after {
+	background: url(StreetFighter6.png);
+	background-repeat: no-repeat;
+	background-size: calc(1920px / 9) calc(1080px / 9);
+	background-position: calc(1920px / 9) calc(1080px / 9);
+} #GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6_Modern_"] > #GIDKeyLog > ul > li::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6_KC_LA_"] > #GIDKeyLog > ul > li::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6_KC_MA_"] > #GIDKeyLog > ul > li::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6_KC_HA_"] > #GIDKeyLog > ul > li::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6_KC_SP_"] > #GIDKeyLog > ul > li::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6_KC_DP_"] > #GIDKeyLog > ul > li::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6_KC_AS_"] > #GIDKeyLog > ul > li::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6_KC_DI_"] > #GIDKeyLog > ul > li::after {
+	/* ボタンのスタイルをリセット */
+	border: none;
+	border-radius: unset;
+}
+
+
+
+/* ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
+Street Fighter 6: Directional
+上下同時・左右同時入力のニュートラル対応
+========== ========== ========== ========== ========== ========== ========== ========== ========== ========== */
+
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul > li:nth-child(1)::before {
+	background-color: transparent; /* Directional Style Reset */
+} #GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="StickB_"][class*="_Hold_"] > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="StickL_"][class*="_Hold_"] > li:nth-child(1)::after {
+	content: "";
+	background-position: calc(-85px / 9) calc(-100px / 9);
+}
+/* Key Log: Directional: Left（左入力） */
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Left.StickB_Up.StickB_Down > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Left.StickB_Up.StickL_Down > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Left.StickL_Up.StickB_Down > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Left.StickL_Up.StickL_Down > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickL_Left.StickB_Up.StickB_Down > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickL_Left.StickB_Up.StickL_Down > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickL_Left.StickL_Up.StickB_Down > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickL_Left.StickL_Up.StickL_Down > li:nth-child(1)::after {
+    transform: rotate(270deg);
+}
+/* Key Log: Directional: Right（右入力） */
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Right.StickB_Up.StickB_Down > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Right.StickB_Up.StickL_Down > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Right.StickL_Up.StickB_Down > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Right.StickL_Up.StickL_Down > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickL_Right.StickB_Up.StickB_Down > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickL_Right.StickB_Up.StickL_Down > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickL_Right.StickL_Up.StickB_Down > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickL_Right.StickL_Up.StickL_Down > li:nth-child(1)::after {
+    transform: rotate(90deg);
+}
+/* Key Log: Directional: Neutral（ニュートラル） */
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class=""],
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="StickB_Hold_"],
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="StickL_Hold_"] {
+	display: flex;
+} #GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class=""] > li:nth-child(1),
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"] > li:nth-child(1) {
+	display: flex;
+} #GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class=""] > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul:not(.StickB_Left):not(.StickB_Right):not(.StickL_Left):not(.StickL_Right):not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="StickB_Hold_"] > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="StickL_Hold_"] > li:nth-child(1)::after {
+	content: "";
+	background-position: calc(-1300px / 9) calc(-450px / 9);
+} #GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Up.StickB_Right.StickB_Down.StickB_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Up.StickB_Right.StickB_Down.StickL_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Up.StickB_Right.StickL_Down.StickB_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Up.StickB_Right.StickL_Down.StickL_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Up.StickL_Right.StickB_Down.StickB_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Up.StickL_Right.StickB_Down.StickL_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Up.StickL_Right.StickL_Down.StickB_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Up.StickL_Right.StickL_Down.StickL_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickL_Up.StickB_Right.StickB_Down.StickB_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickL_Up.StickB_Right.StickB_Down.StickL_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickL_Up.StickB_Right.StickL_Down.StickB_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickL_Up.StickB_Right.StickL_Down.StickL_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickL_Up.StickL_Right.StickB_Down.StickB_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickL_Up.StickL_Right.StickB_Down.StickL_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickL_Up.StickL_Right.StickL_Down.StickB_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickL_Up.StickL_Right.StickL_Down.StickL_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Up.StickB_Down:not(.StickB_Left):not(.StickB_Right):not(.StickL_Left):not(.StickL_Right) > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Up.StickL_Down:not(.StickB_Left):not(.StickB_Right):not(.StickL_Left):not(.StickL_Right) > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Down.StickL_Up:not(.StickB_Left):not(.StickB_Right):not(.StickL_Left):not(.StickL_Right) > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickL_Up.StickL_Down:not(.StickB_Left):not(.StickB_Right):not(.StickL_Left):not(.StickL_Right) > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Left.StickB_Right:not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Left.StickL_Right:not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Right.StickL_Left:not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickL_Left.StickL_Right:not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after {
+	background-position: calc(-1300px / 9) calc(-450px / 9);
+	transform: unset;
+}
+
+
+
+/* ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
+Street Fighter 6: 攻撃ボタン
+「KeyLog_SF6_KC_」ではじまるStylesでカスタムキーコンフィグにも対応
+========== ========== ========== ========== ========== ========== ========== ========== ========== ========== */
+
+/* [KeyLog: Street Fighter 6] Key Log: Button: Punch: Light （弱パンチ） */
+#GameInputDisplay[data-styles~="KeyLog_SF6_ProPad"] > #GIDKeyLog > ul.Button_Hold_2 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PL_0"] > #GIDKeyLog > ul.Button_0 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PL_1"] > #GIDKeyLog > ul.Button_1 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PL_2"] > #GIDKeyLog > ul.Button_2 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PL_3"] > #GIDKeyLog > ul.Button_3 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PL_4"] > #GIDKeyLog > ul.Button_4 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PL_5"] > #GIDKeyLog > ul.Button_5 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PL_6"] > #GIDKeyLog > ul.Button_6 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PL_7"] > #GIDKeyLog > ul.Button_7 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PL_8"] > #GIDKeyLog > ul.Button_8 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PL_9"] > #GIDKeyLog > ul.Button_9 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PL_10"] > #GIDKeyLog > ul.Button_10 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PL_11"] > #GIDKeyLog > ul.Button_11 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PL_12"] > #GIDKeyLog > ul.Button_12 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PL_13"] > #GIDKeyLog > ul.Button_13 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PL_14"] > #GIDKeyLog > ul.Button_14 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PL_15"] > #GIDKeyLog > ul.Button_15 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PL_16"] > #GIDKeyLog > ul.Button_16 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PL_17"] > #GIDKeyLog > ul.Button_17 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PL_18"] > #GIDKeyLog > ul.Button_18 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PL_19"] > #GIDKeyLog > ul.Button_19 > li:nth-child(11)::after {
+    content: "\1F44A";  /* パンチアイコン（ユニコード） */
+    background-color: #00ffff;  /* 青色 */
+}
+/* [KeyLog: Street Fighter 6] Key Log: Button: Punch: Medium （中パンチ） */
+#GameInputDisplay[data-styles~="KeyLog_SF6_ProPad"] > #GIDKeyLog > ul.Button_Hold_3 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_ProPad"] > #GIDKeyLog > ul.Button_Hold_6 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PM_0"] > #GIDKeyLog > ul.Button_0 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PM_1"] > #GIDKeyLog > ul.Button_1 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PM_2"] > #GIDKeyLog > ul.Button_2 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PM_3"] > #GIDKeyLog > ul.Button_3 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PM_4"] > #GIDKeyLog > ul.Button_4 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PM_5"] > #GIDKeyLog > ul.Button_5 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PM_6"] > #GIDKeyLog > ul.Button_6 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PM_7"] > #GIDKeyLog > ul.Button_7 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PM_8"] > #GIDKeyLog > ul.Button_8 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PM_9"] > #GIDKeyLog > ul.Button_9 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PM_10"] > #GIDKeyLog > ul.Button_10 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PM_11"] > #GIDKeyLog > ul.Button_11 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PM_12"] > #GIDKeyLog > ul.Button_12 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PM_13"] > #GIDKeyLog > ul.Button_13 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PM_14"] > #GIDKeyLog > ul.Button_14 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PM_15"] > #GIDKeyLog > ul.Button_15 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PM_16"] > #GIDKeyLog > ul.Button_16 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PM_17"] > #GIDKeyLog > ul.Button_17 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PM_18"] > #GIDKeyLog > ul.Button_18 > li:nth-child(13)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PM_19"] > #GIDKeyLog > ul.Button_19 > li:nth-child(13)::after {
+    content: "\1F44A";  /* パンチアイコン（ユニコード） */
+    background-color: #ffff00;  /* 黄色 */
+}
+/* [KeyLog: Street Fighter 6] Key Log: Button: Punch: Heavy （強パンチ） */
+#GameInputDisplay[data-styles~="KeyLog_SF6_ProPad"] > #GIDKeyLog > ul.Button_Hold_5 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_ProPad"] > #GIDKeyLog > ul.Button_Hold_4 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PH_0"] > #GIDKeyLog > ul.Button_0 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PH_1"] > #GIDKeyLog > ul.Button_1 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PH_2"] > #GIDKeyLog > ul.Button_2 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PH_3"] > #GIDKeyLog > ul.Button_3 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PH_4"] > #GIDKeyLog > ul.Button_4 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PH_5"] > #GIDKeyLog > ul.Button_5 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PH_6"] > #GIDKeyLog > ul.Button_6 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PH_7"] > #GIDKeyLog > ul.Button_7 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PH_8"] > #GIDKeyLog > ul.Button_8 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PH_9"] > #GIDKeyLog > ul.Button_9 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PH_10"] > #GIDKeyLog > ul.Button_10 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PH_11"] > #GIDKeyLog > ul.Button_11 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PH_12"] > #GIDKeyLog > ul.Button_12 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PH_13"] > #GIDKeyLog > ul.Button_13 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PH_14"] > #GIDKeyLog > ul.Button_14 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PH_15"] > #GIDKeyLog > ul.Button_15 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PH_16"] > #GIDKeyLog > ul.Button_16 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PH_17"] > #GIDKeyLog > ul.Button_17 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PH_18"] > #GIDKeyLog > ul.Button_18 > li:nth-child(15)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_PH_19"] > #GIDKeyLog > ul.Button_19 > li:nth-child(15)::after {
+    content: "\1F44A";  /* パンチアイコン（ユニコード） */
+    background-color: #ff0000;  /* 赤色 */
+}
+/* [KeyLog: Street Fighter 6] Key Log: Button: Kick: Light （弱キック） */
+#GameInputDisplay[data-styles~="KeyLog_SF6_ProPad"] > #GIDKeyLog > ul.Button_Hold_0 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KL_0"] > #GIDKeyLog > ul.Button_0 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KL_1"] > #GIDKeyLog > ul.Button_1 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KL_2"] > #GIDKeyLog > ul.Button_2 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KL_3"] > #GIDKeyLog > ul.Button_3 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KL_4"] > #GIDKeyLog > ul.Button_4 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KL_5"] > #GIDKeyLog > ul.Button_5 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KL_6"] > #GIDKeyLog > ul.Button_6 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KL_7"] > #GIDKeyLog > ul.Button_7 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KL_8"] > #GIDKeyLog > ul.Button_8 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KL_9"] > #GIDKeyLog > ul.Button_9 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KL_10"] > #GIDKeyLog > ul.Button_10 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KL_11"] > #GIDKeyLog > ul.Button_11 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KL_12"] > #GIDKeyLog > ul.Button_12 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KL_13"] > #GIDKeyLog > ul.Button_13 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KL_14"] > #GIDKeyLog > ul.Button_14 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KL_15"] > #GIDKeyLog > ul.Button_15 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KL_16"] > #GIDKeyLog > ul.Button_16 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KL_17"] > #GIDKeyLog > ul.Button_17 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KL_18"] > #GIDKeyLog > ul.Button_18 > li:nth-child(21)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KL_19"] > #GIDKeyLog > ul.Button_19 > li:nth-child(21)::after {
+    content: "\1F9B6";  /* キックアイコン（ユニコード） */
+    background-color: #00ffff;  /* 青色 */
+    transform: rotate(60deg);  /* アイコンの傾き */
+}
+/* [KeyLog: Street Fighter 6] Key Log: Button: Kick: Medium （中キック） */
+#GameInputDisplay[data-styles~="KeyLog_SF6_ProPad"] > #GIDKeyLog > ul.Button_Hold_1 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_ProPad"] > #GIDKeyLog > ul.Button_Hold_6 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KM_0"] > #GIDKeyLog > ul.Button_0 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KM_1"] > #GIDKeyLog > ul.Button_1 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KM_2"] > #GIDKeyLog > ul.Button_2 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KM_3"] > #GIDKeyLog > ul.Button_3 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KM_4"] > #GIDKeyLog > ul.Button_4 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KM_5"] > #GIDKeyLog > ul.Button_5 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KM_6"] > #GIDKeyLog > ul.Button_6 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KM_7"] > #GIDKeyLog > ul.Button_7 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KM_8"] > #GIDKeyLog > ul.Button_8 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KM_9"] > #GIDKeyLog > ul.Button_9 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KM_10"] > #GIDKeyLog > ul.Button_10 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KM_11"] > #GIDKeyLog > ul.Button_11 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KM_12"] > #GIDKeyLog > ul.Button_12 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KM_13"] > #GIDKeyLog > ul.Button_13 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KM_14"] > #GIDKeyLog > ul.Button_14 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KM_15"] > #GIDKeyLog > ul.Button_15 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KM_16"] > #GIDKeyLog > ul.Button_16 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KM_17"] > #GIDKeyLog > ul.Button_17 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KM_18"] > #GIDKeyLog > ul.Button_18 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KM_19"] > #GIDKeyLog > ul.Button_19 > li:nth-child(23)::after {
+    content: "\1F9B6";  /* キックアイコン（ユニコード） */
+    background-color: #ffff00;  /* 黄色 */
+    transform: rotate(60deg);  /* アイコンの傾き */
+}
+/* [KeyLog: Street Fighter 6] Key Log: Button: Kick: Heavy （強キック） */
+#GameInputDisplay[data-styles~="KeyLog_SF6_ProPad"] > #GIDKeyLog > ul.Button_Hold_7 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_ProPad"] > #GIDKeyLog > ul.Button_Hold_4 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KH_0"] > #GIDKeyLog > ul.Button_0 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KH_1"] > #GIDKeyLog > ul.Button_1 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KH_2"] > #GIDKeyLog > ul.Button_2 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KH_3"] > #GIDKeyLog > ul.Button_3 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KH_4"] > #GIDKeyLog > ul.Button_4 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KH_5"] > #GIDKeyLog > ul.Button_5 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KH_6"] > #GIDKeyLog > ul.Button_6 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KH_7"] > #GIDKeyLog > ul.Button_7 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KH_8"] > #GIDKeyLog > ul.Button_8 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KH_9"] > #GIDKeyLog > ul.Button_9 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KH_10"] > #GIDKeyLog > ul.Button_10 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KH_11"] > #GIDKeyLog > ul.Button_11 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KH_12"] > #GIDKeyLog > ul.Button_12 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KH_13"] > #GIDKeyLog > ul.Button_13 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KH_14"] > #GIDKeyLog > ul.Button_14 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KH_15"] > #GIDKeyLog > ul.Button_15 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KH_16"] > #GIDKeyLog > ul.Button_16 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KH_17"] > #GIDKeyLog > ul.Button_17 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KH_18"] > #GIDKeyLog > ul.Button_18 > li:nth-child(25)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_KH_19"] > #GIDKeyLog > ul.Button_19 > li:nth-child(25)::after {
+    content: "\1F9B6";  /* キックアイコン（ユニコード） */
+    background-color: #ff0000;  /* 赤色 */
+    transform: rotate(60deg);  /* アイコンの傾き */
+}
+/* [KeyLog: Street Fighter 6] Key Log: Button: Light Attack（弱攻撃） */
+#GameInputDisplay[data-styles~="KeyLog_SF6_Modern_ProPad"] > #GIDKeyLog > ul.Button_2 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_Modern_ProPad"] > #GIDKeyLog > ul.Button_6 > li:nth-child(11)::after, /* Throw（投げ） */
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_LA_0"] > #GIDKeyLog > ul.Button_0 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_LA_1"] > #GIDKeyLog > ul.Button_1 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_LA_2"] > #GIDKeyLog > ul.Button_2 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_LA_3"] > #GIDKeyLog > ul.Button_3 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_LA_4"] > #GIDKeyLog > ul.Button_4 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_LA_5"] > #GIDKeyLog > ul.Button_5 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_LA_6"] > #GIDKeyLog > ul.Button_6 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_LA_7"] > #GIDKeyLog > ul.Button_7 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_LA_8"] > #GIDKeyLog > ul.Button_8 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_LA_9"] > #GIDKeyLog > ul.Button_9 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_LA_10"] > #GIDKeyLog > ul.Button_10 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_LA_11"] > #GIDKeyLog > ul.Button_11 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_LA_12"] > #GIDKeyLog > ul.Button_12 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_LA_13"] > #GIDKeyLog > ul.Button_13 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_LA_14"] > #GIDKeyLog > ul.Button_14 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_LA_15"] > #GIDKeyLog > ul.Button_15 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_LA_16"] > #GIDKeyLog > ul.Button_16 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_LA_17"] > #GIDKeyLog > ul.Button_17 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_LA_18"] > #GIDKeyLog > ul.Button_18 > li:nth-child(11)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_LA_19"] > #GIDKeyLog > ul.Button_19 > li:nth-child(11)::after {
+	content: "";
+	background-position: calc(-100px / 9) calc(-450px / 9);
+}
+/* [KeyLog: Street Fighter 6] Key Log: Button: Medium Attack（中攻撃） */
+#GameInputDisplay[data-styles~="KeyLog_SF6_Modern_ProPad"] > #GIDKeyLog > ul.Button_0 > li:nth-child(28)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_Modern_ProPad"] > #GIDKeyLog > ul.Button_6 > li:nth-child(28)::after, /* Throw（投げ） */
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_MA_0"] > #GIDKeyLog > ul.Button_0 > li:nth-child(28)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_MA_1"] > #GIDKeyLog > ul.Button_1 > li:nth-child(28)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_MA_2"] > #GIDKeyLog > ul.Button_2 > li:nth-child(28)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_MA_3"] > #GIDKeyLog > ul.Button_3 > li:nth-child(28)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_MA_4"] > #GIDKeyLog > ul.Button_4 > li:nth-child(28)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_MA_5"] > #GIDKeyLog > ul.Button_5 > li:nth-child(28)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_MA_6"] > #GIDKeyLog > ul.Button_6 > li:nth-child(28)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_MA_7"] > #GIDKeyLog > ul.Button_7 > li:nth-child(28)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_MA_8"] > #GIDKeyLog > ul.Button_8 > li:nth-child(28)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_MA_9"] > #GIDKeyLog > ul.Button_9 > li:nth-child(28)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_MA_10"] > #GIDKeyLog > ul.Button_10 > li:nth-child(28)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_MA_11"] > #GIDKeyLog > ul.Button_11 > li:nth-child(28)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_MA_12"] > #GIDKeyLog > ul.Button_12 > li:nth-child(28)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_MA_13"] > #GIDKeyLog > ul.Button_13 > li:nth-child(28)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_MA_14"] > #GIDKeyLog > ul.Button_14 > li:nth-child(28)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_MA_15"] > #GIDKeyLog > ul.Button_15 > li:nth-child(28)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_MA_16"] > #GIDKeyLog > ul.Button_16 > li:nth-child(28)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_MA_17"] > #GIDKeyLog > ul.Button_17 > li:nth-child(28)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_MA_18"] > #GIDKeyLog > ul.Button_18 > li:nth-child(28)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_MA_19"] > #GIDKeyLog > ul.Button_19 > li:nth-child(28)::after {
+	content: "";
+	background-position: calc(-500px / 9) calc(-450px / 9);
+}
+/* [KeyLog: Street Fighter 6] Key Log: Button: Heavy Attack（強攻撃） */
+#GameInputDisplay[data-styles~="KeyLog_SF6_Modern_ProPad"] > #GIDKeyLog > ul.Button_1 > li:nth-child(29)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_HA_0"] > #GIDKeyLog > ul.Button_0 > li:nth-child(29)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_HA_1"] > #GIDKeyLog > ul.Button_1 > li:nth-child(29)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_HA_2"] > #GIDKeyLog > ul.Button_2 > li:nth-child(29)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_HA_3"] > #GIDKeyLog > ul.Button_3 > li:nth-child(29)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_HA_4"] > #GIDKeyLog > ul.Button_4 > li:nth-child(29)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_HA_5"] > #GIDKeyLog > ul.Button_5 > li:nth-child(29)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_HA_6"] > #GIDKeyLog > ul.Button_6 > li:nth-child(29)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_HA_7"] > #GIDKeyLog > ul.Button_7 > li:nth-child(29)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_HA_8"] > #GIDKeyLog > ul.Button_8 > li:nth-child(29)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_HA_9"] > #GIDKeyLog > ul.Button_9 > li:nth-child(29)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_HA_10"] > #GIDKeyLog > ul.Button_10 > li:nth-child(29)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_HA_11"] > #GIDKeyLog > ul.Button_11 > li:nth-child(29)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_HA_12"] > #GIDKeyLog > ul.Button_12 > li:nth-child(29)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_HA_13"] > #GIDKeyLog > ul.Button_13 > li:nth-child(29)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_HA_14"] > #GIDKeyLog > ul.Button_14 > li:nth-child(29)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_HA_15"] > #GIDKeyLog > ul.Button_15 > li:nth-child(29)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_HA_16"] > #GIDKeyLog > ul.Button_16 > li:nth-child(29)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_HA_17"] > #GIDKeyLog > ul.Button_17 > li:nth-child(29)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_HA_18"] > #GIDKeyLog > ul.Button_18 > li:nth-child(29)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_HA_19"] > #GIDKeyLog > ul.Button_19 > li:nth-child(29)::after {
+	content: "";
+	background-position: calc(-900px / 9) calc(-450px / 9);
+}
+/* [KeyLog: Street Fighter 6] Key Log: Button: Special Move（必殺技） */
+#GameInputDisplay[data-styles~="KeyLog_SF6_Modern_ProPad"] > #GIDKeyLog > ul.Button_3 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_SP_0"] > #GIDKeyLog > ul.Button_0 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_SP_1"] > #GIDKeyLog > ul.Button_1 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_SP_2"] > #GIDKeyLog > ul.Button_2 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_SP_3"] > #GIDKeyLog > ul.Button_3 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_SP_4"] > #GIDKeyLog > ul.Button_4 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_SP_5"] > #GIDKeyLog > ul.Button_5 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_SP_6"] > #GIDKeyLog > ul.Button_6 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_SP_7"] > #GIDKeyLog > ul.Button_7 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_SP_8"] > #GIDKeyLog > ul.Button_8 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_SP_9"] > #GIDKeyLog > ul.Button_9 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_SP_10"] > #GIDKeyLog > ul.Button_10 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_SP_11"] > #GIDKeyLog > ul.Button_11 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_SP_12"] > #GIDKeyLog > ul.Button_12 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_SP_13"] > #GIDKeyLog > ul.Button_13 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_SP_14"] > #GIDKeyLog > ul.Button_14 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_SP_15"] > #GIDKeyLog > ul.Button_15 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_SP_16"] > #GIDKeyLog > ul.Button_16 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_SP_17"] > #GIDKeyLog > ul.Button_17 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_SP_18"] > #GIDKeyLog > ul.Button_18 > li:nth-child(23)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_SP_19"] > #GIDKeyLog > ul.Button_19 > li:nth-child(23)::after {
+	content: "";
+	background-position: calc(-100px / 9) calc(-800px / 9);
+}
+/* [KeyLog: Street Fighter 6] Key Log: Button: Drive Parry（ドライブパリィ） */
+#GameInputDisplay[data-styles~="KeyLog_SF6_Modern_ProPad"] > #GIDKeyLog > ul.Button_5 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DP_0"] > #GIDKeyLog > ul.Button_0 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DP_1"] > #GIDKeyLog > ul.Button_1 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DP_2"] > #GIDKeyLog > ul.Button_2 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DP_3"] > #GIDKeyLog > ul.Button_3 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DP_4"] > #GIDKeyLog > ul.Button_4 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DP_5"] > #GIDKeyLog > ul.Button_5 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DP_6"] > #GIDKeyLog > ul.Button_6 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DP_7"] > #GIDKeyLog > ul.Button_7 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DP_8"] > #GIDKeyLog > ul.Button_8 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DP_9"] > #GIDKeyLog > ul.Button_9 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DP_10"] > #GIDKeyLog > ul.Button_10 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DP_11"] > #GIDKeyLog > ul.Button_11 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DP_12"] > #GIDKeyLog > ul.Button_12 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DP_13"] > #GIDKeyLog > ul.Button_13 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DP_14"] > #GIDKeyLog > ul.Button_14 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DP_15"] > #GIDKeyLog > ul.Button_15 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DP_16"] > #GIDKeyLog > ul.Button_16 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DP_17"] > #GIDKeyLog > ul.Button_17 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DP_18"] > #GIDKeyLog > ul.Button_18 > li:nth-child(27)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DP_19"] > #GIDKeyLog > ul.Button_19 > li:nth-child(27)::after {
+	content: "";
+	background-position: calc(-500px / 9) calc(-800px / 9);
+}
+/* [KeyLog: Street Fighter 6] Key Log: Button: Assist（アシスト） */
+#GameInputDisplay[data-styles~="KeyLog_SF6_Modern_ProPad"] > #GIDKeyLog > ul.Button_7 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_AS_0"] > #GIDKeyLog > ul.Button_0 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_AS_1"] > #GIDKeyLog > ul.Button_1 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_AS_2"] > #GIDKeyLog > ul.Button_2 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_AS_3"] > #GIDKeyLog > ul.Button_3 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_AS_4"] > #GIDKeyLog > ul.Button_4 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_AS_5"] > #GIDKeyLog > ul.Button_5 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_AS_6"] > #GIDKeyLog > ul.Button_6 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_AS_7"] > #GIDKeyLog > ul.Button_7 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_AS_8"] > #GIDKeyLog > ul.Button_8 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_AS_9"] > #GIDKeyLog > ul.Button_9 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_AS_10"] > #GIDKeyLog > ul.Button_10 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_AS_11"] > #GIDKeyLog > ul.Button_11 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_AS_12"] > #GIDKeyLog > ul.Button_12 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_AS_13"] > #GIDKeyLog > ul.Button_13 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_AS_14"] > #GIDKeyLog > ul.Button_14 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_AS_15"] > #GIDKeyLog > ul.Button_15 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_AS_16"] > #GIDKeyLog > ul.Button_16 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_AS_17"] > #GIDKeyLog > ul.Button_17 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_AS_18"] > #GIDKeyLog > ul.Button_18 > li:nth-child(31)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_AS_19"] > #GIDKeyLog > ul.Button_19 > li:nth-child(31)::after {
+	content: "";
+	background-position: calc(-900px / 9) calc(-800px / 9);
+}
+/* [KeyLog: Street Fighter 6] Key Log: Button: Drive Impact（ドライブインパクト） */
+#GameInputDisplay[data-styles~="KeyLog_SF6_Modern_ProPad"] > #GIDKeyLog > ul.Button_4 > li:nth-child(35)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DI_0"] > #GIDKeyLog > ul.Button_0 > li:nth-child(35)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DI_1"] > #GIDKeyLog > ul.Button_1 > li:nth-child(35)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DI_2"] > #GIDKeyLog > ul.Button_2 > li:nth-child(35)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DI_3"] > #GIDKeyLog > ul.Button_3 > li:nth-child(35)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DI_4"] > #GIDKeyLog > ul.Button_4 > li:nth-child(35)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DI_5"] > #GIDKeyLog > ul.Button_5 > li:nth-child(35)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DI_6"] > #GIDKeyLog > ul.Button_6 > li:nth-child(35)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DI_7"] > #GIDKeyLog > ul.Button_7 > li:nth-child(35)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DI_8"] > #GIDKeyLog > ul.Button_8 > li:nth-child(35)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DI_9"] > #GIDKeyLog > ul.Button_9 > li:nth-child(35)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DI_10"] > #GIDKeyLog > ul.Button_10 > li:nth-child(35)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DI_11"] > #GIDKeyLog > ul.Button_11 > li:nth-child(35)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DI_12"] > #GIDKeyLog > ul.Button_12 > li:nth-child(35)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DI_13"] > #GIDKeyLog > ul.Button_13 > li:nth-child(35)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DI_14"] > #GIDKeyLog > ul.Button_14 > li:nth-child(35)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DI_15"] > #GIDKeyLog > ul.Button_15 > li:nth-child(35)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DI_16"] > #GIDKeyLog > ul.Button_16 > li:nth-child(35)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DI_17"] > #GIDKeyLog > ul.Button_17 > li:nth-child(35)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DI_18"] > #GIDKeyLog > ul.Button_18 > li:nth-child(35)::after,
+#GameInputDisplay[data-styles~="KeyLog_SF6_KC_DI_19"] > #GIDKeyLog > ul.Button_19 > li:nth-child(35)::after {
+	content: "";
+	background-position: calc(-1300px / 9) calc(-800px / 9);
+}
+
+
+
+/* ========== ========== ========== ========== ========== ========== ========== ========== ========== ==========
+Street Fighter 6: その他
+========== ========== ========== ========== ========== ========== ========== ========== ========== ========== */
+
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Press_"],
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="Button_Value_10_"],
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="Button_Value_20_"],
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="Button_Value_30_"],
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="Button_Value_40_"],
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="Button_Value_50_"],
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="Button_Value_60_"],
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="Button_Value_70_"],
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="Button_Value_80_"],
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="Button_Value_90_"] {
+	display: none;
+}

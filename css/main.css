@@ -425,21 +425,20 @@ ul {
     flex-direction: row;
     margin: 0;
     padding: 0 0 0 38px;
+    min-width: 42px;
+    min-height: 42px;
 } #GIDKeyLog > ul[class*="StickB_Press_"],
 #GIDKeyLog > ul[class*="StickL_Press_"],
 #GIDKeyLog > ul[class*="Button_Press_"] {
     display: flex;
-    min-width: 42px;
-    min-height: 42px;
 }
 #GIDKeyLog > ul > li {
     display: none;
+    vertical-align: middle;
 } #GIDKeyLog > ul[class*="_Press_"] > li {
     display: inline-block;
-    vertical-align: middle;
-} #GIDKeyLog > ul[class*="_Press_"] > li::before,
-#GIDKeyLog > ul[class*="_Press_"] > li::after {
-    display: inline-block;
+} #GIDKeyLog > ul > li::before,
+#GIDKeyLog > ul > li::after {
     margin: 1px;
     width: 32px;
     height: 32px;
@@ -448,20 +447,25 @@ ul {
     overflow: hidden;
     text-align: center;
     vertical-align: middle;
+} #GIDKeyLog > ul[class*="_Press_"] > li::before,
+#GIDKeyLog > ul[class*="_Press_"] > li::after {
+    display: inline-block;
 }
 
 /* Key Log: Directional */
-#GIDKeyLog > ul[class*="_Press_"] > li:nth-child(1) {
-    display: flex;
+#GIDKeyLog > ul > li:nth-child(1) {
     flex-direction: row;
 }
-#GIDKeyLog > ul[class*="_Press_"] > li:nth-child(1)::before,
-#GIDKeyLog > ul[class*="_Press_"] > li:nth-child(1)::after {
+#GIDKeyLog > ul[class*="_Press_"] > li:nth-child(1) {
+    display: flex;
+}
+#GIDKeyLog > ul > li:nth-child(1)::before,
+#GIDKeyLog > ul > li:nth-child(1)::after {
     margin: 3px 0 0 -34px;
-} #GIDKeyLog > ul[class*="_Press_"] > li:nth-child(1)::before {
+} #GIDKeyLog > ul > li:nth-child(1)::before {
     background-color: #000000;
     border-radius: 20%;
-} #GIDKeyLog > ul[class*="_Press_"] > li:nth-child(1)::after {
+} #GIDKeyLog > ul > li:nth-child(1)::after {
     width: 36px;
     line-height: 36px;
     color: #ffffff;
@@ -575,7 +579,7 @@ ul {
     top: unset;
     bottom: 0;
 }
-#GameInputDisplay[data-styles~="KeyLog_Horizontally_DU"] > #GIDKeyLog > ul[class*="_Press_"] {
+#GameInputDisplay[data-styles~="KeyLog_Horizontally_DU"] > #GIDKeyLog > ul {
     flex-direction: column-reverse;
     padding: 0 0 42px 0;
 } #GameInputDisplay[data-styles~="KeyLog_Horizontally_DU"] > #GIDKeyLog > ul > li:nth-child(1) {
