@@ -818,9 +818,14 @@ class Deck {
                         action: Deck.NAME_MESSAGE,
                         message: {
                             axes: {
-                                commands: gamepad.commands().values(),
-                                leftAxis: gamepad.leftAxis().values(),
-                                rightAxis: gamepad.rightAxis().values()
+                                commands: gamepad.commands().hold() ? [] : gamepad.commands().values(),
+                                leftAxis: gamepad.leftAxis().hold() ? [] : gamepad.leftAxis().values(),
+                                rightAxis: gamepad.rightAxis().hold() ? [] : gamepad.rightAxis().values(),
+                                hold: {
+                                    commands: !gamepad.commands().hold() ? [] : gamepad.commands().values(),
+                                    leftAxis: !gamepad.leftAxis().hold() ? [] : gamepad.leftAxis().values(),
+                                    rightAxis: !gamepad.rightAxis().hold() ? [] : gamepad.rightAxis().values()
+                                }
                             },
                             state: container.state(),
                             type: item.type(),
