@@ -745,7 +745,7 @@ postMessage({
     },
     state: 'Play',  // {string} iframeの状態： 'Play' = 表示中, 'Pause' = 表示中（のまま）, 'Clear' = 非表示
     type: 'HTML',  // {string} Deckアイテムの種類: 'HTML' or 'Others'
-    url: window.location.href,  // {string} GameInputDisplayの「window.location.href」値
+    url: window.location.href,  // {string} GameInputDisplay（親フレーム）の「window.location.href」値
     volume: 0.5  // {number} マスター音量: 0～1
   }
 }, "*");
