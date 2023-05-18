@@ -348,6 +348,7 @@ PlayStation4純正パッド（DualShock4）での標準的な使用ケースの�
 ### コントローラースキン
 
 - ProPad（既定・DualShock4/DualSense風）
+- PopPad（ProPadと同じレイアウトのポップなデザインのゲームパッド風）
 - Front6Pad（6ボタンゲームパッド風）
 - ArcadeController（アーケードコントローラー風）
 - ButtonBox（HitBox・レバーレスコントローラー風）
