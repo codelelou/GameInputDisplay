@@ -40,7 +40,9 @@ Street Fighter 6: Directional
 #GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul > li:nth-child(1)::before {
 	background-color: transparent; /* Directional Style Reset */
 } #GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="StickB_"][class*="_Hold_"] > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="StickL_"][class*="_Hold_"] > li:nth-child(1)::after {
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="StickL_"][class*="_Hold_"] > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="StickB_"][class*="_Press_"] > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="StickL_"][class*="_Press_"] > li:nth-child(1)::after {
 	content: "";
 	background-position: calc(-85px / 9) calc(-100px / 9);
 }
@@ -80,30 +82,30 @@ Street Fighter 6: Directional
 #GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="StickL_Hold_"] > li:nth-child(1)::after {
 	content: "";
 	background-position: calc(-1300px / 9) calc(-450px / 9);
-} #GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Up.StickB_Right.StickB_Down.StickB_Left > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Up.StickB_Right.StickB_Down.StickL_Left > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Up.StickB_Right.StickL_Down.StickB_Left > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Up.StickB_Right.StickL_Down.StickL_Left > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Up.StickL_Right.StickB_Down.StickB_Left > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Up.StickL_Right.StickB_Down.StickL_Left > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Up.StickL_Right.StickL_Down.StickB_Left > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Up.StickL_Right.StickL_Down.StickL_Left > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickL_Up.StickB_Right.StickB_Down.StickB_Left > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickL_Up.StickB_Right.StickB_Down.StickL_Left > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickL_Up.StickB_Right.StickL_Down.StickB_Left > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickL_Up.StickB_Right.StickL_Down.StickL_Left > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickL_Up.StickL_Right.StickB_Down.StickB_Left > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickL_Up.StickL_Right.StickB_Down.StickL_Left > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickL_Up.StickL_Right.StickL_Down.StickB_Left > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickL_Up.StickL_Right.StickL_Down.StickL_Left > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Up.StickB_Down:not(.StickB_Left):not(.StickB_Right):not(.StickL_Left):not(.StickL_Right) > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Up.StickL_Down:not(.StickB_Left):not(.StickB_Right):not(.StickL_Left):not(.StickL_Right) > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Down.StickL_Up:not(.StickB_Left):not(.StickB_Right):not(.StickL_Left):not(.StickL_Right) > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickL_Up.StickL_Down:not(.StickB_Left):not(.StickB_Right):not(.StickL_Left):not(.StickL_Right) > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Left.StickB_Right:not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Left.StickL_Right:not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickB_Right.StickL_Left:not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Hold_"].StickL_Left.StickL_Right:not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after {
+} #GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Up.StickB_Right.StickB_Down.StickB_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Up.StickB_Right.StickB_Down.StickL_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Up.StickB_Right.StickL_Down.StickB_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Up.StickB_Right.StickL_Down.StickL_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Up.StickL_Right.StickB_Down.StickB_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Up.StickL_Right.StickB_Down.StickL_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Up.StickL_Right.StickL_Down.StickB_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Up.StickL_Right.StickL_Down.StickL_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickL_Up.StickB_Right.StickB_Down.StickB_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickL_Up.StickB_Right.StickB_Down.StickL_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickL_Up.StickB_Right.StickL_Down.StickB_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickL_Up.StickB_Right.StickL_Down.StickL_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickL_Up.StickL_Right.StickB_Down.StickB_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickL_Up.StickL_Right.StickB_Down.StickL_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickL_Up.StickL_Right.StickL_Down.StickB_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickL_Up.StickL_Right.StickL_Down.StickL_Left > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Up.StickB_Down:not(.StickB_Left):not(.StickB_Right):not(.StickL_Left):not(.StickL_Right) > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Up.StickL_Down:not(.StickB_Left):not(.StickB_Right):not(.StickL_Left):not(.StickL_Right) > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Down.StickL_Up:not(.StickB_Left):not(.StickB_Right):not(.StickL_Left):not(.StickL_Right) > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickL_Up.StickL_Down:not(.StickB_Left):not(.StickB_Right):not(.StickL_Left):not(.StickL_Right) > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Left.StickB_Right:not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Left.StickL_Right:not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickB_Right.StickL_Left:not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after,
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul.StickL_Left.StickL_Right:not(.StickB_Up):not(.StickB_Down):not(.StickL_Up):not(.StickL_Down) > li:nth-child(1)::after {
 	background-position: calc(-1300px / 9) calc(-450px / 9);
 	transform: unset;
 }
@@ -456,7 +458,34 @@ Street Fighter 6: 攻撃ボタン
 Street Fighter 6: その他
 ========== ========== ========== ========== ========== ========== ========== ========== ========== ========== */
 
-#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="_Press_"],
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class="StickL_Up StickL_Hold_Up"] + ul[class="StickL_Up StickL_Press_Up"],
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class="StickL_Down StickL_Hold_Down"] + ul[class="StickL_Down StickL_Press_Down"],
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class="StickL_Left StickL_Hold_Left"] + ul[class="StickL_Left StickL_Press_Left"],
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class="StickL_Right StickL_Hold_Right"] + ul[class="StickL_Right StickL_Press_Right"],
+
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class="StickL_Left StickL_Hold_Left StickL_Up StickL_Hold_Up"]:has(+ ul[class="StickL_Left StickL_Press_Left StickL_Up StickL_Press_Up"]),
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class="StickL_Left StickL_Hold_Left StickL_Down StickL_Hold_Down"]:has(+ ul[class="StickL_Left StickL_Press_Left StickL_Down StickL_Press_Down"]),
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class="StickL_Right StickL_Hold_Right StickL_Up StickL_Hold_Up"]:has(+ ul[class="StickL_Right StickL_Press_Right StickL_Up StickL_Press_Up"]),
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class="StickL_Right StickL_Hold_Right StickL_Down StickL_Hold_Down"]:has(+ ul[class="StickL_Right StickL_Press_Right StickL_Down StickL_Press_Down"]),
+
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class^="StickL_Up StickL_Hold_Up"][class*="Button_Hold_"]:not([class*="Button_Press_"]) + ul[class^="StickL_Up StickL_Press_Up"][class*="Button_Hold_"]:not([class*="Button_Press_"]),
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class^="StickL_Down StickL_Hold_Down"][class*="Button_Hold_"]:not([class*="Button_Press_"]) + ul[class^="StickL_Down StickL_Press_Down"][class*="Button_Hold_"]:not([class*="Button_Press_"]),
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class^="StickL_Left StickL_Hold_Left"][class*="Button_Hold_"]:not([class*="Button_Press_"]) + ul[class^="StickL_Left StickL_Press_Left"][class*="Button_Hold_"]:not([class*="Button_Press_"]),
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class^="StickL_Right StickL_Hold_Right"][class*="Button_Hold_"]:not([class*="Button_Press_"]) + ul[class^="StickL_Right StickL_Press_Right"][class*="Button_Hold_"]:not([class*="Button_Press_"]),
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class^="StickL_Up StickL_Hold_Up"][class*="Button_Hold_"]:not([class*="Button_Press_"]) + ul[class^="StickL_Up StickL_Hold_Up"][class*="Button_Press_"]:not([class*="Button_Hold_"]),
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class^="StickL_Down StickL_Hold_Down"][class*="Button_Hold_"]:not([class*="Button_Press_"]) + ul[class^="StickL_Down StickL_Hold_Down"][class*="Button_Press_"]:not([class*="Button_Hold_"]),
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class^="StickL_Left StickL_Hold_Left"][class*="Button_Hold_"]:not([class*="Button_Press_"]) + ul[class^="StickL_Left StickL_Hold_Left"][class*="Button_Press_"]:not([class*="Button_Hold_"]),
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class^="StickL_Right StickL_Hold_Right"][class*="Button_Hold_"]:not([class*="Button_Press_"]) + ul[class^="StickL_Right StickL_Hold_Right"][class*="Button_Press_"]:not([class*="Button_Hold_"]),
+
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class^="StickB_Up StickB_Hold_Up"][class*="Button_Hold_"]:not([class*="Button_Press_"]) + ul[class^="StickB_Up StickB_Press_Up"][class*="Button_Hold_"]:not([class*="Button_Press_"]),
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class^="StickB_Down StickB_Hold_Down"][class*="Button_Hold_"]:not([class*="Button_Press_"]) + ul[class^="StickB_Down StickB_Press_Down"][class*="Button_Hold_"]:not([class*="Button_Press_"]),
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class^="StickB_Left StickB_Hold_Left"][class*="Button_Hold_"]:not([class*="Button_Press_"]) + ul[class^="StickB_Left StickB_Press_Left"][class*="Button_Hold_"]:not([class*="Button_Press_"]),
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class^="StickB_Right StickB_Hold_Right"][class*="Button_Hold_"]:not([class*="Button_Press_"]) + ul[class^="StickB_Right StickB_Press_Right"][class*="Button_Hold_"]:not([class*="Button_Press_"]),
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class^="StickB_Up StickB_Hold_Up"][class*="Button_Hold_"]:not([class*="Button_Press_"]) + ul[class^="StickB_Up StickB_Hold_Up"][class*="Button_Press_"]:not([class*="Button_Hold_"]),
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class^="StickB_Down StickB_Hold_Down"][class*="Button_Hold_"]:not([class*="Button_Press_"]) + ul[class^="StickB_Down StickB_Hold_Down"][class*="Button_Press_"]:not([class*="Button_Hold_"]),
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class^="StickB_Left StickB_Hold_Left"][class*="Button_Hold_"]:not([class*="Button_Press_"]) + ul[class^="StickB_Left StickB_Hold_Left"][class*="Button_Press_"]:not([class*="Button_Hold_"]),
+#GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class^="StickB_Right StickB_Hold_Right"][class*="Button_Hold_"]:not([class*="Button_Press_"]) + ul[class^="StickB_Right StickB_Hold_Right"][class*="Button_Press_"]:not([class*="Button_Hold_"]),
+
 #GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="Button_Value_10_"],
 #GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="Button_Value_20_"],
 #GameInputDisplay[data-styles*="KeyLog_SF6"] > #GIDKeyLog > ul[class*="Button_Value_30_"],
